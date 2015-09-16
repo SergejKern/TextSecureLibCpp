@@ -5,8 +5,8 @@
 
 #include "IncomingTextMessage.h"
 
-
-IncomingTextMessage::IncomingTextMessage(SmsMessage* message)
+// SmsMessage is Android class android.telephony.SmsMessage
+/*IncomingTextMessage::IncomingTextMessage(SmsMessage* message)
 {
   this->message              = message->getDisplayMessageBody();
   this->sender               = message->getDisplayOriginatingAddress();
@@ -18,7 +18,7 @@ IncomingTextMessage::IncomingTextMessage(SmsMessage* message)
   this->sentTimestampMillis  = message->getTimestampMillis();
   this->groupId              = null;
   this->push                 = false;
-}
+}*/
 
 IncomingTextMessage::IncomingTextMessage(String sender, int senderDeviceId, long sentTimestampMillis, String encodedBody, Optional<TextSecureGroup>* group)
 {
