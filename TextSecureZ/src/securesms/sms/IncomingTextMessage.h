@@ -1,6 +1,6 @@
-/* 
-  Port of IncomingTextMessage.java from TextSecure-android
-  */
+/*
+Port of IncomingTextMessage.java from TextSecure-android
+*/
 
 #pragma once
 #include "TextSecureGroup.h"
@@ -30,7 +30,7 @@ public:
   // Parcel in TIZEN?
   // public IncomingTextMessage(Parcel in);
   // Copy constructor
-  IncomingTextMessage(IncomingTextMessage base, char* newBody);
+  IncomingTextMessage(IncomingTextMessage* base, char* newBody);
   // use c++templates?
   // public IncomingTextMessage(List<IncomingTextMessage> fragments);
   virtual ~IncomingTextMessage();
@@ -38,8 +38,8 @@ public:
   long GetSentTimestampMillis();
   char* GetPseudoSubject();
   char* GetMessageBody();
-  IncomingTextMessage WithMessageBody(char* message);
-  char* getSender();
+  IncomingTextMessage* WithMessageBody(char* message);
+  char* GetSender();
   int GetSenderDeviceId();
   int GetProtocol();
   char* GetServiceCenterAddress();
