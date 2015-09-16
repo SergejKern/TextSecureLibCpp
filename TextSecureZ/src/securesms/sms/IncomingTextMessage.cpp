@@ -3,6 +3,8 @@ Port of IncomingTextMessage.java from TextSecure-android
 */
 
 #include "IncomingTextMessage.h"
+#include "TextSecureAddress.h"
+#include "GroupUtil.h"
 
 // SmsMessage is Android class android.telephony.SmsMessage
 /*IncomingTextMessage::IncomingTextMessage(SmsMessage* message)
@@ -34,7 +36,7 @@ IncomingTextMessage::IncomingTextMessage(char* sender, int senderDeviceId, long 
   //if (group->isPresent())
   if (group != nullptr)
   {
-    this->groupId = GroupUtil.getEncodedId(group->GetGroupId());
+    this->groupId = GroupUtil::GetEncodedId(group->GetGroupId());
   }
   else
   {
