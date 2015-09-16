@@ -51,7 +51,8 @@ protected:
   IncomingTextMessage(String sender, String groupId);
 public:
   // Constructor from SmsMessage
-  IncomingTextMessage(SmsMessage message);
+  // SmsMessage is Android class android.telephony.SmsMessage
+  // IncomingTextMessage(SmsMessage message);
   // Constructor from sender
   IncomingTextMessage(String sender, int senderDeviceId, long sentTimestampMillis, String encodedBody, Optional<TextSecureGroup> group);
   // Parcel in TIZEN?
