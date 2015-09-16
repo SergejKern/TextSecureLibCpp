@@ -56,11 +56,11 @@ public:
     char* name;
     char** members;
     TextSecureAttachment* avatar;
+  public:
     // constructor
     Builder(Type type) {
       this->type = type;
     }
-  public:
     Builder* WithId(char* id)
     {
       this->id = id;
@@ -109,7 +109,7 @@ public:
   char** GetMembers();
   TextSecureAttachment* GetAvatar();
   static Builder* NewUpdateBuilder();
-  static Builder* newBuilder(Type type);
+  static Builder* NewBuilder(Type type);
 
 private:
   char* groupId;
