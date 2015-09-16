@@ -1,0 +1,4 @@
+Android             TIZEN
+
+Parcel              ???
+SmsMessage          messages_message_h
