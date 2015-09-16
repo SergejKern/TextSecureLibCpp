@@ -3,6 +3,7 @@
   */
 
 #ifndef APPDELEGATE_H_
+#define APPDELEGATE_H_
 // ??? #import <UIKit/UIKit.h>
 
 // ??? #include "SignalsViewController.h"
