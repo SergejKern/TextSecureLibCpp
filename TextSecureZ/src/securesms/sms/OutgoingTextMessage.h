@@ -10,14 +10,14 @@ Port of OutgoingTextMessage from TextSecure-android
 class OutgoingTextMessage
 {
 private:
-  const Recipients recipients;
+  const Recipients* recipients;
   const char* message;
 public:
   OutgoingTextMessage(Recipients* recipients, char* message);
   OutgoingTextMessage(OutgoingTextMessage* base, char* body);
   virtual ~OutgoingTextMessage();
-  char* GetMessageBody();
-  Recipients* GetRecipients();
+  const char* GetMessageBody();
+  const Recipients* GetRecipients();
   bool IsKeyExchange();
   bool IsSecureMessage();
   bool IsEndSession();
