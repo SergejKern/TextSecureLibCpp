@@ -5,3 +5,6 @@ SmsMessage          messages_message_h
 SpannableString     char* ?
 String              char* ?
 Context             ??? application environment
+ContactPhoto        ???
+Uri                 ???
+MaterialColor       ???
