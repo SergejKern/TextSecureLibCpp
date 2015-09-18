@@ -2,6 +2,9 @@
 Port of OutgoingTextMessage from TextSecure-android
 */
 
+// [x] done
+// TFS ID: 
+
 #include "OutgoingTextMessage.h"
 #include "OutgoingEncryptedMessage.h"
 #include "OutgoingEndSessionMessage.h"
@@ -17,6 +20,12 @@ OutgoingTextMessage::OutgoingTextMessage(OutgoingTextMessage* base, char* body)
 {
   this->recipients = base->GetRecipients();
   this->message = body;
+}
+
+OutgoingTextMessage::OutgoingTextMessage(OutgoingTextMessage* base)
+{
+  this->recipients = base->GetRecipients();
+  this->message = base->GetMessageBody();
 }
 
 const char* OutgoingTextMessage::GetMessageBody()
