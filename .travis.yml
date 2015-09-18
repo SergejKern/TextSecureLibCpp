@@ -1,7 +1,9 @@
 language: cpp
 compiler:
-  - gcc-4.8
+  - clang
+  - gcc
 script: make
 os:
   - linux
-  - win32
+  - windows
+  - osx
