@@ -39,9 +39,6 @@ TextSecureAttachment* TextSecureGroup::GetAvatar()
 {
   return this->avatar;
 }
-TextSecureGroup::~TextSecureGroup()
-{
-}
 TextSecureGroup::Builder* TextSecureGroup::NewUpdateBuilder()
 {
   return new TextSecureGroup::Builder(Type::UPDATE);
