@@ -2,7 +2,7 @@
 Port of TextSecureGroup.java from libtextsecure-java
 */
 
-#include "TextSecureGroup.h"
+#include "./lib/api/messages/TextSecureGroup.h"
 
 TextSecureGroup::TextSecureGroup(char* groupId)
 {
