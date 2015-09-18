@@ -3,7 +3,9 @@ Port of TextSecureGroup.java from libtextsecure-java
 */
 
 #include "TextSecureGroup.h"
-
+TextSecureGroup::~TextSecureGroup()
+{
+}
 TextSecureGroup::TextSecureGroup(char* groupId)
 {
   // TODO: rewrite!
