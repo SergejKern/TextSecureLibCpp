@@ -55,7 +55,7 @@ public:
     DELIVER,
     QUIT
   };
-  static class Builder
+  class Builder
   {
   private:
     Type type;
@@ -128,4 +128,3 @@ private:
   //Optional<TextSecureAttachment> avatar;
   TextSecureAttachment* avatar;
 };
-
