@@ -24,7 +24,7 @@ char* TextSecureGroup::GetGroupId()
 {
   return this->groupId;
 }
-TextSecureGroup::Type TextSecureGroup::GetType() {
+Type TextSecureGroup::GetType() {
   return this->type;
 }
 char* TextSecureGroup::GetName() {
@@ -56,7 +56,7 @@ TextSecureGroup* TextSecureGroup::Builder::Build()
     // throw new IllegalArgumentException("No group ID specified!");
   }
 
-  if (type == TextSecureGroup::Type::UPDATE && name == NULL && members == NULL && avatar == NULL)
+  if (type == Type::UPDATE && name == NULL && members == NULL && avatar == NULL)
   {
     // do not throw exceptions in TIZEN
     //throw new IllegalArgumentException("Group update with no updates!");
