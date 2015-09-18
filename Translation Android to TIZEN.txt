@@ -1,4 +1,4 @@
-Android             TIZEN
+Android             TIZEN                        Sailfish OS        Ubuntu Phone
 
 Parcel              ???
 SmsMessage          messages_message_h
@@ -7,4 +7,3 @@ String              char* ?
 Context             ??? application environment
 ContactPhoto        ???
 Uri                 ???
-MaterialColor       ???
