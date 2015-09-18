@@ -37,6 +37,10 @@ Port of TextSecureGroup.java from libtextsecure-java
 * @author Moxie Marlinspike
 */
 
+#if (_MSC_VER > 1500)
+#define NULL nullptr
+#endif
+
 #include "TextSecureAttachment.h"
 
 class TextSecureGroup
@@ -88,7 +92,7 @@ public:
         // throw new IllegalArgumentException("No group ID specified!");
       }
 
-      if (type == Type::UPDATE && name == nullptr && members == nullptr && avatar == nullptr)
+      if (type == Type::UPDATE && name == NULL && members == NULL && avatar == NULL)
       {
         // do not throw exceptions in TIZEN
         //throw new IllegalArgumentException("Group update with no updates!");
@@ -121,3 +125,4 @@ private:
   //Optional<TextSecureAttachment> avatar;
   TextSecureAttachment* avatar;
 };
+
