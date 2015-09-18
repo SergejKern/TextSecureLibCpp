@@ -1,9 +1,15 @@
-Android             TIZEN                        Sailfish OS        Ubuntu Phone
++--------------------+---------+-----------------------------+-------------+--------------+
+| Android            | C++     | TIZEN                       | Sailfish OS | Ubuntu Phone |
++--------------------+---------+-----------------------------+-------------+--------------+
+| SpannableString    | char* ? | -                           | ???         | ???          |
+| String             | char* ? | -                           | ???         | ???          |
+| ContactPhoto       | ???     | -                           | ???         | ???          |
+| Uri                | ???     | -                           | ???         | ???          |
+| Set                | ???     | -                           | ???         | ???          |
+| HashSet            | ???     | -                           | ???         | ???          |
+| Context            | -       | ??? application environment | ???         | ???          |
+| Parcel             | -       | ???                         | ???         | ???          |
+| SmsMessage         | -       | messages_message_h          | ???         | ???          |
++--------------------+---------+-----------------------------+-------------+--------------+
 
-Parcel              ???
-SmsMessage          messages_message_h
-SpannableString     char* ?
-String              char* ?
-Context             ??? application environment
-ContactPhoto        ???
-Uri                 ???
+TODO: create excel
