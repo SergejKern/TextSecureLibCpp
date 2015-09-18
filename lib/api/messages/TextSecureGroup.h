@@ -95,7 +95,7 @@ public:
         // throw new IllegalArgumentException("No group ID specified!");
       }
 
-      if (type == Type::UPDATE && name == NULL && members == NULL && avatar == NULL)
+      if (type == TextSecureGroup::Type::UPDATE && name == NULL && members == NULL && avatar == NULL)
       {
         // do not throw exceptions in TIZEN
         //throw new IllegalArgumentException("Group update with no updates!");
