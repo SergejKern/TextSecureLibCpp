@@ -3,8 +3,8 @@ Port of IncomingTextMessage.java from TextSecure-android
 */
 
 #include "IncomingTextMessage.h"
-#include "TextSecureAddress.h"
-#include "GroupUtil.h"
+#include "..\..\lib\api\push\TextSecureAddress.h"
+#include "..\util\GroupUtil.h"
 
 // SmsMessage is Android class android.telephony.SmsMessage
 /*IncomingTextMessage::IncomingTextMessage(SmsMessage* message)
