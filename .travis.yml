@@ -1,4 +1,7 @@
 language: cpp
 compiler:
-  - gcc
+  - gcc-4.8
 script: make
+os:
+  - linux
+  - win32
