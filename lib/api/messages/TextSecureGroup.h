@@ -4,6 +4,9 @@
 Port of TextSecureGroup.java from libtextsecure-java
 */
 
+// [ ] done
+// TFS ID: 271
+
 /**
 * Copyright (C) 2014 Open Whisper Systems
 *
