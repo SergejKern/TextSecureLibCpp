@@ -4,19 +4,22 @@
 Port of MessageRecord.java from TextSecure-android
 */
 
+// [ ] done
+// TFS ID: 302
+
 #include "DisplayRecord.h"
-#include "Recipient.h"
-#include "NetworkFailure.h"
-#include "IdentityKeyMismatch.h"
+#include "..\..\recipients\Recipient.h"
+#include "..\documents\NetworkFailure.h"
+#include "..\documents\IdentityKeyMismatch.h"
 
 class MessageRecord :
   public DisplayRecord
 {
 public:
-  const int DELIVERY_STATUS_NONE = 0;
-  const int DELIVERY_STATUS_RECEIVED = 1;
-  const int DELIVERY_STATUS_PENDING = 2;
-  const int DELIVERY_STATUS_FAILED = 3;
+  static const int DELIVERY_STATUS_NONE = 0;
+  static const int DELIVERY_STATUS_RECEIVED = 1;
+  static const int DELIVERY_STATUS_PENDING = 2;
+  static const int DELIVERY_STATUS_FAILED = 3;
 private:
   const int MAX_DISPLAY_LENGTH = 2000;
   const Recipient* IndividualRecipient;
