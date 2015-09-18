@@ -4,19 +4,23 @@
 Port of class RecipientDetails from TextSecure-android
 */
 
+// [ ] done
+// TFS ID: 324
+
+#include "..\contacts\avatars\ContactPhoto.h"
+#include "..\color\MaterialColor.h"
+
 class RecipientDetails
 {
 public:
-  const char* name;
-  const char* number;
-  //const ContactPhoto* avatar;
-  const void* avatar;
+  unsigned char* name;
+  unsigned char* number;
+  ContactPhoto* avatar;
   //const Uri* contactUri;
-  const void* contactUri;
-  //const MaterialColor* color;
-  const void* color;
+  void* contactUri;
+  MaterialColor* color;
 public:
   //RecipientDetails(char* name, char* number, Uri* contactUri, ContactPhoto* avatar, MaterialColor* color);
-  RecipientDetails(char* name, char* number, void* contactUri, void* avatar, void* color);
+  RecipientDetails(unsigned char* name, unsigned char* number, void* contactUri, ContactPhoto* avatar, MaterialColor* color);
   virtual ~RecipientDetails();
 };
