@@ -5,7 +5,7 @@ Port of enum MaterialColor from TextSecure-android
 */
 
 // [ ] done
-// TFS ID: 324
+// TFS ID: 371
 
 class MaterialColor
 {
