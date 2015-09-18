@@ -1,4 +1,4 @@
-# Port of TextSecure-android to C++ [![Build Status](https://travis-ci.org/SergejKern/TextSecureZ.svg?branch=master)](https://github.com/SergejKern/TextSecureZ)
+# Port of TextSecure-android to C++ [![Build Status](https://travis-ci.org/SergejKern/TextSecureLibCpp.svg?branch=master)](https://github.com/SergejKern/TextSecureLibCpp)
 
 Port of TextSecure functionality from Java to C++, so it hopofully could be used for TIZEN, Sailfish OS, Ubuntu Phone. This port should be not OS specific, so that in OS specific projects accodridng abstract functionality is to be implemented.
 
