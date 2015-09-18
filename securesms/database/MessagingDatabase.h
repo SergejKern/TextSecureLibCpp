@@ -28,7 +28,7 @@ public:
   /* BIG TODO <T extends Document<I>, I> void addToDocument(long messageId, String column, List<I> objects, Class<T> clazz) throws IOException */
 
 private:
-  void setDocument(/* TODO OS SPECIFIC SQLiteDatabase*/ void* database, long messageId, unsigned char* column, Document* document) /*throws IOException*/;
+  void SetDocument(/* TODO OS SPECIFIC SQLiteDatabase*/ void* database, long messageId, unsigned char* column, Document* document) /*throws IOException*/;
   /* BIG TODO <D extends Document> D getDocument(SQLiteDatabase database, long messageId,String column, Class<D> clazz);*/
 };
 
