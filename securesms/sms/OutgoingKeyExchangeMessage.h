@@ -4,11 +4,14 @@
 Port of OutgoingKeyExchangeMessage from TextSecure-android
 */
 
+// [ ] done
+// TFS ID: 203
+
 #include "OutgoingTextMessage.h"
 class OutgoingKeyExchangeMessage :
   public OutgoingTextMessage
 {
-private: 
+private:
   OutgoingKeyExchangeMessage(OutgoingKeyExchangeMessage* base, char* body);
 public:
   virtual ~OutgoingKeyExchangeMessage();
