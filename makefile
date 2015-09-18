@@ -1,2 +1,2 @@
 all:
-  gcc ./lib/api/messages/TextSecureGroup.cpp
+	gcc ./lib/api/messages/TextSecureGroup.cpp
