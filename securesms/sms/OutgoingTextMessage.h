@@ -4,14 +4,18 @@
 Port of OutgoingTextMessage from TextSecure-android
 */
 
-#include "Recipients.h"
-#include "SmsMessageRecord.h"
+// [ ] done
+// TFS ID: 205
+
+#include "..\recipients\Recipients.h"
+#include "..\database\model\SmsMessageRecord.h"
 
 class OutgoingTextMessage
 {
-private:
+protected:
   const Recipients* recipients;
   const char* message;
+  OutgoingTextMessage(OutgoingTextMessage* base);
 public:
   OutgoingTextMessage(Recipients* recipients, char* message);
   OutgoingTextMessage(OutgoingTextMessage* base, char* body);
