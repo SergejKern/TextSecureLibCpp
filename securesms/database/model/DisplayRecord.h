@@ -1,6 +1,13 @@
 #pragma once
 
-#include "Recipients.h"
+#include "..\..\recipients\Recipients.h"
+
+#if (_MSC_VER > 1500)
+#define NULL nullptr
+#endif
+
+// [ ] done
+// TFS ID: 300
 
 class DisplayRecord
 {
@@ -10,7 +17,7 @@ public:
 public:
   static class Body
   {
-  private: 
+  private:
     const char* body;
     const bool plaintext;
 
@@ -27,7 +34,7 @@ public:
 
     char* GetBody()
     {
-      return body == nullptr ? "" : body;
+      return body == NULL ? "" : body;
     }
   };
 protected:
