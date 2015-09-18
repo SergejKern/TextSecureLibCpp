@@ -48,3 +48,19 @@ TextSecureGroup::Builder* TextSecureGroup::NewBuilder(Type type)
 {
   return new TextSecureGroup::Builder(type);
 }
+TextSecureGroup* TextSecureGroup::Builder::Build()
+{
+  if (id == NULL)
+  {
+    // do not throw exceptions in TIZEN
+    // throw new IllegalArgumentException("No group ID specified!");
+  }
+
+  if (type == TextSecureGroup::Type::UPDATE && name == NULL && members == NULL && avatar == NULL)
+  {
+    // do not throw exceptions in TIZEN
+    //throw new IllegalArgumentException("Group update with no updates!");
+  }
+
+  return new TextSecureGroup(type, id, name, members, avatar);
+}
