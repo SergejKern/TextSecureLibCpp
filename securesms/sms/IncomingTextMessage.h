@@ -3,7 +3,10 @@ Port of IncomingTextMessage.java from TextSecure-android
 */
 
 #pragma once
-#include "TextSecureGroup.h"
+#include "..\..\lib\api\messages\TextSecureGroup.h"
+
+// [ ] done
+// TFS ID: 196
 
 class IncomingTextMessage
 {
@@ -24,7 +27,7 @@ protected:
 public:
   // Constructor from SmsMessage
   // SmsMessage is Android class android.telephony.SmsMessage
-  // IncomingTextMessage(SmsMessage message);
+  // TODO OS SPECIFIC IncomingTextMessage(SmsMessage message);
   // Constructor from sender
   IncomingTextMessage(char* sender, int senderDeviceId, long sentTimestampMillis, char* encodedBody, TextSecureGroup* group);
   // Parcel in TIZEN?
@@ -57,3 +60,4 @@ public:
   //@Override
   //void writeToParcel(Parcel out, int flags);
 };
+
