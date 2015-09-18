@@ -1,7 +1,7 @@
 all:
-	gcc -std=c++0x -c \
+	gcc -std=c++0x \
+	dummymainfortravis.cpp \
 	./lib/api/messages/TextSecureGroup.cpp \
 	./lib/api/messages/TextSecureAttachment.cpp \
-	./lib/api/push/TextSecureAddress.cpp \
-	-o textsecurelibcpp.o
-	ar rcs libtextsecure.o textsecurelibcpp.o
+	./lib/api/push/TextSecureAddress.cpp 
+	
