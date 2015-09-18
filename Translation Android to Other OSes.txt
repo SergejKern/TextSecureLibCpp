@@ -1,10 +1,11 @@
 +--------------------+---------+-----------------------------+-------------+--------------+
-| Android            | C++     | TIZEN                       | Sailfish OS | Ubuntu Phone |
+| Android/Java       | C++     | TIZEN                       | Sailfish OS | Ubuntu Phone |
 +--------------------+---------+-----------------------------+-------------+--------------+
 | SpannableString    | char* ? | -                           | ???         | ???          |
 | String             | char* ? | -                           | ???         | ???          |
 | ContactPhoto       | ???     | -                           | ???         | ???          |
 | Uri                | ???     | -                           | ???         | ???          |
+| TextUtils          | ???     | ???                         | ???         | ???          |
 | Set                | ???     | -                           | ???         | ???          |
 | HashSet            | ???     | -                           | ???         | ???          |
 | Context            | -       | ??? application environment | ???         | ???          |
