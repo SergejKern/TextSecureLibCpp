@@ -39,7 +39,10 @@ Port of TextSecureGroup.java from libtextsecure-java
 
 #if (_MSC_VER > 1500)
 #define NULL nullptr
+#elif (__GNUC__ > 3)
+#define NULL __null
 #endif
+
 
 #include "TextSecureAttachment.h"
 
@@ -86,7 +89,7 @@ public:
     }
     TextSecureGroup* Build()
     {
-      if (id == nullptr)
+      if (id == NULL)
       {
         // do not throw exceptions in TIZEN
         // throw new IllegalArgumentException("No group ID specified!");
