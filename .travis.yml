@@ -1,7 +1,24 @@
 language: cpp
-compiler:
-  - gcc
+notifications:
+  email: false
+compiler: gcc
 script: make
 os:
   - linux
   - osx
+env:
+  - TARGET_ARCH=x64
+
+matrix:
+  include:
+    - os: linux
+      env: TARGET_ARCH=arm
+    - os: linux
+      env: TARGET_ARCH=ia32
+  allow_failures:
+    - env: TARGET_ARCH=arm
+    - env: TARGET_ARCH=ia32
+
+branches:
+  only:
+    - master
