@@ -46,15 +46,16 @@ Port of TextSecureGroup.java from libtextsecure-java
 
 #include "TextSecureAttachment.h"
 
+enum Type {
+  UNKNOWN,
+  UPDATE,
+  DELIVER,
+  QUIT
+};
+
 class TextSecureGroup
 {
 public:
-  enum Type {
-    UNKNOWN,
-    UPDATE,
-    DELIVER,
-    QUIT
-  };
   class Builder
   {
   private:
