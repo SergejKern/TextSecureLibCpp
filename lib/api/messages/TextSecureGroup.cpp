@@ -7,7 +7,7 @@ Port of TextSecureGroup.java from libtextsecure-java
 TextSecureGroup::TextSecureGroup(char* groupId)
 {
   // TODO: rewrite!
-  //this(Type::DELIVER, groupId, nullptr, nullptr, nullptr);
+  //this(Type::DELIVER, groupId, NULL, NULL, NULL);
 }
 TextSecureGroup::TextSecureGroup(Type type, char* groupId, char* name, char** members, TextSecureAttachment* avatar)
 {
