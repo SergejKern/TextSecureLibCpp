@@ -6,6 +6,11 @@ Port of class Database from TextSecure-android
 // [ ] done
 // TFS ID: 465
 
+#include "..\..\owntemplates\Set.h"
+#include "..\..\osindependent\OsIndependentSQLiteOpenHelper.h"
+#include "..\..\osindependent\OsIndependentCursor.h"
+#include "..\..\osindependent\OsIndependentContext.h"
+
 class Database
 {
 public:
@@ -15,21 +20,21 @@ protected:
   static const unsigned char* CONVERSATION_URI;
   static const unsigned char* CONVERSATION_LIST_URI;
 
-  /* TODO OS SPECIFIC SQLiteOpenHelper*/ void* databaseHelper;
-  /* TODO OS SPECIFIC Context*/ void* context;
+  OsIndependentSQLiteOpenHelper* databaseHelper;
+  OsIndependentContext* context;
 
 public:
-  Database(/*Context context*/ void*, /*SQLiteOpenHelper*/ void* databaseHelper);
-  void Reset(/*SQLiteOpenHelper*/ void* databaseHelper);
+  Database(OsIndependentContext*, OsIndependentSQLiteOpenHelper* databaseHelper);
+  void Reset(OsIndependentSQLiteOpenHelper* databaseHelper);
 
 protected:
-  void NotifyConversationListeners(/*Set<Long> TODO */ long* threadIds);
+  void NotifyConversationListeners(Set<long> threadIds);
   void NotifyConversationListeners(long threadId);
   void NotifyConversationListListeners();
-  void SetNotifyConverationListeners(/* TODO OS SPECIFIC android.database.Cursor*/ void* cursor, long threadId);
-  void SetNotifyConverationListListeners(/* TODO OS SPECIFIC android.database.Cursor*/ void* cursor);
+  void SetNotifyConverationListeners(OsIndependentCursor* cursor, long threadId);
+  void SetNotifyConverationListListeners(OsIndependentCursor* cursor);
 };
 
-const unsigned char* Database::ID_WHERE = "_id = ?";
-const unsigned char* Database::CONVERSATION_URI = "content://textsecure/thread/";
-const unsigned char* Database::CONVERSATION_LIST_URI = "content://textsecure/conversation-list";
+const unsigned char* Database::ID_WHERE = (unsigned char*)"_id = ?";
+const unsigned char* Database::CONVERSATION_URI = (unsigned char*)"content://textsecure/thread/";
+const unsigned char* Database::CONVERSATION_LIST_URI = (unsigned char*)"content://textsecure/conversation-list";
