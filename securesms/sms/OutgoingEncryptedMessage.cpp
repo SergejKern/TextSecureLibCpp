@@ -7,11 +7,11 @@ OutgoingEncryptedMessage::~OutgoingEncryptedMessage()
 {
 }
 
-OutgoingEncryptedMessage::OutgoingEncryptedMessage(Recipients* recipients, char* body) : OutgoingTextMessage(recipients, body)
+OutgoingEncryptedMessage::OutgoingEncryptedMessage(Recipients* recipients, unsigned char* body) : OutgoingTextMessage(recipients, body)
 {
 }
 
-OutgoingEncryptedMessage::OutgoingEncryptedMessage(OutgoingEncryptedMessage* base, char* body) : OutgoingTextMessage(base, body)
+OutgoingEncryptedMessage::OutgoingEncryptedMessage(OutgoingEncryptedMessage* base, unsigned char* body) : OutgoingTextMessage(base, body)
 {
 }
 //@Override
@@ -20,7 +20,7 @@ bool OutgoingEncryptedMessage::IsSecureMessage()
   return true;
 }
 //@Override
-OutgoingTextMessage* OutgoingEncryptedMessage::WithBody(char* body)
+OutgoingTextMessage* OutgoingEncryptedMessage::WithBody(unsigned char* body)
 {
   return new OutgoingEncryptedMessage(this, body);
 }
