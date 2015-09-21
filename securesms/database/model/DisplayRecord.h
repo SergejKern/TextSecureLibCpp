@@ -19,8 +19,8 @@ public:
   static class Body
   {
   private:
-    const unsigned char* body;
-    const bool plaintext;
+    unsigned char* body;
+    bool plaintext;
 
   public:
     Body(unsigned char* body, const bool plaintext) : plaintext(plaintext)
@@ -33,9 +33,9 @@ public:
       return this->plaintext;
     }
 
-    const unsigned char* GetBody()
+    unsigned char* GetBody()
     {
-      return body == NULL ? (const unsigned char*)"" : body;
+      return body == NULL ? (unsigned char*)"" : body;
     }
   };
 protected:
@@ -43,17 +43,17 @@ protected:
   const long type;
 
 private:
-  const Recipients* recipients;
+  Recipients* recipients;
   const long dateSent;
   const long dateReceived;
   const long threadId;
-  const Body* body;
+  Body* body;
 
 public:
   DisplayRecord(OsIndependentContext* context, Body* body, Recipients* recipients, long dateSent, long dateReceived, long threadId, long type);
-  const Body* GetBody();
-  virtual char* GetDisplayBody() = 0;
-  const Recipients* GetRecipients();
+  Body* GetBody();
+  virtual unsigned char* GetDisplayBody() = 0;
+  Recipients* GetRecipients();
   long GetDateSent();
   long GetDateReceived();
   long GetThreadId();
