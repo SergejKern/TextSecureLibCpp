@@ -4,7 +4,7 @@
 Port of OutgoingKeyExchangeMessage from TextSecure-android
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 203
 
 #include "OutgoingTextMessage.h"
