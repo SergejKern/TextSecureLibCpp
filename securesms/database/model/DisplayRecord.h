@@ -1,12 +1,13 @@
 #pragma once
 
 #include "..\..\recipients\Recipients.h"
+#include "..\..\..\osindependent\OsIndependentContext.h"
 
 #if (_MSC_VER > 1500)
 #define NULL nullptr
 #endif
 
-// [ ] done
+// [x] done
 // TFS ID: 300
 
 class DisplayRecord
@@ -18,11 +19,11 @@ public:
   static class Body
   {
   private:
-    const char* body;
+    const unsigned char* body;
     const bool plaintext;
 
   public:
-    Body(char* body, const bool plaintext) : plaintext(plaintext)
+    Body(unsigned char* body, const bool plaintext) : plaintext(plaintext)
     {
       this->body = body;
     }
@@ -32,14 +33,13 @@ public:
       return this->plaintext;
     }
 
-    char* GetBody()
+    const unsigned char* GetBody()
     {
-      return body == NULL ? "" : body;
+      return body == NULL ? (const unsigned char*)"" : body;
     }
   };
 protected:
-  //const Context* context;
-  const void* context; // TODO
+  const OsIndependentContext* context;
   const long type;
 
 private:
@@ -50,10 +50,10 @@ private:
   const Body* body;
 
 public:
-  DisplayRecord(void* context, Body* body, Recipients* recipients, long dateSent, long dateReceived, long threadId, long type);
-  Body* GetBody();
-  virtual char* getDisplayBody() = 0;
-  Recipients* GetRecipients();
+  DisplayRecord(OsIndependentContext* context, Body* body, Recipients* recipients, long dateSent, long dateReceived, long threadId, long type);
+  const Body* GetBody();
+  virtual char* GetDisplayBody() = 0;
+  const Recipients* GetRecipients();
   long GetDateSent();
   long GetDateReceived();
   long GetThreadId();
