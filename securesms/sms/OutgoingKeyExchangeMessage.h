@@ -12,12 +12,12 @@ class OutgoingKeyExchangeMessage :
   public OutgoingTextMessage
 {
 private:
-  OutgoingKeyExchangeMessage(OutgoingKeyExchangeMessage* base, char* body);
+  OutgoingKeyExchangeMessage(OutgoingKeyExchangeMessage* base, unsigned char* body);
 public:
   virtual ~OutgoingKeyExchangeMessage();
-  OutgoingKeyExchangeMessage(Recipients* recipients, char* message);
+  OutgoingKeyExchangeMessage(Recipients* recipients, unsigned char* message);
   //@Override
   bool IsKeyExchange();
   //@Override
-  OutgoingTextMessage* WithBody(char* body);
+  OutgoingTextMessage* WithBody(unsigned char* body);
 };
