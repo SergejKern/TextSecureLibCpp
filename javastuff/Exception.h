@@ -6,7 +6,11 @@
 // [ ] done
 // TFS ID: none
 
-class Exception
+class Exception /* extends Throwable */
 {
-
+public:
+  Exception() {}
+  Exception(unsigned char* message) {}
+  Exception(unsigned char* message, /*Throwable*/Exception* cause) {}
+  Exception(/*Throwable*/Exception* cause) {}
 };
