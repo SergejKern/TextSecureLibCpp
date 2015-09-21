@@ -4,7 +4,7 @@
 Port of OutgoingEncryptedMessage from TextSecure-android
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 201
 
 #include "OutgoingTextMessage.h"
