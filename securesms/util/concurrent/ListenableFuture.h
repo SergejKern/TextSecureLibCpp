@@ -1,6 +1,6 @@
 #pragma once
 /*
-Port of class GroupUtil from TextSecure-java
+Port of class ListenableFuture from TextSecure-android
 */
 
 // [x] done
