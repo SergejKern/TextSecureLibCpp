@@ -11,6 +11,7 @@ Port of MessageRecord.java from TextSecure-android
 #include "..\..\recipients\Recipient.h"
 #include "..\documents\NetworkFailure.h"
 #include "..\documents\IdentityKeyMismatch.h"
+#include "..\..\..\osindependent\OsIndependentContext.h"
 
 class MessageRecord :
   public DisplayRecord
@@ -22,17 +23,17 @@ public:
   static const int DELIVERY_STATUS_FAILED = 3;
 private:
   const int MAX_DISPLAY_LENGTH = 2000;
-  const Recipient* IndividualRecipient;
+  Recipient* IndividualRecipient;
   const int RecipientDeviceId;
   const long Id;
   const int DeliveryStatus;
   const int ReceiptCount;
-  const IdentityKeyMismatch* MismatchesList;
-  const NetworkFailure* NetworkFailuresList;
+  IdentityKeyMismatch* MismatchesList;
+  NetworkFailure* NetworkFailuresList;
 public:
   virtual ~MessageRecord();
 
-  MessageRecord(void* context, long id, Body* body, Recipients* recipients,
+  MessageRecord(OsIndependentContext* context, long id, Body* body, Recipients* recipients,
     Recipient* individualRecipient, int recipientDeviceId,
     long dateSent, long dateReceived, long threadId,
     int deliveryStatus, int receiptCount, long type,
@@ -49,7 +50,7 @@ public:
   bool IsLegacyMessage();
   bool IsAsymmetricEncryption();
   //@Override
-  char* GetDisplayBody();
+  unsigned char* GetDisplayBody();
   long GetId();
   int GetDeliveryStatus();
   bool IsDelivered();
@@ -71,7 +72,7 @@ public:
   bool HasNetworkFailures();
 
 protected:
-  char* emphasisAdded(char* sequence);
+  unsigned char* emphasisAdded(unsigned char* sequence);
 
 public:
   // override of java objects, comment out until needed
