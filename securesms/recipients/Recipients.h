@@ -4,6 +4,9 @@
 Port of class Recipients from TextSecure-android
 */
 
+// [ ] done
+// TFS ID: 310
+
 #include "..\..\owntemplates\Iterable.h"
 #include "..\..\owntemplates\Set.h"
 #include "..\..\owntemplates\List.h"
