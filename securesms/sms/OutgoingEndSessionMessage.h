@@ -14,9 +14,9 @@ class OutgoingEndSessionMessage :
 public:
   virtual ~OutgoingEndSessionMessage();
   OutgoingEndSessionMessage(OutgoingTextMessage* base);
-  OutgoingEndSessionMessage(OutgoingTextMessage* message, char* body);
+  OutgoingEndSessionMessage(OutgoingTextMessage* message, unsigned char* body);
   //@Override
   bool IsEndSession();
   //@Override
-  OutgoingTextMessage* WithBody(char* body);
+  OutgoingTextMessage* WithBody(unsigned char* body);
 };
