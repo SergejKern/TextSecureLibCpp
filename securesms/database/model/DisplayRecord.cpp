@@ -1,59 +1,62 @@
 #include "DisplayRecord.h"
+#include "..\SmsDatabase.h"
 
-
-public DisplayRecord(Context* context, Body* body, Recipients* recipients, long dateSent, long dateReceived, long threadId, long type)
+DisplayRecord::DisplayRecord(OsIndependentContext* context, Body* body, Recipients* recipients, long dateSent, long dateReceived, long threadId, long type)
+  : type(type), dateSent(dateSent), dateReceived(dateReceived), threadId(threadId)
 {
-  this->context = context.getApplicationContext();
-  this->threadId = threadId;
+  this->context = context->GetApplicationContext();
   this->recipients = recipients;
-  this->dateSent = dateSent;
-  this->dateReceived = dateReceived;
-  this->type = type;
   this->body = body;
 }
 
-public Body* GetBody() {
-  return body;
+const DisplayRecord::Body* DisplayRecord::GetBody()
+{
+  return this->body;
 }
 
-public abstract SpannableString getDisplayBody();
-
-public Recipients getRecipients() {
-  return recipients;
+const Recipients* DisplayRecord::GetRecipients()
+{
+  return this->recipients;
 }
 
-public long getDateSent() {
-  return dateSent;
+long DisplayRecord::GetDateSent()
+{
+  return this->dateSent;
 }
 
-public long getDateReceived() {
-  return dateReceived;
+long DisplayRecord::GetDateReceived()
+{
+  return this->dateReceived;
 }
 
-public long getThreadId() {
-  return threadId;
+long DisplayRecord::GetThreadId()
+{
+  return this->threadId;
 }
 
-public boolean isKeyExchange() {
-  return SmsDatabase.Types.isKeyExchangeType(type);
+bool DisplayRecord::IsKeyExchange()
+{
+  return SmsDatabase::Types::IsKeyExchangeType(type);
 }
 
-public boolean isEndSession() {
-  return SmsDatabase.Types.isEndSessionType(type);
+bool DisplayRecord::IsEndSession() {
+  return SmsDatabase::Types::IsEndSessionType(type);
 }
 
-public boolean isGroupUpdate() {
-  return SmsDatabase.Types.isGroupUpdate(type);
+bool DisplayRecord::IsGroupUpdate()
+{
+  return SmsDatabase::Types::IsGroupUpdate(type);
 }
 
-public boolean isGroupQuit() {
-  return SmsDatabase.Types.isGroupQuit(type);
+bool DisplayRecord::IsGroupQuit()
+{
+  return SmsDatabase::Types::IsGroupQuit(type);
 }
 
-public boolean isGroupAction() {
-  return isGroupUpdate() || isGroupQuit();
+bool DisplayRecord::IsGroupAction()
+{
+  return IsGroupUpdate() || IsGroupQuit();
 }
-
 
 DisplayRecord::~DisplayRecord()
 {
