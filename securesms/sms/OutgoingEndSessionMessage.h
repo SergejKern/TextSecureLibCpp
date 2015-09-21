@@ -4,7 +4,7 @@
 Port of OutgoingEndSessionMessage from TextSecure-android
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 202
 
 #include "OutgoingTextMessage.h"
