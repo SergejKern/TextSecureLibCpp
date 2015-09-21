@@ -3,20 +3,20 @@ Port of OutgoingTextMessage from TextSecure-android
 */
 
 // [x] done
-// TFS ID: 
+// TFS ID: 205
 
 #include "OutgoingTextMessage.h"
 #include "OutgoingEncryptedMessage.h"
 #include "OutgoingEndSessionMessage.h"
 #include "OutgoingKeyExchangeMessage.h"
 
-OutgoingTextMessage::OutgoingTextMessage(Recipients* recipients, char* message)
+OutgoingTextMessage::OutgoingTextMessage(Recipients* recipients, unsigned char* message)
 {
   this->recipients = recipients;
   this->message = message;
 }
 
-OutgoingTextMessage::OutgoingTextMessage(OutgoingTextMessage* base, char* body)
+OutgoingTextMessage::OutgoingTextMessage(OutgoingTextMessage* base, unsigned char* body)
 {
   this->recipients = base->GetRecipients();
   this->message = body;
@@ -28,12 +28,12 @@ OutgoingTextMessage::OutgoingTextMessage(OutgoingTextMessage* base)
   this->message = base->GetMessageBody();
 }
 
-const char* OutgoingTextMessage::GetMessageBody()
+unsigned char* OutgoingTextMessage::GetMessageBody()
 {
   return this->message;
 }
 
-const Recipients* OutgoingTextMessage::GetRecipients()
+Recipients* OutgoingTextMessage::GetRecipients()
 {
   return this->recipients;
 }
@@ -78,7 +78,7 @@ OutgoingTextMessage* OutgoingTextMessage::From(SmsMessageRecord* record)
   }
 }
 
-OutgoingTextMessage* OutgoingTextMessage::WithBody(char* body)
+OutgoingTextMessage* OutgoingTextMessage::WithBody(unsigned char* body)
 {
   return new OutgoingTextMessage(this, body);
 }
