@@ -21,7 +21,7 @@ this->groupId              = null;
 this->push                 = false;
 }*/
 
-IncomingTextMessage::IncomingTextMessage(char* sender, int senderDeviceId, long sentTimestampMillis, char* encodedBody, TextSecureGroup* group)
+IncomingTextMessage::IncomingTextMessage(unsigned char* sender, int senderDeviceId, long sentTimestampMillis, unsigned char* encodedBody, TextSecureGroup* group)
 {
   this->message = encodedBody;
   this->sender = sender;
@@ -59,7 +59,7 @@ this.groupId              = in.readString();
 this.push                 = (in.readInt() == 1);
 }
 */
-IncomingTextMessage::IncomingTextMessage(IncomingTextMessage* base, char* newBody)
+IncomingTextMessage::IncomingTextMessage(IncomingTextMessage* base, unsigned char* newBody)
 {
   this->message = newBody;
   this->sender = base->GetSender();
@@ -91,7 +91,7 @@ this.groupId              = fragments.get(0).getGroupId();
 this.push                 = fragments.get(0).isPush();
 }
 */
-IncomingTextMessage::IncomingTextMessage(char* sender, char* groupId)
+IncomingTextMessage::IncomingTextMessage(char* sender, unsigned char* groupId)
 {
   this->message = "";
   this->sender = sender;
@@ -111,22 +111,22 @@ long IncomingTextMessage::GetSentTimestampMillis()
   return this->sentTimestampMillis;
 }
 
-char* IncomingTextMessage::GetPseudoSubject()
+unsigned char* IncomingTextMessage::GetPseudoSubject()
 {
   return this->pseudoSubject;
 }
 
-char* IncomingTextMessage::GetMessageBody()
+unsigned char* IncomingTextMessage::GetMessageBody()
 {
   return this->message;
 }
 
-IncomingTextMessage* IncomingTextMessage::WithMessageBody(char* message)
+IncomingTextMessage* IncomingTextMessage::WithMessageBody(unsigned char* message)
 {
   return new IncomingTextMessage(this, message);
 }
 
-char* IncomingTextMessage::GetSender()
+unsigned char* IncomingTextMessage::GetSender()
 {
   return this->sender;
 }
@@ -141,7 +141,7 @@ int IncomingTextMessage::GetProtocol()
   return protocol;
 }
 
-char* IncomingTextMessage::GetServiceCenterAddress()
+unsigned char* IncomingTextMessage::GetServiceCenterAddress()
 {
   return this->serviceCenterAddress;
 }
@@ -171,12 +171,12 @@ bool IncomingTextMessage::IsPush()
   return this->push;
 }
 
-char* IncomingTextMessage::GetGroupId()
+unsigned char* IncomingTextMessage::GetGroupId()
 {
   return this->groupId;
 }
 
-char* IsGroup()
+unsigned char* IsGroup()
 {
   return false;
 }
