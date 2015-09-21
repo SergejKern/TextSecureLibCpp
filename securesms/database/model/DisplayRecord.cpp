@@ -9,12 +9,12 @@ DisplayRecord::DisplayRecord(OsIndependentContext* context, Body* body, Recipien
   this->body = body;
 }
 
-const DisplayRecord::Body* DisplayRecord::GetBody()
+DisplayRecord::Body* DisplayRecord::GetBody()
 {
   return this->body;
 }
 
-const Recipients* DisplayRecord::GetRecipients()
+Recipients* DisplayRecord::GetRecipients()
 {
   return this->recipients;
 }
