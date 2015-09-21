@@ -4,11 +4,11 @@ MessagingDatabase::~MessagingDatabase()
 {
 }
 
-MessagingDatabase::MessagingDatabase(/* TODO OS SPECIFIC Context*/ void* context, /* TODO OS SPECIFIC SQLiteOpenHelper*/ void* databaseHelper) : Database(context, databaseHelper)
+MessagingDatabase::MessagingDatabase(OsIndependentContext* context, OsIndependentSQLiteOpenHelper* databaseHelper) : Database(context, databaseHelper)
 {
 }
 
-void MessagingDatabase::SetMismatchedIdentity(long messageId, const long recipientId, const /* TODO other lib IdentityKey*/ void* identityKey)
+void MessagingDatabase::SetMismatchedIdentity(long messageId, const long recipientId, IdentityKey* identityKey)
 {
   /* TODO 
   List<IdentityKeyMismatch> items = new ArrayList<IdentityKeyMismatch>() {
@@ -36,7 +36,7 @@ void MessagingDatabase::SetMismatchedIdentity(long messageId, const long recipie
   */
 }
 
-void MessagingDatabase::AddMismatchedIdentity(long messageId, long recipientId, /* TODO other lib IdentityKey*/ void* identityKey)
+void MessagingDatabase::AddMismatchedIdentity(long messageId, long recipientId, IdentityKey* identityKey)
 {
   /* TODO
   try {
@@ -50,7 +50,7 @@ void MessagingDatabase::AddMismatchedIdentity(long messageId, long recipientId, 
   */
 }
 
-void MessagingDatabase::RemoveMismatchedIdentity(long messageId, long recipientId, /* TODO other lib IdentityKey*/ void* identityKey)
+void MessagingDatabase::RemoveMismatchedIdentity(long messageId, long recipientId, IdentityKey* identityKey)
 {
   /* TODO
   try {
@@ -118,7 +118,7 @@ database.endTransaction();
 }
 */
 
-void MessagingDatabase::SetDocument(/* TODO OS SPECIFIC SQLiteDatabase*/ void* database, long messageId, unsigned char* column, Document* document) /*throws IOException*/
+template<typename T> void MessagingDatabase::SetDocument(OsIndependentSQLiteDatabase* database, long messageId, unsigned char* column, Document<T>* document) /*throws IOException*/
 {
   /* TODO OS SPECIFIC ContentValues contentValues = new ContentValues();
 
