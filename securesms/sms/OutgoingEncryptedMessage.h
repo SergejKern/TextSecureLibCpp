@@ -11,14 +11,13 @@ Port of OutgoingEncryptedMessage from TextSecure-android
 class OutgoingEncryptedMessage :
   public OutgoingTextMessage
 {
-public:
 private:
-  OutgoingEncryptedMessage(OutgoingEncryptedMessage* base, char* body);
+  OutgoingEncryptedMessage(OutgoingEncryptedMessage* base, unsigned char* body);
 public:
   virtual ~OutgoingEncryptedMessage();
-  OutgoingEncryptedMessage(Recipients* recipients, char* body);
+  OutgoingEncryptedMessage(Recipients* recipients, unsigned char* body);
   //@Override
   bool IsSecureMessage();
   //@Override
-  OutgoingTextMessage* WithBody(char* body);
+  OutgoingTextMessage* WithBody(unsigned char* body);
 };
