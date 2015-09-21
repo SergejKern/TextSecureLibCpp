@@ -22,7 +22,7 @@ public:
 
   class Types
   {
-  protected:
+  public:
     static const long TOTAL_MASK = 0xFFFFFFFF;
     // Base Types
     static const long BASE_TYPE_MASK = 0x1F;
@@ -33,10 +33,7 @@ public:
     static const long BASE_SENT_FAILED_TYPE = 24;
     static const long BASE_PENDING_SECURE_SMS_FALLBACK = 25;
     static const long BASE_PENDING_INSECURE_SMS_FALLBACK = 26;
-  public:
     static const long BASE_DRAFT_TYPE = 27;
-
-  protected:
     static const long OUTGOING_MESSAGE_TYPES[];
 
     // Message attributes
@@ -106,16 +103,16 @@ public:
   };
 };
 
-const unsigned char* MmsSmsColumns::ID = "_id";
-const unsigned char* MmsSmsColumns::NORMALIZED_DATE_SENT = "date_sent";
-const unsigned char* MmsSmsColumns::NORMALIZED_DATE_RECEIVED = "date_received";
-const unsigned char* MmsSmsColumns::THREAD_ID = "thread_id";
-const unsigned char* MmsSmsColumns::READ = "read";
-const unsigned char* MmsSmsColumns::BODY = "body";
-const unsigned char* MmsSmsColumns::ADDRESS = "address";
-const unsigned char* MmsSmsColumns::ADDRESS_DEVICE_ID = "address_device_id";
-const unsigned char* MmsSmsColumns::RECEIPT_COUNT = "delivery_receipt_count";
-const unsigned char* MmsSmsColumns::MISMATCHED_IDENTITIES = "mismatched_identities";
+const unsigned char* MmsSmsColumns::ID = (unsigned char*)"_id";
+const unsigned char* MmsSmsColumns::NORMALIZED_DATE_SENT = (unsigned char*)"date_sent";
+const unsigned char* MmsSmsColumns::NORMALIZED_DATE_RECEIVED = (unsigned char*)"date_received";
+const unsigned char* MmsSmsColumns::THREAD_ID = (unsigned char*)"thread_id";
+const unsigned char* MmsSmsColumns::READ = (unsigned char*)"read";
+const unsigned char* MmsSmsColumns::BODY = (unsigned char*)"body";
+const unsigned char* MmsSmsColumns::ADDRESS = (unsigned char*)"address";
+const unsigned char* MmsSmsColumns::ADDRESS_DEVICE_ID = (unsigned char*)"address_device_id";
+const unsigned char* MmsSmsColumns::RECEIPT_COUNT = (unsigned char*)"delivery_receipt_count";
+const unsigned char* MmsSmsColumns::MISMATCHED_IDENTITIES = (unsigned char*)"mismatched_identities";
 const long MmsSmsColumns::Types::OUTGOING_MESSAGE_TYPES[] = 
 { 
   BASE_OUTBOX_TYPE, 
