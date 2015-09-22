@@ -11,6 +11,7 @@ Port of DynamicTheme.java from TextSecure-android
 #include "..\..\osindependent\OsIndependentActivity.h"
 #include "..\..\osindependent\OsIndependentIntent.h"
 #include "TextSecurePreferences.h"
+#include "..\R.h"
 
 // import org.thoughtcrime.securesms.R;
 
@@ -49,8 +50,8 @@ protected:
     unsigned char* theme = TextSecurePreferences::GetTheme(activity);
     if (theme == "dark")
     {
-      return R.style.TextSecure_DarkTheme;
+      return R::Style::TextSecure_DarkTheme;
     }
-    return R.style.TextSecure_LightTheme;
+    return R::Style::TextSecure_LightTheme;
   }
 };
