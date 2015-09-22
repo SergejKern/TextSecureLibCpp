@@ -10,9 +10,12 @@ public class HashMap<K,V> extends AbstractMap<K,V> implements Map<K,V>, Cloneabl
 */
 template <typename K, typename V> class HashMap
 {
+private:
+  /*transient*/ int size;
 public:
   V Get(K key);
   bool ContainsKey(K key);
   V Remove(K key);
   V Put(K key, V value);
+  int Size() { return size; }
 };
