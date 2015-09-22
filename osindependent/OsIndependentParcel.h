@@ -19,8 +19,8 @@ public:
   */
   static OsIndependentParcel* Obtain() { return nullptr; }
   // returns byte[]
-  char* Marshall() {}
-  char* Unmarshall(char* buffer, int offset, int len) {}
-  void Recycle() {}
-  void SetDataPosition(int pos) {}
+  virtual char* Marshall() = 0;
+  virtual char* Unmarshall(char* buffer, int offset, int len) = 0;
+  virtual void Recycle() = 0;
+  virtual void SetDataPosition(int pos) = 0;
 };
