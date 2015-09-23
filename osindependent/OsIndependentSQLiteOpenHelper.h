@@ -1,11 +1,11 @@
 #pragma once
 /*
-  abstract class OsIndependentCursor to replace android.content.Context
+  abstract class OsIndependentCursor to replace android.database.sqlite.SQLiteOpenHelper
   http://developer.android.com/reference/android/content/Context.html
 */
 
 // [ ] done
-// TFS ID: 658
+// TFS ID: 662
 
 class OsIndependentSQLiteOpenHelper
 {
