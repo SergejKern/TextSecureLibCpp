@@ -1,6 +1,6 @@
 #pragma once
 /*
-  abstract class OsIndependentCursor to replace android.content.Context
+  abstract class OsIndependentCursor to replace android.database.sqlite.SQLiteStatement
   http://developer.android.com/reference/android/content/Context.html
 */
 
