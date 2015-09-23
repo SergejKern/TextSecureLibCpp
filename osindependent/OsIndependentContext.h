@@ -9,6 +9,7 @@
 
 #include "OsIndependentPackageManager.h"
 #include "OsIndependentResources.h"
+#include "OsIndependentContentResolver.h"
 
 class OsIndependentContext
 {
@@ -28,6 +29,8 @@ public:
   // public abstract Object  [More ...] getSystemService(@ServiceName @NonNull String name);
   virtual void* GetSystemService(unsigned char* name) = 0;
   virtual OsIndependentResources* GetResources() = 0;
+  // public abstract ContentResolver getContentResolver();
+  virtual OsIndependentContentResolver* GetContentResolver() = 0;
 };
 
 const unsigned char* OsIndependentContext::INPUT_METHOD_SERVICE = "input_method";
