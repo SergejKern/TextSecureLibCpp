@@ -5,17 +5,19 @@
 // [ ] done
 // TFS ID: none
 
-#include "Iterable.h"
+#include "Collection.h"
 
-template <typename T> class List
+/*
+public interface List<E> extends Collection<E>
+*/
+template <typename E> class List : public Collection<E>
 {
 public:
   int Size();
-  T* Get(int index);
+  E* Get(int index);
   bool IsEmpty();
-  Iterator<T> iterator();
 };
-template <typename T> class LinkedList : List<T>
+template <typename T> class LinkedList : public List<T>
 {
 
 };
