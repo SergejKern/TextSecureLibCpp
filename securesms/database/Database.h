@@ -3,13 +3,14 @@
 Port of class Database from TextSecure-android
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 465
 
 #include "..\..\owntemplates\Set.h"
 #include "..\..\osindependent\OsIndependentSQLiteOpenHelper.h"
 #include "..\..\osindependent\OsIndependentCursor.h"
 #include "..\..\osindependent\OsIndependentContext.h"
+#include "..\..\osindependent\OsIndependentUri.h"
 
 class Database
 {
