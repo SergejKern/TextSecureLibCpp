@@ -7,6 +7,7 @@
 // [ ] done
 // TFS ID: 657
 
+// public interface Cursor extends Closeable {
 class OsIndependentCursor
 {
 private:
@@ -51,4 +52,6 @@ public:
   http://developer.android.com/reference/android/database/Cursor.html#getColumnIndex%28java.lang.String%29
   */
   virtual int GetColumnIndex(unsigned char* columnName) = 0;
+  // void  [More ...] setNotificationUri(ContentResolver cr, Uri uri);
+  virtual void SetNotificationUri(OsIndependentContentResolver* cr, OsIndependentUri* uri) = 0;
 };
