@@ -1,7 +1,7 @@
 #pragma once
 /*
-  abstract class OsIndependentCursor to replace android.net.Uri
-  http://developer.android.com/reference/android/net/Uri.html
+  abstract class OsIndependentCursor to replace android.os.Parcel
+  http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/5.1.1_r1/android/os/Parcel.java#Parcel
 */
 
 // [ ] done
