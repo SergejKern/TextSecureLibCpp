@@ -5,12 +5,14 @@
 // [ ] done
 // TFS ID: none
 
+/*
+public interface Iterable<T>
+*/
 template <typename T> class Iterable
 {
-
-};
-
-template <typename T> class Iterator
-{
-
+public:
+  Iterator<T> iterator();
+  // C++ for range based for
+  T* begin();
+  T* end();
 };
