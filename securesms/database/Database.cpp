@@ -3,33 +3,33 @@
 Database::~Database()
 {
 }
-Database::Database(/*Context context*/ void*, /*SQLiteOpenHelper*/ void* databaseHelper)
+Database::Database(OsIndependentContext* context, OsIndependentSQLiteOpenHelper* databaseHelper)
 {
   this->context = context;
   this->databaseHelper = databaseHelper;
 }
-void Database::Reset(/*SQLiteOpenHelper*/ void* databaseHelper)
+void Database::Reset(OsIndependentSQLiteOpenHelper* databaseHelper)
 {
   this->databaseHelper = databaseHelper;
 }
-void Database::NotifyConversationListeners(/*Set<Long> TODO */ long* threadIds)
+void Database::NotifyConversationListeners(Set<long> threadIds)
 {
-  /* TODO for (long threadId : threadIds)
-  NotifyConversationListeners(threadId); */
+  for (long threadId : threadIds)
+    NotifyConversationListeners(threadId);
 }
 void Database::NotifyConversationListeners(long threadId)
 {
-  // TODO OS SPECIFIC context.getContentResolver().notifyChange(Uri.parse(CONVERSATION_URI + threadId), null);
+  context->GetContentResolver()->NotifyChange(OsIndependentUri::Parse((unsigned char*)CONVERSATION_URI + threadId), nullptr);
 }
 void Database::NotifyConversationListListeners()
 {
-  // TODO OS SPECIFIC context.getContentResolver().notifyChange(Uri.parse(CONVERSATION_LIST_URI), null);
+  context->GetContentResolver()->NotifyChange(OsIndependentUri::Parse((unsigned char*)CONVERSATION_LIST_URI), nullptr);
 }
-void Database::SetNotifyConverationListeners(/* TODO OS SPECIFIC android.database.Cursor*/ void* cursor, long threadId)
+void Database::SetNotifyConverationListeners(OsIndependentCursor* cursor, long threadId)
 {
-  // TODO OS SPECIFIC cursor.setNotificationUri(context.getContentResolver(), Uri.parse(CONVERSATION_URI + threadId));
+  cursor->SetNotificationUri(context->GetContentResolver(), OsIndependentUri::Parse((unsigned char*)CONVERSATION_URI + threadId));
 }
-void Database::SetNotifyConverationListListeners(/* TODO OS SPECIFIC android.database.Cursor*/ void* cursor)
+void Database::SetNotifyConverationListListeners(OsIndependentCursor* cursor)
 {
-  // TODO OS SPECIFIC cursor.setNotificationUri(context.getContentResolver(), Uri.parse(CONVERSATION_LIST_URI));
+  cursor->SetNotificationUri(context->GetContentResolver(), OsIndependentUri::Parse((unsigned char*)CONVERSATION_LIST_URI));
 }
