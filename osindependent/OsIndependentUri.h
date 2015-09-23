@@ -2,20 +2,19 @@
 /*
   abstract class OsIndependentCursor to replace android.net.Uri
   http://developer.android.com/reference/android/net/Uri.html
+  http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/5.1.1_r1/android/net/Uri.java#Uri
 */
 
 // [ ] done
 // TFS ID: 327
 
-class OsIndependentUri
+#include "OsIndependentParcelable.h"
+
+// public abstract class  [More ...] Uri implements Parcelable, Comparable<Uri> {
+class OsIndependentUri : OsIndependentParcelable
 {
 private:
 public:
-  OsIndependentUri() {};
-  /*
-  Move the cursor to the next row.
-  This method will return false if the cursor is already past the last entry in the result set.
-  http://developer.android.com/reference/android/net/Uri.html
-  */
-  
+  //public static Uri parse(String uriString) {
+  static OsIndependentUri* Parse(unsigned char* uriString);
 };
