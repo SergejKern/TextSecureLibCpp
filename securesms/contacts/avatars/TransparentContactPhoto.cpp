@@ -1,14 +1,14 @@
 #include "TransparentContactPhoto.h"
+#include "..\..\..\osindependent\OsIndependentSystem.h"
 
 TransparentContactPhoto::TransparentContactPhoto()
 {
 }
-void* TransparentContactPhoto::AsDrawable(void* context, int color)
+OsIndependentDrawable* TransparentContactPhoto::AsDrawable(OsIndependentContext* context, int color)
 {
   return AsDrawable(context, color, false);
 }
-void* TransparentContactPhoto::AsDrawable(void* context, int color, bool inverted)
+OsIndependentDrawable* TransparentContactPhoto::AsDrawable(OsIndependentContext* context, int color, bool inverted)
 {
-  return nullptr;
-  // TODO OS SPECIFIC return RoundedDrawable.fromDrawable(context.getResources().getDrawable(android.R.color.transparent));
+  return RoundedDrawable::FromDrawable(context->GetResources()->GetDrawable(/*android.R.color.transparent*/ OsIndependentSystem::GetColorTransparent()));
 }
