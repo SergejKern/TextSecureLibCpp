@@ -8,11 +8,14 @@ Port of class TransparentContactPhoto from TextSecure-android
 // TFS ID: 437
 
 #include "ContactPhoto.h"
+#include "..\..\..\otherproject\RoundedDrawable.h"
+#include "..\..\..\osindependent\OsIndependentContext.h"
+#include "..\..\..\osindependent\OsIndependentDrawable.h"
 
 class TransparentContactPhoto : ContactPhoto
 {
 public:
   TransparentContactPhoto();
-  virtual void* AsDrawable(void* context, int color);
-  virtual void* AsDrawable(void* context, int color, bool inverted);
+  virtual OsIndependentDrawable* AsDrawable(OsIndependentContext* context, int color);
+  virtual OsIndependentDrawable* AsDrawable(OsIndependentContext* context, int color, bool inverted);
 };
