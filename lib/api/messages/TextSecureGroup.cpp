@@ -8,31 +8,34 @@ TextSecureGroup::~TextSecureGroup()
 }
 TextSecureGroup::TextSecureGroup(char* groupId)
 {
-  // TODO: rewrite!
-  //this(Type::DELIVER, groupId, NULL, NULL, NULL);
+  this->type = Type::DELIVER;
+  this->groupId = groupId;
+  this->name = nullptr;
+  this->members = nullptr;
+  this->avatar = nullptr;
 }
-TextSecureGroup::TextSecureGroup(Type type, char* groupId, char* name, char** members, TextSecureAttachment* avatar)
+TextSecureGroup::TextSecureGroup(Type type, char* groupId, unsigned char* name, List<unsigned char*>* members, TextSecureAttachment* avatar)
 {
   this->type = type;
   this->groupId = groupId;
-  // TODO
   this->name = name;
-  // TODO
   this->members = members;
-  // TODO
   this->avatar = avatar;
 }
 char* TextSecureGroup::GetGroupId()
 {
   return this->groupId;
 }
-Type TextSecureGroup::GetType() {
+Type TextSecureGroup::GetType()
+{
   return this->type;
 }
-char* TextSecureGroup::GetName() {
+unsigned char* TextSecureGroup::GetName()
+{
   return this->name;
 }
-char** TextSecureGroup::GetMembers() {
+List<unsigned char*>* TextSecureGroup::GetMembers()
+{
   return this->members;
 }
 TextSecureAttachment* TextSecureGroup::GetAvatar()
@@ -51,13 +54,13 @@ TextSecureGroup* TextSecureGroup::Builder::Build()
 {
   if (id == NULL)
   {
-    // do not throw exceptions in TIZEN
+    // TODO do not throw exceptions in TIZEN
     // throw new IllegalArgumentException("No group ID specified!");
   }
 
   if (type == Type::UPDATE && name == NULL && members == NULL && avatar == NULL)
   {
-    // do not throw exceptions in TIZEN
+    // TODO do not throw exceptions in TIZEN
     //throw new IllegalArgumentException("Group update with no updates!");
   }
 
