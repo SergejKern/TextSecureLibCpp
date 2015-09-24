@@ -4,27 +4,9 @@
 Port of TextSecureGroup.java from libtextsecure-java
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 271
 
-/**
-* Copyright (C) 2014 Open Whisper Systems
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-//import org.whispersystems.libaxolotl.util.guava.Optional;
 
 /**
 * Group information to include in TextSecureMessages destined to groups.
@@ -48,6 +30,7 @@ Port of TextSecureGroup.java from libtextsecure-java
 
 
 #include "TextSecureAttachment.h"
+#include "..\..\..\owntemplates\List.h"
 
 enum Type {
   UNKNOWN,
@@ -64,25 +47,23 @@ public:
   private:
     Type type;
     char* id;
-    char* name;
-    char** members;
+    unsigned char* name;
+    List<unsigned char*>* members;
     TextSecureAttachment* avatar;
   public:
     // constructor
-    Builder(Type type) {
-      this->type = type;
-    }
+    Builder(Type type) { this->type = type; }
     Builder* WithId(char* id)
     {
       this->id = id;
       return this;
     }
-    Builder* WithName(char* name)
+    Builder* WithName(unsigned char* name)
     {
       this->name = name;
       return this;
     }
-    Builder* WithMembers(char** members)
+    Builder* WithMembers(List<unsigned char*>* members)
     {
       this->members = members;
       return this;
@@ -95,14 +76,14 @@ public:
   };
   // constructors
   TextSecureGroup(char* groupId);
-  TextSecureGroup(Type type, char* groupId, char* name, char** members, TextSecureAttachment* avatar);
+  TextSecureGroup(Type type, char* groupId, unsigned char* name, List<unsigned char*>* members, TextSecureAttachment* avatar);
   // destructor
   virtual ~TextSecureGroup();
   // methods
   char* GetGroupId();
   Type GetType();
-  char* GetName();
-  char** GetMembers();
+  unsigned char* GetName();
+  List<unsigned char*>* GetMembers();
   TextSecureAttachment* GetAvatar();
   static Builder* NewUpdateBuilder();
   static Builder* NewBuilder(Type type);
@@ -111,9 +92,9 @@ private:
   char* groupId;
   Type type;
   //Optional<String> name;
-  char* name;
+  unsigned char* name;
   //Optional<List<String>> members;
-  char** members;
+  List<unsigned char*>* members;
   //Optional<TextSecureAttachment> avatar;
   TextSecureAttachment* avatar;
 };
