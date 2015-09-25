@@ -1,6 +1,6 @@
 
 [x] AuthorizationFailedException
-[ ] EncapsulatedExceptions
+[x] EncapsulatedExceptions
 [x] ExpectationFailedException
 [x] NetworkFailureException
 [x] NonSuccessfulResponseCodeException
