@@ -3,14 +3,26 @@
 // java.util.concurrent.ExecutionException
 // http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/6-b27/java/lang/Exception.java#Exception
 
-// [ ] done
+// [x] done
 // TFS ID: none
 
-class Exception /* extends Throwable */
+#include "Throwable.h"
+
+class Exception : public Throwable
 {
+private:
+  static const long serialVersionUID = -3387516993124229948L;
 public:
-  Exception() {}
-  Exception(unsigned char* message) {}
-  Exception(unsigned char* message, /*Throwable*/Exception* cause) {}
-  Exception(/*Throwable*/Exception* cause) {}
+  Exception() 
+    : Throwable() 
+  { }
+  Exception(unsigned char* message)
+    : Throwable(message)
+  { }
+  Exception(unsigned char* message, Throwable* cause)
+    : Throwable(message, cause)
+  { }
+  Exception(Throwable* cause)
+    : Throwable(cause)
+  { }
 };
