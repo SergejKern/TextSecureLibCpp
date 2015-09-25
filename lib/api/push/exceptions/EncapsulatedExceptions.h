@@ -6,43 +6,34 @@ Port of class AuthorizationFailedException from TextSecure-android
 // [x] done
 // TFS ID: 289
 
-import org.whispersystems.textsecure.api.crypto.UntrustedIdentityException;
+#include "..\..\crypto\UntrustedIdentityException.h"
+#include "..\..\..\..\owntemplates\List.h"
+#include "..\..\..\..\javastuff\Throwable.h"
+#include "UnregisteredUserException.h"
+#include "NetworkFailureException.h"
 
-import java.util.LinkedList;
-import java.util.List;
+class EncapsulatedExceptions : Throwable
+{
+private:
+  List<UntrustedIdentityException*>* untrustedIdentityExceptions;
+  List<UnregisteredUserException*>* unregisteredUserExceptions;
+  List<NetworkFailureException*>* networkExceptions;
 
-public class EncapsulatedExceptions extends Throwable {
-
-  private final List<UntrustedIdentityException> untrustedIdentityExceptions;
-  private final List<UnregisteredUserException>  unregisteredUserExceptions;
-  private final List<NetworkFailureException>    networkExceptions;
-
-  public EncapsulatedExceptions(List<UntrustedIdentityException> untrustedIdentities,
-                                List<UnregisteredUserException> unregisteredUsers,
-                                List<NetworkFailureException> networkExceptions)
+public:
+  EncapsulatedExceptions(List<UntrustedIdentityException*>* untrustedIdentities, List<UnregisteredUserException*>* unregisteredUsers, List<NetworkFailureException*>* networkExceptions)
   {
-    this.untrustedIdentityExceptions = untrustedIdentities;
-    this.unregisteredUserExceptions  = unregisteredUsers;
-    this.networkExceptions           = networkExceptions;
+    this->untrustedIdentityExceptions = untrustedIdentities;
+    this->unregisteredUserExceptions = unregisteredUsers;
+    this->networkExceptions = networkExceptions;
   }
-
-  public EncapsulatedExceptions(UntrustedIdentityException e) {
-    this.untrustedIdentityExceptions = new LinkedList<>();
-    this.unregisteredUserExceptions  = new LinkedList<>();
-    this.networkExceptions           = new LinkedList<>();
-
-    this.untrustedIdentityExceptions.add(e);
+  EncapsulatedExceptions(UntrustedIdentityException* e)
+  {
+    this->untrustedIdentityExceptions = new LinkedList<UntrustedIdentityException*>();
+    this->unregisteredUserExceptions = new LinkedList<UnregisteredUserException*>();
+    this->networkExceptions = new LinkedList<NetworkFailureException*>();
+    this->untrustedIdentityExceptions->Add(e);
   }
-
-  public List<UntrustedIdentityException> getUntrustedIdentityExceptions() {
-    return untrustedIdentityExceptions;
-  }
-
-  public List<UnregisteredUserException> getUnregisteredUserExceptions() {
-    return unregisteredUserExceptions;
-  }
-
-  public List<NetworkFailureException> getNetworkExceptions() {
-    return networkExceptions;
-  }
-}
+  List<UntrustedIdentityException*>* GetUntrustedIdentityExceptions() { return this->untrustedIdentityExceptions; }
+  List<UnregisteredUserException*>* GetUnregisteredUserExceptions() { return this->unregisteredUserExceptions; }
+  List<NetworkFailureException*>* GetNetworkExceptions() { return this->networkExceptions; }
+};
