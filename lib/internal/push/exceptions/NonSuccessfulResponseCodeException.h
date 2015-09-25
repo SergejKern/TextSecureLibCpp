@@ -10,7 +10,7 @@ Port of class NonSuccessfulResponseCodeException from TextSecure-android
 //import java.io.IOException;
 
 class NonSuccessfulResponseCodeException /*extends IOException*/
-  : Exception
+  : public Exception
 {
 public:
   NonSuccessfulResponseCodeException() 
