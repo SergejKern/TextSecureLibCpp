@@ -1,10 +1,10 @@
 #pragma once
 /*
-Port of class AuthorizationFailedException from TextSecure-android
+Port of class UntrustedIdentityException from TextSecure-android
 */
 
 // [x] done
-// TFS ID: 289
+// TFS ID: 264
 
 #include "..\..\..\otherproject\IdentityKey.h"
 #include "..\..\..\javastuff\Exception.h"
