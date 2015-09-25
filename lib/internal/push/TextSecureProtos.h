@@ -32,4 +32,32 @@ public:
       }
     };
   };
+  class ContactDetails
+  {
+  public:
+    class Avatar
+    {
+    public:
+      class Builder
+      {
+      public:
+        void SetContentType(unsigned char* contentType);
+        void SetLength(int len);
+      };
+    public:
+      static Builder* NewBuilder();
+    };
+    class Builder
+    {
+    public:
+      void SetNumber(unsigned char* number);
+      void SetName(unsigned char* name);
+      void SetAvatar(Avatar::Builder* avatar);
+      ContactDetails* Build();
+    };
+  public:
+    static Builder* NewBuilder();
+  public:
+    char* ToByteArray();
+  };
 };
