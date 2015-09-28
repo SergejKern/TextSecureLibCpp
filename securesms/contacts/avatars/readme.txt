@@ -1,7 +1,7 @@
 [ ] BitmapContactPhoto
 [ ] ContactColors
-[ ] ContactPhoto
-[ ] ContactPhotoFactory
+[x] ContactPhoto
+[x] ContactPhotoFactory
 [ ] GeneratedContactPhoto
 [ ] ResourceContactPhoto
 [x] TransparentContactPhoto
