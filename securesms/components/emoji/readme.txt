@@ -3,7 +3,7 @@
 [ ] EmojiEditText
 [ ] EmojiFilter
 [x] EmojiPageModel
-[ ] EmojiPages
+[x] EmojiPages
 [ ] EmojiPageView
 [ ] EmojiProvider
 [ ] EmojiSpan
