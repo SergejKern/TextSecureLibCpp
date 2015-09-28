@@ -4,18 +4,15 @@
 Port of interface ContactPhoto from TextSecure-android
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 432
+
+#include "..\..\..\osindependent\OsIndependentContext.h"
+#include "..\..\..\osindependent\OsIndependentDrawable.h"
 
 class ContactPhoto
 {
-  /* android.graphics.drawable.Drawable
-     android.content.Context
-     OS SPECIFIC
-  public Drawable asDrawable(Context context, int color);
-  public Drawable asDrawable(Context context, int color, boolean inverted);
-  */
 public:
-  virtual void* AsDrawable(void* context, int color) = 0;
-  virtual void* AsDrawable(void* context, int color, bool inverted) = 0;
+  virtual OsIndependentDrawable* AsDrawable(OsIndependentContext* context, int color) = 0;
+  virtual OsIndependentDrawable* AsDrawable(OsIndependentContext* context, int color, bool inverted) = 0;
 };
