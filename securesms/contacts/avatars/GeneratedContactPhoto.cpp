@@ -1,19 +1,19 @@
 #include "GeneratedContactPhoto.h"
 
-GeneratedContactPhoto::GeneratedContactPhoto(char* name)
+GeneratedContactPhoto::GeneratedContactPhoto(OsIndependentString* name)
 {
   this->name = name;
 }
 //@Override
-void* GeneratedContactPhoto::AsDrawable(void* context, int color)
+OsIndependentDrawable* GeneratedContactPhoto::AsDrawable(OsIndependentContext* context, int color)
 {
   return AsDrawable(context, color, false);
 }
 //@Override
-void* GeneratedContactPhoto::AsDrawable(void* context, int color, bool inverted)
+OsIndependentDrawable* GeneratedContactPhoto::AsDrawable(OsIndependentContext* context, int color, bool inverted)
 {
-  return nullptr;
-  // TODO int targetSize = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
+  int targetSize = context->GetResources()->GetDimensionPixelSize(R::dimen::contact_photo_target_size);
+  return nullptr;  
 
   /*
   https://github.com/amulyakhare/TextDrawable
