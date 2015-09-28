@@ -7,15 +7,16 @@ Port of class GeneratedContactPhoto from TextSecure-android
 // TFS ID: 436
 
 #include "ContactPhoto.h"
+#include "..\..\..\osindependent\OsIndependentString.h"
 
-class GeneratedContactPhoto : ContactPhoto
+class GeneratedContactPhoto : public ContactPhoto
 {
 private:
-  const char* name;
+  OsIndependentString* name;
 public:
-  GeneratedContactPhoto(char* name);
+  GeneratedContactPhoto(OsIndependentString* name);
   //@Override
-  virtual void* AsDrawable(void* context, int color);
+  virtual OsIndependentDrawable* AsDrawable(OsIndependentContext* context, int color);
   //@Override
-  virtual void* AsDrawable(void* context, int color, bool inverted);
+  virtual OsIndependentDrawable* AsDrawable(OsIndependentContext* context, int color, bool inverted);
 };
