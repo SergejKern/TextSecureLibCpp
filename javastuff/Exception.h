@@ -16,10 +16,10 @@ public:
   Exception() 
     : Throwable() 
   { }
-  Exception(unsigned char* message)
+  Exception(OsIndependentString* message)
     : Throwable(message)
   { }
-  Exception(unsigned char* message, Throwable* cause)
+  Exception(OsIndependentString* message, Throwable* cause)
     : Throwable(message, cause)
   { }
   Exception(Throwable* cause)
