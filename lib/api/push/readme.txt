@@ -1,4 +1,4 @@
 [x] ContactTokenDetails
-[x] SignedPreKeyEntity
+[ ] SignedPreKeyEntity
 [x] TextSecureAddress
 [x] TrustStore
