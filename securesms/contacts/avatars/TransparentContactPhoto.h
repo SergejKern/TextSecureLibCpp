@@ -4,7 +4,7 @@
 Port of class TransparentContactPhoto from TextSecure-android
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 437
 
 #include "ContactPhoto.h"
