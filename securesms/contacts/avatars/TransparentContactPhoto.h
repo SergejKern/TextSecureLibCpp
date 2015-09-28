@@ -9,10 +9,9 @@ Port of class TransparentContactPhoto from TextSecure-android
 
 #include "ContactPhoto.h"
 #include "..\..\..\otherproject\RoundedDrawable.h"
-#include "..\..\..\osindependent\OsIndependentContext.h"
-#include "..\..\..\osindependent\OsIndependentDrawable.h"
 
-class TransparentContactPhoto : ContactPhoto
+
+class TransparentContactPhoto : public ContactPhoto
 {
 public:
   TransparentContactPhoto();
