@@ -8,14 +8,14 @@ Port of class SmsDatabase from TextSecure-android
 
 #include "EmojiPageModel.h"
 
-class StaticEmojiPageModel : EmojiPageModel
+class StaticEmojiPageModel : public EmojiPageModel
 {
 private:
   const int iconAttr;
-  const unsigned char** emoji;
-  const unsigned char* sprite;
+  List<OsIndependentString*>* emoji;
+  OsIndependentString* sprite;
 public:
-  StaticEmojiPageModel(int iconAttr, unsigned char** emoji, unsigned char* sprite)
+  StaticEmojiPageModel(int iconAttr, List<OsIndependentString*>* emoji, OsIndependentString* sprite)
     : iconAttr(iconAttr)
   {
     this->emoji = emoji;
@@ -24,11 +24,11 @@ public:
   //@Override
   virtual int GetIconAttr() { return iconAttr; }
   //@Override
-  virtual const unsigned char** GetEmoji() { return this->emoji; }
+  virtual List<OsIndependentString*>* GetEmoji() { return this->emoji; }
   //@Override
   virtual bool HasSpriteMap() { return sprite != nullptr; }
   //@Override
-  virtual const unsigned char* GetSprite() { return sprite; }
+  virtual OsIndependentString* GetSprite() { return sprite; }
   //@Override
   virtual bool IsDynamic() { return false; }
 };
