@@ -1,7 +1,7 @@
 [x] TextSecureAttachment
 [x] TextSecureAttachmentPointer
 [x] TextSecureAttachmentStream
-[ ] TextSecureContent
+[x] TextSecureContent
 [x] TextSecureDataMessage
 [ ] TextSecureEnvelope
 [x] TextSecureGroup
