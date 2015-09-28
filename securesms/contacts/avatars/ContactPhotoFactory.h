@@ -4,14 +4,15 @@
 Port of class ContactPhotoFactory from TextSecure-android
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 435
 
 #include "ContactPhoto.h"
+#include "..\..\..\osindependent\OsIndependentString.h"
 
 class ContactPhotoFactory
 {
 public:
-  static ContactPhoto* GetDefaultContactPhoto(char* name);
+  static ContactPhoto* GetDefaultContactPhoto(OsIndependentString* name);
   static ContactPhoto* GetLoadingPhoto();
 };
