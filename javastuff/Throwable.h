@@ -6,17 +6,19 @@
 // [ ] done
 // TFS ID: none
 
+#include "..\osindependent\OsIndependentString.h"
+
 // public class Throwable implements Serializable {
 class Throwable
 {
 private:
-  unsigned char* detailMessage;
+  OsIndependentString* detailMessage;
 public:
   Throwable() {}
-  Throwable(unsigned char* message) {}
-  Throwable(unsigned char* message, Throwable* cause) {}
+  Throwable(OsIndependentString* message) {}
+  Throwable(OsIndependentString* message, Throwable* cause) {}
   Throwable(Throwable* cause) {}
-  unsigned char* GetMessage()
+  OsIndependentString* GetMessage()
   {
     return this->detailMessage;
   }
