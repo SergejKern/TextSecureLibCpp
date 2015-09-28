@@ -1,23 +1,22 @@
 #include "ContactPhotoFactory.h"
 #include "ContactPhoto.h"
 #include "GeneratedContactPhoto.h"
+#include "TransparentContactPhoto.h"
 
 /*
 [!] IMPORTANT for strings:
     http://www.cprogramming.com/tutorial/unicode.html
 */
 
-ContactPhoto* ContactPhotoFactory::GetDefaultContactPhoto(char* name)
+ContactPhoto* ContactPhotoFactory::GetDefaultContactPhoto(OsIndependentString* name)
 {
-  /* if (!android.text.TextUtils.isEmpty(name)) OS SPECIFIC **/
-  /* TODO */
-  if (name !=  nullptr)
+  if (!OsIndependentString::IsNullOrEmpty(name))
   {
     return new GeneratedContactPhoto(name);
   }
   else
   {
-    return new GeneratedContactPhoto("#");
+    return new GeneratedContactPhoto(new OsIndependentString("#"));
   }
 }
 
