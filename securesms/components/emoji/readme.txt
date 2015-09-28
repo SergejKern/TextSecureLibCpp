@@ -11,4 +11,4 @@
 [ ] EmojiToggle
 [ ] EmojiView
 [ ] RecentEmojiPageModel
-[ ] StaticEmojiPageModel
+[x] StaticEmojiPageModel
