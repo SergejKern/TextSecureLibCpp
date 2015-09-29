@@ -1,0 +1,3 @@
+[ ] AxolotlStorageModule
+[x] InjectableType
+[ ] TextSecureCommunicationModule
