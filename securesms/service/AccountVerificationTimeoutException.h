@@ -3,7 +3,7 @@
 Port of class AccountVerificationTimeoutException from TextSecure-android
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 637
 
 #include "..\..\javastuff\Exception.h"
