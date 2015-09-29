@@ -1,0 +1,3 @@
+[ ] SecurityEventListener
+[ ] TextSecureCommunicationFactory
+[x] TextSecurePushTrustStore
