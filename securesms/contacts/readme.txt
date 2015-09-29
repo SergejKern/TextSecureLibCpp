@@ -8,6 +8,6 @@
 [ ] ContactSelectionListAdapter
 [ ] ContactSelectionListItem
 [x] ContactsSyncAdapter
-[ ] NameAndNumber
+[x] NameAndNumber
 [ ] RecipientsAdapter
 [ ] RecipientsEditor
