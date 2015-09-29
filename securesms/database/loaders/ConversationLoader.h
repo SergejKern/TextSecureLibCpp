@@ -17,10 +17,8 @@ private:
   const long threadId;
 public:
   ConversationLoader(OsIndependentContext* context, long threadId)
-    : AbstractCursorLoader(context)
-  {
-    this->threadId = threadId;
-  }
+    : AbstractCursorLoader(context), threadId(threadId)
+  { }
   //@Override
   OsIndependentCursor* GetCursor()
   {
