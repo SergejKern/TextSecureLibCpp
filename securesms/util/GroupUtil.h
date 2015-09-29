@@ -3,20 +3,22 @@
 Port of class GroupUtil from TextSecure-java
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 222
+
+#include "..\..\osindependent\OsIndependentContext.h"
 
 class GroupUtil
 {
 private:
-  const char* ENCODED_GROUP_PREFIX = "__textsecure_group__!";
-
+  static const OsIndependentString* ENCODED_GROUP_PREFIX;
 public:
   GroupUtil();
   virtual ~GroupUtil();
-  static char* GetEncodedId(char* groupId);
-  char* GetDecodedId(char* groupId);
-  static bool IsEncodedGroup(unsigned char* groupId);
-  // TODO OS SPECIFIC static char* GetDescription(Context context, String encodedGroup);
-  static char* GetDescription(void* context, char* encodedGroup);
+  static OsIndependentString* GetEncodedId(OsIndependentString* groupId);
+  static char* GetDecodedId(OsIndependentString* groupId);
+  static bool IsEncodedGroup(OsIndependentString* groupId);
+  static OsIndependentString* GetDescription(OsIndependentContext* context, OsIndependentString* encodedGroup);
 };
+
+const OsIndependentString* GroupUtil::ENCODED_GROUP_PREFIX = new OsIndependentString("__textsecure_group__!");
