@@ -1,4 +1,30 @@
-[ ] 
-[ ] 
-[ ] 
-[ ] 
+[ ] AttachmentDownloadJob
+[ ] AvatarDownloadJob
+[ ] CleanPreKeysJob
+[ ] ContextJob
+[ ] CreateSignedPreKeyJob
+[ ] DeliveryReceiptJob
+[ ] DirectoryRefreshJob
+[ ] GcmRefreshJob
+[ ] MasterSecretDecryptJob
+[ ] MasterSecretJob
+[ ] MmsDownloadJob
+[ ] MmsReceiveJob
+[ ] MmsSendJob
+[ ] MultiDeviceContactUpdateJob
+[ ] MultiDeviceGroupUpdateJob
+[ ] PartProgressEvent
+[ ] PushContentReceiveJob
+[ ] PushDecryptJob
+[ ] PushGroupSendJob
+[ ] PushMediaSendJob
+[ ] PushNotificationReceiveJob
+[ ] PushReceivedJob
+[ ] PushSendJob
+[ ] PushTextSendJob
+[ ] RefreshPreKeysJob
+[ ] SendJob
+[ ] SmsReceiveJob
+[ ] SmsSendJob
+[ ] SmsSentJob
+[ ] TrimThreadJob
