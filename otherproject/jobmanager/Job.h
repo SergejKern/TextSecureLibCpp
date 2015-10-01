@@ -62,12 +62,12 @@ public:
    * Called after a job has been added to the JobManager queue.  If it's a persistent job,
    * the state has been persisted to disk before this method is called.
    */
-  virtual void onAdded() = 0;
+  virtual void OnAdded() = 0;
   /**
    * Called to actually execute the job.
    * @throws Exception
    */
-  virtual void onRun() = 0 /*throws Exception*/;
+  virtual void OnRun() = 0 /*throws Exception*/;
   /**
    * If onRun() throws an exception, this method will be called to determine whether the
    * job should be retried.
@@ -75,10 +75,10 @@ public:
    * @param exception The exception onRun() threw.
    * @return true if onRun() should be called again, false otherwise.
    */
-  virtual bool onShouldRetry(Exception* exception);
+  virtual bool OnShouldRetry(Exception* exception) = 0;
   /**
    * Called if a job fails to run (onShouldRetry returned false, or the number of retries exceeded
    * the job's configured retry count.
    */
-  virtual void onCanceled();
+  virtual void OnCanceled() = 0;
 };
