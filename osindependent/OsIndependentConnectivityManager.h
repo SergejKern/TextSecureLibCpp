@@ -1,20 +1,17 @@
 #pragma once
 /*
   abstract class OsIndependentCursor to replace android.net.ConnectivityManager
-  http://developer.android.com/reference/android/net/Uri.html
+  http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/5.1.1_r1/android/net/ConnectivityManager.java#ConnectivityManager
 */
 
 // [ ] done
 // TFS ID: 672
 
+#include "OsIndependentNetworkInfo.h"
+
 class OsIndependentConnectivityManager
 {
 private:
 public:
-  /*
-  Move the cursor to the next row.
-  This method will return false if the cursor is already past the last entry in the result set.
-  http://developer.android.com/reference/android/net/Uri.html
-  */
-  
+  virtual OsIndependentNetworkInfo* GetActiveNetworkInfo() = 0;
 };
