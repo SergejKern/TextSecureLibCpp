@@ -21,8 +21,9 @@ Window.OnWindowDismissedCallback
 class OsIndependentActivity
 {
 public:
-  static const unsigned char* WINDOW_SERVICE;
-  static const unsigned char* CONNECTIVITY_SERVICE;
+  static const OsIndependentString* WINDOW_SERVICE;
+  static const OsIndependentString* CONNECTIVITY_SERVICE;
+  static const int RESULT_OK = -1;
 public:
   //@Override
   // TODO -> ContextThemeWrapper
@@ -43,7 +44,10 @@ public:
   //public boolean[More ...] onKeyUp(int keyCode, KeyEvent event) {
   virtual bool OnKeyUp(int keyCode, OsIndependentKeyEvent* event) = 0;
   virtual void OpenOptionsMenu() = 0;
+  virtual void SetContentView(int layoutResID) = 0;
+  // public final void  [More ...] setResult(int resultCode, Intent data) {
+  virtual void SetResult(int resultCode, OsIndependentIntent* data);
 };
 
-const unsigned char* OsIndependentActivity::WINDOW_SERVICE = "window";
-const unsigned char* OsIndependentActivity::CONNECTIVITY_SERVICE = "connectivity";
+const OsIndependentString* OsIndependentActivity::WINDOW_SERVICE = new OsIndependentString("window");
+const OsIndependentString* OsIndependentActivity::CONNECTIVITY_SERVICE = new OsIndependentString("connectivity");
