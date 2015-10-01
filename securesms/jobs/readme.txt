@@ -1,7 +1,7 @@
 [ ] AttachmentDownloadJob
 [ ] AvatarDownloadJob
 [ ] CleanPreKeysJob
-[ ] ContextJob
+[x] ContextJob
 [ ] CreateSignedPreKeyJob
 [ ] DeliveryReceiptJob
 [ ] DirectoryRefreshJob
