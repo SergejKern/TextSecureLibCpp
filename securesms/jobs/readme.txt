@@ -7,7 +7,7 @@
 [ ] DirectoryRefreshJob
 [ ] GcmRefreshJob
 [ ] MasterSecretDecryptJob
-[ ] MasterSecretJob
+[x] MasterSecretJob
 [ ] MmsDownloadJob
 [ ] MmsReceiveJob
 [ ] MmsSendJob
