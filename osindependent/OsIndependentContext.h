@@ -17,6 +17,7 @@ class OsIndependentContext
 {
 public:
   static const OsIndependentString* INPUT_METHOD_SERVICE;
+  static const OsIndependentString* CONNECTIVITY_SERVICE;
 public:
   /*
   Return the context of the single, global Application object of the current process. This generally should only be used if you need a Context whose lifecycle is separate from the current context, that is tied to the lifetime of the process rather than the current component.
@@ -40,3 +41,4 @@ public:
 };
 
 const OsIndependentString* OsIndependentContext::INPUT_METHOD_SERVICE = new OsIndependentString("input_method");
+const OsIndependentString* OsIndependentContext::CONNECTIVITY_SERVICE = new OsIndependentString("connectivity");
