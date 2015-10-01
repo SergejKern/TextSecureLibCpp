@@ -18,6 +18,7 @@ class OsIndependentContext
 public:
   static const OsIndependentString* INPUT_METHOD_SERVICE;
   static const OsIndependentString* CONNECTIVITY_SERVICE;
+  static const OsIndependentString* POWER_SERVICE;
 public:
   /*
   Return the context of the single, global Application object of the current process. This generally should only be used if you need a Context whose lifecycle is separate from the current context, that is tied to the lifetime of the process rather than the current component.
@@ -30,7 +31,7 @@ public:
   virtual OsIndependentPackageManager* GetPackageManager() = 0;
   virtual OsIndependentString* GetPackageName() = 0;
   // public abstract Object  [More ...] getSystemService(@ServiceName @NonNull String name);
-  virtual void* GetSystemService(unsigned char* name) = 0;
+  virtual void* GetSystemService(OsIndependentString* name) = 0;
   virtual OsIndependentResources* GetResources() = 0;
   // public abstract ContentResolver getContentResolver();
   virtual OsIndependentContentResolver* GetContentResolver() = 0;
@@ -42,3 +43,4 @@ public:
 
 const OsIndependentString* OsIndependentContext::INPUT_METHOD_SERVICE = new OsIndependentString("input_method");
 const OsIndependentString* OsIndependentContext::CONNECTIVITY_SERVICE = new OsIndependentString("connectivity");
+const OsIndependentString* OsIndependentContext::POWER_SERVICE = new OsIndependentString("power");
