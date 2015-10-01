@@ -17,4 +17,5 @@ public:
   http://developer.android.com/reference/android/net/Uri.html
   */
   static int GetColorTransparent();
+  static long CurrentTimeMillis();
 };
