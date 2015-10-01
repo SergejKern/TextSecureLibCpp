@@ -9,6 +9,7 @@
 
 #include "OsIndependentIntent.h"
 #include "OsIndependentBundle.h"
+#include "OsIndependentKeyEvent.h"
 
 /*
 public class Activity extends ContextThemeWrapper
@@ -39,6 +40,9 @@ public:
   virtual void OverridePendingTransition(int enterAnim, int exitAnim) = 0;
   virtual OsIndependentIntent* GetIntent() = 0;
   virtual void OnCreate(OsIndependentBundle* savedInstanceState) = 0;
+  //public boolean[More ...] onKeyUp(int keyCode, KeyEvent event) {
+  virtual bool OnKeyUp(int keyCode, OsIndependentKeyEvent* event) = 0;
+  virtual void OpenOptionsMenu() = 0;
 };
 
 const unsigned char* OsIndependentActivity::WINDOW_SERVICE = "window";
