@@ -18,7 +18,7 @@ public:
   Throwable(OsIndependentString* message) {}
   Throwable(OsIndependentString* message, Throwable* cause) {}
   Throwable(Throwable* cause) {}
-  OsIndependentString* GetMessage()
+  virtual OsIndependentString* GetMessage()
   {
     return this->detailMessage;
   }
