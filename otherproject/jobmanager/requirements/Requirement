@@ -1,0 +1,21 @@
+#pragma once
+/*
+Port of class Requirement from jobmanager-android
+*/
+
+// [x] done
+// TFS ID: 764
+
+#include "..\..\..\javastuff\Serializable.h"
+
+/**
+ * A Requirement that must be satisfied before a Job can run.
+ */
+class Requirement : public Serializable
+{
+public:
+  /**
+   * @return true if the requirement is satisfied, false otherwise.
+   */
+  virtual bool IsPresent() = 0;
+};
