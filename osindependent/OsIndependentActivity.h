@@ -8,6 +8,7 @@
 // TFS ID: 664
 
 #include "OsIndependentIntent.h"
+#include "OsIndependentBundle.h"
 
 /*
 public class Activity extends ContextThemeWrapper
@@ -37,6 +38,7 @@ public:
   */
   virtual void OverridePendingTransition(int enterAnim, int exitAnim) = 0;
   virtual OsIndependentIntent* GetIntent() = 0;
+  virtual void OnCreate(OsIndependentBundle* savedInstanceState) = 0;
 };
 
 const unsigned char* OsIndependentActivity::WINDOW_SERVICE = "window";
