@@ -13,7 +13,7 @@
 [ ] MmsSendJob
 [ ] MultiDeviceContactUpdateJob
 [ ] MultiDeviceGroupUpdateJob
-[ ] PartProgressEvent
+[x] PartProgressEvent
 [ ] PushContentReceiveJob
 [ ] PushDecryptJob
 [ ] PushGroupSendJob
