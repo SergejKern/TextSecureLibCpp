@@ -19,6 +19,7 @@ public:
   OsIndependentIntent(OsIndependentString* action);
   virtual OsIndependentIntent* SetAction(OsIndependentString* action) = 0;
   virtual OsIndependentIntent* PutExtra(OsIndependentString* name, long value) = 0;
+  virtual OsIndependentIntent* PutExtra(OsIndependentString* name, OsIndependentString* value) = 0;
   virtual OsIndependentIntent* SetPackage(OsIndependentString* packageName) = 0;
   virtual OsIndependentString* GetStringExtra(OsIndependentString* name) = 0;
   virtual bool HasExtra(OsIndependentString* name) = 0;
