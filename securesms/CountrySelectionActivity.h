@@ -4,33 +4,35 @@
 Port of CountrySelectionActivity.java from TextSecure-android
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 707
 
 #include "..\osindependent\OsIndependentActivity.h"
 #include "..\osindependent\OsIndependentBundle.h"
 #include "..\osindependent\OsIndependentIntent.h"
 #include "..\osindependent\OsIndependentString.h"
+#include "BaseActivity.h"
+#include "CountrySelectionFragment.h"
+#include "R.h"
 //import android.support.v4.app.FragmentActivity;
 
-class CountrySelectionActivity : BaseActivity,
-    CountrySelectionFragment.CountrySelectedListener
+class CountrySelectionActivity : public BaseActivity, public CountrySelectionFragment::CountrySelectedListener
 {
 public:
   //@Override
   void OnCreate(OsIndependentBundle* bundle)
   {
     super::OnCreate(bundle);
-    this->SetContentView(R.layout.country_selection);
+    this->SetContentView(R::Layout::country_selection);
   }
   //@Override
   void CountrySelected(OsIndependentString* countryName, int countryCode)
   {
     OsIndependentIntent* result = GetIntent();
-    result->PutExtra("country_name", countryName);
-    result->PutExtra("country_code", countryCode);
+    result->PutExtra(new OsIndependentString("country_name"), countryName);
+    result->PutExtra(new OsIndependentString("country_code"), countryCode);
 
-    this->setResult(RESULT_OK, result);
+    this->SetResult(RESULT_OK, result);
     this->Finish();
   }
 };
