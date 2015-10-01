@@ -8,6 +8,7 @@
 // TFS ID: 756
 
 #include "OsIndependentActivity.h"
+#include "OsIndependentFragmentManager.h"
 
 /*
 public class  [More ...] FragmentActivity extends Activity {
@@ -18,4 +19,6 @@ public:
 public:
   // public boolean  [More ...] onKeyDown(int keyCode, KeyEvent event) {
   virtual bool OnKeyDown(int keyCode, OsIndependentKeyEvent* event) = 0;
+  //public FragmentManager[More ...] getSupportFragmentManager() {
+  virtual OsIndependentFragmentManager* GetSupportFragmentManager() = 0;
 };
