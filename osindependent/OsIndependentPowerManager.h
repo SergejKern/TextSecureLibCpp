@@ -16,6 +16,12 @@ public:
   class WakeLock
   {
   public:
+    virtual void Acquire() = 0;
+    virtual bool IsHeld() = 0;
+    virtual void Release() = 0;
   };
 public:
+  static const int PARTIAL_WAKE_LOCK = 0x00000001;
+public:
+  virtual WakeLock* NewWakeLock(int levelAndFlags, OsIndependentString* tag) = 0;
 };
