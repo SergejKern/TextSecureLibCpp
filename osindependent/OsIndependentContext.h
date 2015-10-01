@@ -10,11 +10,13 @@
 #include "OsIndependentPackageManager.h"
 #include "OsIndependentResources.h"
 #include "OsIndependentContentResolver.h"
+#include "OsIndependentString.h"
+#include "OsIndependentIntent.h"
 
 class OsIndependentContext
 {
 public:
-  static const unsigned char* INPUT_METHOD_SERVICE;
+  static const OsIndependentString* INPUT_METHOD_SERVICE;
 public:
   /*
   Return the context of the single, global Application object of the current process. This generally should only be used if you need a Context whose lifecycle is separate from the current context, that is tied to the lifetime of the process rather than the current component.
@@ -25,12 +27,16 @@ public:
   */
   virtual OsIndependentContext* GetApplicationContext() = 0;
   virtual OsIndependentPackageManager* GetPackageManager() = 0;
-  virtual unsigned char* GetPackageName() = 0;
+  virtual OsIndependentString* GetPackageName() = 0;
   // public abstract Object  [More ...] getSystemService(@ServiceName @NonNull String name);
   virtual void* GetSystemService(unsigned char* name) = 0;
   virtual OsIndependentResources* GetResources() = 0;
   // public abstract ContentResolver getContentResolver();
   virtual OsIndependentContentResolver* GetContentResolver() = 0;
+  virtual void SendBroadcast(OsIndependentIntent* intent, OsIndependentString* receiverPermission) = 0;
+  OsIndependentString* GetString(int resId);
+  //public final String[More ...] getString(int resId, Object... formatArgs) {
+  OsIndependentString* GetString(int resId, OsIndependentString*);
 };
 
-const unsigned char* OsIndependentContext::INPUT_METHOD_SERVICE = "input_method";
+const OsIndependentString* OsIndependentContext::INPUT_METHOD_SERVICE = new OsIndependentString("input_method");
