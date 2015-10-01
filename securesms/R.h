@@ -42,4 +42,9 @@ public:
   public:
     static const int whisper = 0;
   };
+  class Layout
+  {
+  public:
+    static const int country_selection = 0;
+  };
 };
