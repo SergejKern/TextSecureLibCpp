@@ -8,16 +8,18 @@
 // TFS ID: 665
 
 #include "OsIndependentParcelable.h"
+#include "OsIndependentString.h"
 
 /* public class  Intent implements Parcelable, Cloneable { */
 class OsIndependentIntent : OsIndependentParcelable
 {
 private:
+  OsIndependentString* mAction;
 public:
-  /*
-  Move the cursor to the next row.
-  This method will return false if the cursor is already past the last entry in the result set.
-  http://developer.android.com/reference/android/net/Uri.html
-  */
-  
+  OsIndependentIntent(OsIndependentString* action);
+  virtual OsIndependentIntent* SetAction(OsIndependentString* action) = 0;
+  virtual OsIndependentIntent* PutExtra(OsIndependentString* name, long value) = 0;
+  virtual OsIndependentIntent* SetPackage(OsIndependentString* packageName) = 0;
+  virtual OsIndependentString* GetStringExtra(OsIndependentString* name) = 0;
+  virtual bool HasExtra(OsIndependentString* name) = 0;
 };
