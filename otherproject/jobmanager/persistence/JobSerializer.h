@@ -25,7 +25,7 @@ public:
    * @return The serialized Job.
    * @throws IOException if serialization fails.
    */
-  virtual OsIndependentString* Serialize(Job job) = 0 /*throws IOException*/;
+  virtual OsIndependentString* Serialize(Job* job) = 0 /*throws IOException*/;
   /**
    * Deserialize a String into a Job.
    * @param keys Optional encryption keys that could have been used.
