@@ -7,6 +7,9 @@
 // [ ] done
 // TFS ID: 687
 
+/* TODO, set this class to abstract!!! */
+
+#include "..\owntemplates\ArrayList.h"
 
 /*
 a abstract class to be overvritten for every platform.
@@ -29,4 +32,5 @@ public:
   /*array*/ char* Split(const char*, int);
   OsIndependentString* Trim();
   bool IsEmpty();
+  ArrayList<char>* GetBytes();
 };
