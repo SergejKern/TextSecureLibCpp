@@ -1,6 +1,6 @@
 [x] EncryptionKeys
 [x] Job
-[ ] JobConsumer
+[x] JobConsumer
 [ ] JobManager
 [x] JobParameters
 [ ] JobQueue
