@@ -1,13 +1,11 @@
 #pragma once
 /*
-  abstract class OsIndependentIntent to replace android.content.Intent
-  http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/5.1.1_r1/android/content/Intent.java#Intent
+  abstract class OsIndependentIntent to replace java.lang.String
+  http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/lang/String.java#String
 */
 
 // [ ] done
 // TFS ID: 687
-
-/* TODO, set this class to abstract!!! */
 
 #include "..\owntemplates\ArrayList.h"
 
@@ -22,15 +20,10 @@ class OsIndependentString
 {
 private:
 public:
-  OsIndependentString(unsigned char*);
-  OsIndependentString(char*);
-  // operator char*();
-  // operator const char*();
-  static bool IsNullOrEmpty(OsIndependentString*);
-  bool StartsWith(OsIndependentString*);
-  /*array*/ char* Split(OsIndependentString*, int);
-  /*array*/ char* Split(const char*, int);
-  OsIndependentString* Trim();
-  bool IsEmpty();
-  ArrayList<char>* GetBytes();
+  virtual bool StartsWith(OsIndependentString*) = 0;
+  virtual ArrayList<OsIndependentString*>* Split(OsIndependentString*, int) = 0;
+  virtual ArrayList<OsIndependentString*>* Split(const char*, int) = 0;
+  virtual OsIndependentString* Trim() = 0;
+  virtual bool IsEmpty() = 0;
+  virtual ArrayList<char>* GetBytes() = 0;
 };
