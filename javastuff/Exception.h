@@ -25,4 +25,27 @@ public:
   Exception(Throwable* cause)
     : Throwable(cause)
   { }
+  Exception(OsIndependentString* message, Throwable cause, bool enableSuppression, bool writableStackTrace)
+    : Throwable(message, cause, enableSuppression, writableStackTrace)
+  { }
+};
+
+//  java.lang.RuntimeException
+class RuntimeException : public Exception
+{
+  RuntimeException()
+    : Exception()
+  { }
+  RuntimeException(OsIndependentString* message)
+    : Exception(message)
+  { }
+  RuntimeException(OsIndependentString* message, Throwable* cause)
+    : Exception(message, cause)
+  { }
+  RuntimeException(Throwable* cause)
+    : Exception(cause)
+  { }
+  RuntimeException(OsIndependentString* message, Throwable cause, bool enableSuppression, bool writableStackTrace)
+    : Exception(message, cause, enableSuppression, writableStackTrace)
+  { }
 };
