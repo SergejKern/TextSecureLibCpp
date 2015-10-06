@@ -11,8 +11,7 @@ Port of class Job from jobmanager-android
 #include "requirements\Requirement.h"
 #include "..\..\javastuff\Serializable.h"
 #include "..\..\owntemplates\List.h"
-#include "..\..\osindependent\OsIndependentPowerManager.h"
-#include "..\..\osindependent\OsIndependentString.h"
+#include "..\..\Factory\Factory.h"
 #include "EncryptionKeys.h"
 
 /**
@@ -38,8 +37,10 @@ public:
   }
   bool IsRequirementsMet()
   {
-    for (Requirement* requirement : parameters->GetRequirements())
+    auto reqList = parameters->GetRequirements();
+    for (int i = 0; i < reqList->Size(); i++)
     {
+      Requirement* requirement = reqList->Get(i);
       if (!requirement->IsPresent())
         return false;
     }
