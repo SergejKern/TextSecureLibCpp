@@ -18,6 +18,8 @@ public:
   Throwable(OsIndependentString* message) {}
   Throwable(OsIndependentString* message, Throwable* cause) {}
   Throwable(Throwable* cause) {}
+  Throwable(OsIndependentString* message, Throwable cause, bool enableSuppression, bool writableStackTrace)
+  { }
   virtual OsIndependentString* GetMessage()
   {
     return this->detailMessage;
