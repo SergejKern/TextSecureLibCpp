@@ -17,6 +17,7 @@ public:
   {
   public:
     virtual void Acquire() = 0;
+    virtual void Acquire(long timeout) = 0;
     virtual bool IsHeld() = 0;
     virtual void Release() = 0;
   };
