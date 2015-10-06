@@ -1,0 +1,3 @@
+[ ] JavaJobSerializer
+[x] JobSerializer
+[ ] PersistentStorage
