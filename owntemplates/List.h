@@ -15,7 +15,7 @@ template <typename E> class List : public Collection<E>
 {
 public:
   int Size();
-  E* Get(int index);
+  E Get(int index);
   bool IsEmpty();
   //boolean[More ...] addAll(Collection< ? extends E> c);
   bool AddAll(Collection<E>* c);
