@@ -26,4 +26,5 @@ public:
   virtual OsIndependentString* Trim() = 0;
   virtual bool IsEmpty() = 0;
   virtual ArrayList<char>* GetBytes() = 0;
+  virtual OsIndependentString* Append(OsIndependentString*) = 0;
 };
