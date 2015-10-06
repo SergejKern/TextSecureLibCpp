@@ -54,4 +54,5 @@ public:
   virtual OsIndependentString* CreateNewString() = 0;
   virtual OsIndependentString* CreateNewString(unsigned char*) = 0;
   virtual OsIndependentString* CreateNewString(char*) = 0;
+  virtual OsIndependentString* CreateNewString(long) = 0;
 };
