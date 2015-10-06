@@ -7,3 +7,4 @@
 // TFS ID: none
 
 #include "FactoryString.h"
+#include "FactoryPowerManager.h"
