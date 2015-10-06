@@ -12,7 +12,7 @@ Port of class JobParameters from jobmanager-android
 #include "..\..\javastuff\TimeUnit.h"
 #include "EncryptionKeys.h"
 #include "requirements\Requirement.h"
-#include "..\..\osindependent\OsIndependentString.h"
+#include "..\..\Factory\Factory.h"
 
 /**
  * The set of parameters that describe a {@link org.whispersystems.jobqueue.Job}.
