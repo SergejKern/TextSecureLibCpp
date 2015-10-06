@@ -7,10 +7,11 @@
 // [ ] done
 // TFS ID: 658
 
+#include "..\Factory\Factory.h"
+
 #include "OsIndependentPackageManager.h"
 #include "OsIndependentResources.h"
 #include "OsIndependentContentResolver.h"
-#include "OsIndependentString.h"
 #include "OsIndependentIntent.h"
 
 class OsIndependentContext
@@ -41,6 +42,6 @@ public:
   OsIndependentString* GetString(int resId, OsIndependentString*);
 };
 
-const OsIndependentString* OsIndependentContext::INPUT_METHOD_SERVICE = new OsIndependentString("input_method");
-const OsIndependentString* OsIndependentContext::CONNECTIVITY_SERVICE = new OsIndependentString("connectivity");
-const OsIndependentString* OsIndependentContext::POWER_SERVICE = new OsIndependentString("power");
+const OsIndependentString* OsIndependentContext::INPUT_METHOD_SERVICE = FactoryString::GetInstance()->CreateNewString("input_method");
+const OsIndependentString* OsIndependentContext::CONNECTIVITY_SERVICE = FactoryString::GetInstance()->CreateNewString("connectivity");
+const OsIndependentString* OsIndependentContext::POWER_SERVICE = FactoryString::GetInstance()->CreateNewString("power");
