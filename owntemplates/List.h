@@ -22,7 +22,20 @@ public:
   //boolean[More ...] add(E e);
   bool Add(E e);
 };
-template <typename T> class LinkedList : public List<T>
-{
 
+/*
+  java.util.LinkedList
+  http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/LinkedList.java#LinkedList
+*/
+
+/*
+  public class  [More ...] LinkedList<E>
+  extends AbstractSequentialList<E>
+  implements List<E>, Deque<E>, Cloneable, java.io.Serializable
+*/
+template <typename E> class LinkedList 
+  : public List<E>, Cloneable, Serializable
+{
+public:
+  void AddFirst(E e);
 };
