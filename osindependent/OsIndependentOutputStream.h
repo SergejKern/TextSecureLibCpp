@@ -30,38 +30,5 @@ public:
   virtual void Close() = 0;
 };
 /*
-Plattform independend Factory abstract class.
-This class must be implemented for specific plattforms, to create plattform specific String-classes
-
-+---------------------------+  creates   +--------------------------+
-| OsIndependentOutputStream |<-----------|    FactoryOutputStream   |
-+---------------------------+            +--------------------------+
-              ^                                       ^                Plattform independent code
-             /|\                                     /|\
-              |                                       |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              |                                       |
-              |                                       |                Plattform specific code
-              |                                       |
-+---------------------------+  creates   +--------------------------+
-|     Tizen-OutputStream    |<-----------| TizenFactoryOutputStream |
-+---------------------------+            +--------------------------+
+needs no Factory, because is abstract
 */
-class FactoryOutputStream
-{
-private:
-  // a Instance of implemented plattform specific factory
-  // which has to be set in plattform specific code
-  static FactoryOutputStream* instance;
-public:
-  // has to be called in plattform specific code
-  static void SetInstance(FactoryOutputStream* plattformSpecific) { FactoryOutputStream::instance = plattformSpecific; }
-  static FactoryOutputStream* GetInstance()
-  {
-    if (FactoryOutputStream::instance == nullptr)
-      throw;
-    return FactoryOutputStream::instance;
-  }
-  // interface
-  virtual OsIndependentOutputStream* CreateNewOutputStream() = 0;
-};
