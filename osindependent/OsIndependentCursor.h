@@ -7,8 +7,11 @@
 // [ ] done
 // TFS ID: 657
 
+#include "..\Factory\Factory.h"
+#include "..\javastuff\Closeable.h"
+
 // public interface Cursor extends Closeable {
-class OsIndependentCursor
+class OsIndependentCursor : public Closeable
 {
 private:
 public:
@@ -54,4 +57,40 @@ public:
   // void  [More ...] setNotificationUri(ContentResolver cr, Uri uri);
   virtual void SetNotificationUri(OsIndependentContentResolver* cr, OsIndependentUri* uri) = 0;
   virtual void Close() = 0;
+};
+/*
+Plattform independend Factory abstract class.
+This class must be implemented for specific plattforms, to create plattform specific String-classes
+
++---------------------+  creates   +--------------------+
+| OsIndependentCursor |<-----------|    FactoryCursor   |
++---------------------+            +--------------------+
+           ^                                 ^                Plattform independent code
+          /|\                               /|\
+           |                                 |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+           |                                 |
+           |                                 |                Plattform specific code
+           |                                 |
++---------------------+  creates   +--------------------+
+|     Tizen-Cursor    |<-----------| TizenFactoryCursor |
++---------------------+            +--------------------+
+*/
+class FactoryCursor
+{
+private:
+  // a Instance of implemented plattform specific factory
+  // which has to be set in plattform specific code
+  static FactoryCursor* instance;
+public:
+  // has to be called in plattform specific code
+  static void SetInstance(FactoryCursor* plattformSpecific) { FactoryCursor::instance = plattformSpecific; }
+  static FactoryCursor* GetInstance()
+  {
+    if (FactoryCursor::instance == nullptr)
+      throw;
+    return FactoryCursor::instance;
+  }
+  // interface
+  virtual OsIndependentCursor* CreateNewCursor() = 0;
 };
