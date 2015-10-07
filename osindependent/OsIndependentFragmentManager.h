@@ -17,38 +17,5 @@ private:
 public:
 };
 /*
-Plattform independend Factory abstract class.
-This class must be implemented for specific plattforms, to create plattform specific String-classes
-
-+------------------------------+  creates   +-----------------------------+
-| OsIndependentFragmentManager |<-----------|    FactoryFragmentManager   |
-+------------------------------+            +-----------------------------+
-               ^                                            ^                Plattform independent code
-              /|\                                          /|\
-               |                                            |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-               |                                            |
-               |                                            |                Plattform specific code
-               |                                            |
-+------------------------------+  creates   +-----------------------------+
-|     Tizen-FragmentManager    |<-----------| TizenFactoryFragmentManager |
-+------------------------------+            +-----------------------------+
+needs no Factory, because is abstract
 */
-class FactoryFragmentManager
-{
-private:
-  // a Instance of implemented plattform specific factory
-  // which has to be set in plattform specific code
-  static FactoryFragmentManager* instance;
-public:
-  // has to be called in plattform specific code
-  static void SetInstance(FactoryFragmentManager* plattformSpecific) { FactoryFragmentManager::instance = plattformSpecific; }
-  static FactoryFragmentManager* GetInstance()
-  {
-    if (FactoryFragmentManager::instance == nullptr)
-      throw;
-    return FactoryFragmentManager::instance;
-  }
-  // interface
-  virtual OsIndependentFragmentManager* CreateNewFragmentManager() = 0;
-};
