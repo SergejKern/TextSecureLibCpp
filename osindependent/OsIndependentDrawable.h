@@ -19,38 +19,5 @@ private:
 public:
 };
 /*
-Plattform independend Factory abstract class.
-This class must be implemented for specific plattforms, to create plattform specific String-classes
-
-+-----------------------+  creates   +----------------------+
-| OsIndependentDrawable |<-----------|    FactoryDrawable   |
-+-----------------------+            +----------------------+
-           ^                                    ^                Plattform independent code
-          /|\                                  /|\
-           |                                    |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-           |                                    |
-           |                                    |                Plattform specific code
-           |                                    |
-+-----------------------+  creates   +----------------------+
-|     Tizen-Drawable    |<-----------| TizenFactoryDrawable |
-+-----------------------+            +----------------------+
+needs no Factory, because is abstract
 */
-class FactoryDrawable
-{
-private:
-  // a Instance of implemented plattform specific factory
-  // which has to be set in plattform specific code
-  static FactoryDrawable* instance;
-public:
-  // has to be called in plattform specific code
-  static void SetInstance(FactoryDrawable* plattformSpecific) { FactoryDrawable::instance = plattformSpecific; }
-  static FactoryDrawable* GetInstance()
-  {
-    if (FactoryDrawable::instance == nullptr)
-      throw;
-    return FactoryDrawable::instance;
-  }
-  // interface
-  virtual OsIndependentDrawable* CreateNewDrawable() = 0;
-};
