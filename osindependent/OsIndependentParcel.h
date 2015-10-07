@@ -7,20 +7,53 @@
 // [ ] done
 // TFS ID: 329
 
+#include "..\Factory\Factory.h"
+
 class OsIndependentParcel
 {
 private:
+  OsIndependentParcel();
 public:
-  OsIndependentParcel() {};
-  /*
-  Move the cursor to the next row.
-  This method will return false if the cursor is already past the last entry in the result set.
-  http://developer.android.com/reference/android/net/Uri.html
-  */
-  static OsIndependentParcel* Obtain() { return nullptr; }
+  virtual OsIndependentParcel* Obtain() = 0;
   // returns byte[]
   virtual char* Marshall() = 0;
   virtual char* Unmarshall(char* buffer, int offset, int len) = 0;
   virtual void Recycle() = 0;
   virtual void SetDataPosition(int pos) = 0;
+};
+/*
+Plattform independend Factory abstract class.
+This class must be implemented for specific plattforms, to create plattform specific String-classes
+
++----------------------+  creates   +---------------------+
+| OsIndependentParcel  |<-----------|    FactoryParcel    |
++----------------------+            +---------------------+
+            ^                                  ^                Plattform independent code
+           /|\                                /|\
+            |                                  |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            |                                  |
+            |                                  |                Plattform specific code
+            |                                  |
++----------------------+  creates   +---------------------+
+|     Tizen-Parcel     |<-----------| TizenFactoryParcel  |
++----------------------+            +---------------------+
+*/
+class FactoryParcel
+{
+private:
+  // a Instance of implemented plattform specific factory
+  // which has to be set in plattform specific code
+  static FactoryParcel* instance;
+public:
+  // has to be called in plattform specific code
+  static void SetInstance(FactoryParcel* plattformSpecific) { FactoryParcel::instance = plattformSpecific; }
+  static FactoryParcel* GetInstance()
+  {
+    if (FactoryParcel::instance == nullptr)
+      throw;
+    return FactoryParcel::instance;
+  }
+  // interface
+  virtual OsIndependentParcel* CreateNewParcel() = 0;
 };
