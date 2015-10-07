@@ -32,38 +32,5 @@ private:
 public:
 };
 /*
-Plattform independend Factory abstract class.
-This class must be implemented for specific plattforms, to create plattform specific String-classes
-
-+----------------------------+  creates   +---------------------------+
-| OsIndependentWindowManager |<-----------|    FactoryWindowManager   |
-+----------------------------+            +---------------------------+
-               ^                                        ^                Plattform independent code
-              /|\                                      /|\
-               |                                        |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-               |                                        |
-               |                                        |                Plattform specific code
-               |                                        |
-+----------------------------+  creates   +---------------------------+
-|     Tizen-WindowManager    |<-----------| TizenFactoryWindowManager |
-+----------------------------+            +---------------------------+
+needs no Factory, because is an interface
 */
-class FactoryWindowManager
-{
-private:
-  // a Instance of implemented plattform specific factory
-  // which has to be set in plattform specific code
-  static FactoryWindowManager* instance;
-public:
-  // has to be called in plattform specific code
-  static void SetInstance(FactoryWindowManager* plattformSpecific) { FactoryWindowManager::instance = plattformSpecific; }
-  static FactoryWindowManager* GetInstance()
-  {
-    if (FactoryWindowManager::instance == nullptr)
-      throw;
-    return FactoryWindowManager::instance;
-  }
-  // interface
-  virtual OsIndependentWindowManager* CreateNewWindowManager() = 0;
-};
