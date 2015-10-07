@@ -8,7 +8,7 @@
 // [ ] done
 // TFS ID: 327
 
-#include "OsIndependentParcelable.h"
+#include "..\Factory\Factory.h"
 
 // public abstract class  [More ...] Uri implements Parcelable, Comparable<Uri> {
 class OsIndependentUri : OsIndependentParcelable
@@ -16,5 +16,41 @@ class OsIndependentUri : OsIndependentParcelable
 private:
 public:
   //public static Uri parse(String uriString) {
-  static OsIndependentUri* Parse(unsigned char* uriString);
+  virtual OsIndependentUri* Parse(unsigned char* uriString) = 0;
+};
+/*
+Plattform independend Factory abstract class.
+This class must be implemented for specific plattforms, to create plattform specific String-classes
+
++----------------------+  creates   +---------------------+
+| OsIndependentUri     |<-----------|    FactoryUri       |
++----------------------+            +---------------------+
+          ^                                   ^                Plattform independent code
+         /|\                                 /|\
+          |                                   |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          |                                   |
+          |                                   |                Plattform specific code
+          |                                   |
++----------------------+  creates   +---------------------+
+|     Tizen-Uri        |<-----------| TizenFactoryUri     |
++----------------------+            +---------------------+
+*/
+class FactoryUri
+{
+private:
+  // a Instance of implemented plattform specific factory
+  // which has to be set in plattform specific code
+  static FactoryUri* instance;
+public:
+  // has to be called in plattform specific code
+  static void SetInstance(FactoryUri* plattformSpecific) { FactoryUri::instance = plattformSpecific; }
+  static FactoryUri* GetInstance()
+  {
+    if (FactoryUri::instance == nullptr)
+      throw;
+    return FactoryUri::instance;
+  }
+  // interface
+  virtual OsIndependentUri* CreateNewUri() = 0;
 };
