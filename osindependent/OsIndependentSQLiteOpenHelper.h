@@ -29,3 +29,45 @@ public:
   virtual OsIndependentSQLiteDatabase* GetWritableDatabase() = 0;
   virtual OsIndependentSQLiteDatabase* GetReadableDatabase() = 0;
 };
+/*
+Plattform independend Factory abstract class.
+This class must be implemented for specific plattforms, to create plattform specific String-classes
+
++-------------------------------+            +------------------------------+
+| OsIndependentSQLiteOpenHelper |<-----------|    FactorySQLiteOpenHelper   |
++-------------------------------+            +------------------------------+
+               ^                                             ^                Plattform independent code
+              /|\                                           /|\
+               |                                             |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+               |                                             |
+               |                                             |                Plattform specific code
+               |                                             |
++-------------------------------+            +------------------------------+
+|     Tizen-SQLiteOpenHelper    |<-----------| TizenFactorySQLiteOpenHelper |
++-------------------------------+            +------------------------------+
+
+
+*/
+class FactorySQLiteOpenHelper
+{
+private:
+  // a Instance of implemented plattform specific factory
+  // which has to be set in plattform specific code
+  static FactorySQLiteOpenHelper* instance;
+public:
+  // has to be called in plattform specific code
+  static void SetInstance(FactorySQLiteOpenHelper* plattformSpecific) { FactorySQLiteOpenHelper::instance = plattformSpecific; }
+  static FactorySQLiteOpenHelper* GetInstance()
+  {
+    if (FactorySQLiteOpenHelper::instance == nullptr)
+      throw;
+    return FactorySQLiteOpenHelper::instance;
+  }
+  // interface
+  virtual OsIndependentSQLiteOpenHelper* CreateNewHelper(
+    OsIndependentContext*, OsIndependentString*) = 0;
+  virtual OsIndependentSQLiteOpenHelper* CreateNewHelper
+    (OsIndependentContext* context, OsIndependentString* name,
+    OsIndependentSQLiteDatabase::CursorFactory* factory, int version) = 0;
+};
