@@ -10,7 +10,7 @@
 #include "..\Factory\Factory.h"
 
 // public class Account implements Parcelable {
-class OsIndependentAccount : OsIndependentParcelable
+class OsIndependentAccount : public OsIndependentParcelable
 {
 private:
 public:
