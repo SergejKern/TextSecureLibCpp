@@ -19,38 +19,5 @@ public:
   virtual OsIndependentUri* Parse(unsigned char* uriString) = 0;
 };
 /*
-Plattform independend Factory abstract class.
-This class must be implemented for specific plattforms, to create plattform specific String-classes
-
-+----------------------+  creates   +---------------------+
-| OsIndependentUri     |<-----------|    FactoryUri       |
-+----------------------+            +---------------------+
-          ^                                   ^                Plattform independent code
-         /|\                                 /|\
-          |                                   |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          |                                   |
-          |                                   |                Plattform specific code
-          |                                   |
-+----------------------+  creates   +---------------------+
-|     Tizen-Uri        |<-----------| TizenFactoryUri     |
-+----------------------+            +---------------------+
+needs no Factory, because is abstract
 */
-class FactoryUri
-{
-private:
-  // a Instance of implemented plattform specific factory
-  // which has to be set in plattform specific code
-  static FactoryUri* instance;
-public:
-  // has to be called in plattform specific code
-  static void SetInstance(FactoryUri* plattformSpecific) { FactoryUri::instance = plattformSpecific; }
-  static FactoryUri* GetInstance()
-  {
-    if (FactoryUri::instance == nullptr)
-      throw;
-    return FactoryUri::instance;
-  }
-  // interface
-  virtual OsIndependentUri* CreateNewUri() = 0;
-};
