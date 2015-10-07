@@ -10,48 +10,34 @@
 #include "..\Factory\Factory.h"
 #include "..\javastuff\Closeable.h"
 
-// public final class  [More ...] SQLiteQuery extends SQLiteProgram {
+// public abstract class  [More ...] SQLiteClosable implements Closeable {
 class OsIndependentSQLiteClosable : public Closeable
 {
-private:
+protected:
+  /*
+  protected abstract void[More ...] onAllReferencesReleased();
+  Called when the last reference to the object was released by a call to releaseReference() or close().
+  */
+  virtual void OnAllReferencesReleased() = 0;
 public:
+  /*
+  Acquires a reference to the object.
+  Throws:
+  java.lang.IllegalStateException if the last reference to the object has already been released.
+  */
   virtual void AcquireReference() = 0;
+  /*
+  Releases a reference to the object, closing the object if the last reference was released. Calling this method is equivalent to calling releaseReference().
+  */
   virtual void Close() = 0;
+  /*
+  Releases a reference to the object, closing the object if the last reference was released.
+
+  See also:
+  onAllReferencesReleased()
+  */
   virtual void ReleaseReference() = 0;
 };
 /*
-Plattform independend Factory abstract class.
-This class must be implemented for specific plattforms, to create plattform specific String-classes
-
-+-----------------------------+  creates   +----------------------------+
-| OsIndependentSQLiteClosable |<-----------|    FactorySQLiteClosable   |
-+-----------------------------+            +----------------------------+
-               ^                                          ^                Plattform independent code
-              /|\                                        /|\
-               |                                          |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-               |                                          |
-               |                                          |                Plattform specific code
-               |                                          |
-+-----------------------------+  creates   +----------------------------+
-|     Tizen-SQLiteClosable    |<-----------| TizenFactorySQLiteClosable |
-+-----------------------------+            +----------------------------+
+needs no Factory, because is abstract
 */
-class FactorySQLiteClosable
-{
-private:
-  // a Instance of implemented plattform specific factory
-  // which has to be set in plattform specific code
-  static FactorySQLiteClosable* instance;
-public:
-  // has to be called in plattform specific code
-  static void SetInstance(FactorySQLiteClosable* plattformSpecific) { FactorySQLiteClosable::instance = plattformSpecific; }
-  static FactorySQLiteClosable* GetInstance()
-  {
-    if (FactorySQLiteClosable::instance == nullptr)
-      throw;
-    return FactorySQLiteClosable::instance;
-  }
-  // interface
-  virtual OsIndependentSQLiteClosable* CreateNewSQLiteClosable() = 0;
-};
