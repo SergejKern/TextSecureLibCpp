@@ -9,7 +9,8 @@
 
 #include "..\Factory\Factory.h"
 
-class OsIndependentSQLiteStatement
+// public final class  [More ...] SQLiteStatement extends SQLiteProgram {
+class OsIndependentSQLiteStatement : public OsIndependentSQLiteProgram
 {
 private:
   OsIndependentSQLiteStatement();
