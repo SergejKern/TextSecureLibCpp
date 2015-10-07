@@ -6,24 +6,55 @@
 
 // [ ] done
 // TFS ID: 663
-#include "OsIndependentParcel.h"
+
+#include "..\Factory\Factory.h"
 
 class OsIndependentParcelable
 {
 private:
-public:
-  OsIndependentParcelable() {};
-  /*
-  Move the cursor to the next row.
-  This method will return false if the cursor is already past the last entry in the result set.
-  http://developer.android.com/reference/android/net/Uri.html
-  */
+  OsIndependentParcelable();
+public:  
   virtual void WriteToParcel(OsIndependentParcel* parcel, int len) = 0;
-  
   template <typename T> class Creator<T>
   {
   public:
-    T* CreateFromParcel(OsIndependentParcel* source);
-    T[] NewArray(int size);
+    virtual T* CreateFromParcel(OsIndependentParcel* source) = 0;
+    virtual T[] NewArray(int size) = 0;
   };
+};
+/*
+Plattform independend Factory abstract class.
+This class must be implemented for specific plattforms, to create plattform specific String-classes
+
++-------------------------+  creates   +------------------------+
+| OsIndependentParcelable |<-----------|    FactoryParcelable   |
++-------------------------+            +------------------------+
+             ^                                      ^                Plattform independent code
+            /|\                                    /|\
+             |                                      |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             |                                      |
+             |                                      |                Plattform specific code
+             |                                      |
++-------------------------+  creates   +------------------------+
+|     Tizen-Parcelable    |<-----------| TizenFactoryParcelable |
++-------------------------+            +------------------------+
+*/
+class FactoryParcelable
+{
+private:
+  // a Instance of implemented plattform specific factory
+  // which has to be set in plattform specific code
+  static FactoryParcelable* instance;
+public:
+  // has to be called in plattform specific code
+  static void SetInstance(FactoryParcelable* plattformSpecific) { FactoryParcelable::instance = plattformSpecific; }
+  static FactoryParcelable* GetInstance()
+  {
+    if (FactoryParcelable::instance == nullptr)
+      throw;
+    return FactoryParcelable::instance;
+  }
+  // interface
+  virtual OsIndependentParcelable* CreateNewParcelable() = 0;
 };
