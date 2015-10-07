@@ -35,38 +35,5 @@ public:
   virtual long Skip(long n) = 0;
 };
 /*
-Plattform independend Factory abstract class.
-This class must be implemented for specific plattforms, to create plattform specific String-classes
-
-+---------------------------+  creates   +--------------------------+
-| OsIndependentInputStream  |<-----------|    FactoryInputStream    |
-+---------------------------+            +--------------------------+
-             ^                                         ^                Plattform independent code
-            /|\                                       /|\
-             |                                         |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-             |                                         |
-             |                                         |                Plattform specific code
-             |                                         |
-+---------------------------+  creates   +--------------------------+
-|     Tizen-InputStream     |<-----------| TizenFactoryInputStream  |
-+---------------------------+            +--------------------------+
+needs no Factory, because is abstract
 */
-class FactoryInputStream
-{
-private:
-  // a Instance of implemented plattform specific factory
-  // which has to be set in plattform specific code
-  static FactoryInputStream* instance;
-public:
-  // has to be called in plattform specific code
-  static void SetInstance(FactoryInputStream* plattformSpecific) { FactoryInputStream::instance = plattformSpecific; }
-  static FactoryInputStream* GetInstance()
-  {
-    if (FactoryInputStream::instance == nullptr)
-      throw;
-    return FactoryInputStream::instance;
-  }
-  // interface
-  virtual OsIndependentInputStream* CreateNewInputStream() = 0;
-};
