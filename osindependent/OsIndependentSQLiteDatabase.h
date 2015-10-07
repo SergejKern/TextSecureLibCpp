@@ -8,8 +8,10 @@
 // TFS ID: 659
 
 #include "..\Factory\Factory.h"
-
-class OsIndependentSQLiteDatabase
+/*
+public final class  [More ...] SQLiteDatabase extends SQLiteClosable {
+*/
+class OsIndependentSQLiteDatabase : public OsIndependentSQLiteClosable
 {
 private:
 public:
