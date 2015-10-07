@@ -9,8 +9,8 @@
 
 #include "..\Factory\Factory.h"
 
-/* public class  Intent implements Parcelable, Cloneable { */
-class OsIndependentContentResolver : public OsIndependentParcelable, public Cloneable
+/* public abstract class  [More ...] ContentResolver { */
+class OsIndependentContentResolver
 {
 private:
 public:
