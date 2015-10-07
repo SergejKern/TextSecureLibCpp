@@ -2,6 +2,7 @@
 /*
   abstract class OsIndependentCursor to replace android.database.Cursor
   http://developer.android.com/reference/android/database/Cursor.html
+  http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/5.1.1_r1/android/database/Cursor.java#Cursor
 */
 
 // [ ] done
@@ -59,38 +60,5 @@ public:
   virtual void Close() = 0;
 };
 /*
-Plattform independend Factory abstract class.
-This class must be implemented for specific plattforms, to create plattform specific String-classes
-
-+---------------------+  creates   +--------------------+
-| OsIndependentCursor |<-----------|    FactoryCursor   |
-+---------------------+            +--------------------+
-           ^                                 ^                Plattform independent code
-          /|\                               /|\
-           |                                 |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-           |                                 |
-           |                                 |                Plattform specific code
-           |                                 |
-+---------------------+  creates   +--------------------+
-|     Tizen-Cursor    |<-----------| TizenFactoryCursor |
-+---------------------+            +--------------------+
+needs no Factory, because is an interface
 */
-class FactoryCursor
-{
-private:
-  // a Instance of implemented plattform specific factory
-  // which has to be set in plattform specific code
-  static FactoryCursor* instance;
-public:
-  // has to be called in plattform specific code
-  static void SetInstance(FactoryCursor* plattformSpecific) { FactoryCursor::instance = plattformSpecific; }
-  static FactoryCursor* GetInstance()
-  {
-    if (FactoryCursor::instance == nullptr)
-      throw;
-    return FactoryCursor::instance;
-  }
-  // interface
-  virtual OsIndependentCursor* CreateNewCursor() = 0;
-};
