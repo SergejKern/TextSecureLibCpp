@@ -7,9 +7,7 @@
 // [ ] done
 // TFS ID: 664
 
-#include "OsIndependentIntent.h"
-#include "OsIndependentBundle.h"
-#include "OsIndependentKeyEvent.h"
+#include "..\Factory\Factory.h"
 
 /*
 public class Activity extends ContextThemeWrapper
@@ -46,8 +44,47 @@ public:
   virtual void OpenOptionsMenu() = 0;
   virtual void SetContentView(int layoutResID) = 0;
   // public final void  [More ...] setResult(int resultCode, Intent data) {
-  virtual void SetResult(int resultCode, OsIndependentIntent* data);
+  virtual void SetResult(int resultCode, OsIndependentIntent* data) = 0;
 };
 
-const OsIndependentString* OsIndependentActivity::WINDOW_SERVICE = new OsIndependentString("window");
-const OsIndependentString* OsIndependentActivity::CONNECTIVITY_SERVICE = new OsIndependentString("connectivity");
+const OsIndependentString* OsIndependentActivity::WINDOW_SERVICE = FactoryString::GetInstance()->CreateNewString("window");
+const OsIndependentString* OsIndependentActivity::CONNECTIVITY_SERVICE = FactoryString::GetInstance()->CreateNewString("connectivity");
+
+/*
+Plattform independend Factory abstract class.
+This class must be implemented for specific plattforms, to create plattform specific String-classes
+
++-----------------------------+  creates   +----------------------------+
+| OsIndependentActivity       |<-----------|    FactoryActivity         |
++-----------------------------+            +----------------------------+
+              ^                                          ^                Plattform independent code
+             /|\                                        /|\
+              |                                          |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+              |                                          |
+              |                                          |                Plattform specific code
+              |                                          |
++-----------------------------+  creates   +----------------------------+
+|     Tizen-Activity          |<-----------| TizenFactoryActivity       |
++-----------------------------+            +----------------------------+
+
+
+*/
+class FactoryActivity
+{
+private:
+  // a Instance of implemented plattform specific factory
+  // which has to be set in plattform specific code
+  static FactoryActivity* instance;
+public:
+  // has to be called in plattform specific code
+  static void SetInstance(FactoryActivity* plattformSpecific) { FactoryActivity::instance = plattformSpecific; }
+  static FactoryActivity* GetInstance()
+  {
+    if (FactoryActivity::instance == nullptr)
+      throw;
+    return FactoryActivity::instance;
+  }
+  // interface
+  virtual OsIndependentActivity* CreateNewActivity() = 0;
+};
