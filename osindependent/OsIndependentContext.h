@@ -9,11 +9,6 @@
 
 #include "..\Factory\Factory.h"
 
-#include "OsIndependentPackageManager.h"
-#include "OsIndependentResources.h"
-#include "OsIndependentContentResolver.h"
-#include "OsIndependentIntent.h"
-
 class OsIndependentContext
 {
 public:
@@ -45,3 +40,40 @@ public:
 const OsIndependentString* OsIndependentContext::INPUT_METHOD_SERVICE = FactoryString::GetInstance()->CreateNewString("input_method");
 const OsIndependentString* OsIndependentContext::CONNECTIVITY_SERVICE = FactoryString::GetInstance()->CreateNewString("connectivity");
 const OsIndependentString* OsIndependentContext::POWER_SERVICE = FactoryString::GetInstance()->CreateNewString("power");
+
+/*
+Plattform independend Factory abstract class.
+This class must be implemented for specific plattforms, to create plattform specific String-classes
+
++----------------------+  creates   +---------------------+
+| OsIndependentContext |<-----------|    FactoryContext   |
++----------------------+            +---------------------+
+           ^                                 ^                Plattform independent code
+          /|\                               /|\
+           |                                 |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+           |                                 |
+           |                                 |                Plattform specific code
+           |                                 |
++----------------------+  creates   +---------------------+
+|     Tizen-Context    |<-----------| TizenFactoryContext |
++----------------------+            +---------------------+
+*/
+class FactoryContext
+{
+private:
+  // a Instance of implemented plattform specific factory
+  // which has to be set in plattform specific code
+  static FactoryContext* instance;
+public:
+  // has to be called in plattform specific code
+  static void SetInstance(FactoryContext* plattformSpecific) { FactoryContext::instance = plattformSpecific; }
+  static FactoryContext* GetInstance()
+  {
+    if (FactoryContext::instance == nullptr)
+      throw;
+    return FactoryContext::instance;
+  }
+  // interface
+  virtual OsIndependentContext* CreateNewContext() = 0;
+};
