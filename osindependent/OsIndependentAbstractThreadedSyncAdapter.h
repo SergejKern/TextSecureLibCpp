@@ -7,11 +7,7 @@
 // [ ] done
 // TFS ID: 682
 
-#include "OsIndependentContext.h"
-#include "OsIndependentAccount.h"
-#include "OsIndependentBundle.h"
-#include "OsIndependentContentProviderClient.h"
-#include "OsIndependentSyncResult.h"
+#include "..\Factory\Factory.h"
 
 /*
   public abstract class AbstractThreadedSyncAdapter
@@ -19,18 +15,12 @@
 class OsIndependentAbstractThreadedSyncAdapter
 {
 private:
-  OsIndependentContext* mContext;
-  const bool mAutoInitialize;
-  bool mAllowParallelSyncs;
-public:  
+  OsIndependentAbstractThreadedSyncAdapter();
 public:
-  OsIndependentAbstractThreadedSyncAdapter(OsIndependentContext* context, bool autoInitialize)
-    : mAutoInitialize(autoInitialize)
-  {
-    mAllowParallelSyncs = false;
-    this->mContext = context;
-  }
-  OsIndependentContext* GetContext() { return this->mContext; }
+  /*
+  OsIndependentAbstractThreadedSyncAdapter(OsIndependentContext* context, bool autoInitialize);
+  */
+  virtual OsIndependentContext* GetContext() = 0;
   // public abstract void[More ...] onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult);
   virtual void OnPerformSync(
     OsIndependentAccount* account, 
@@ -39,3 +29,7 @@ public:
     OsIndependentContentProviderClient* provider, 
     OsIndependentSyncResult* syncResult) = 0;
 };
+
+/*
+needs no Factory, because is abstract
+*/
