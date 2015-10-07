@@ -17,3 +17,6 @@ private:
 public:
 
 };
+/*
+needs no Factory, because is abstract
+*/
