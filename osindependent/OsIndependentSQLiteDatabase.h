@@ -47,3 +47,41 @@ public:
     OsIndependentString* whereClause, 
     List<OsIndependentString*>* whereArgs) = 0;
 };
+/*
+Plattform independend Factory abstract class.
+This class must be implemented for specific plattforms, to create plattform specific String-classes
+
++-----------------------------+  creates   +----------------------------+
+| OsIndependentSQLiteDatabase |<-----------|    FactorySQLiteDatabase   |
++-----------------------------+            +----------------------------+
+              ^                                          ^                Plattform independent code
+             /|\                                        /|\
+              |                                          |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+              |                                          |
+              |                                          |                Plattform specific code
+              |                                          |
++-----------------------------+  creates   +----------------------------+
+|     Tizen-SQLiteDatabase    |<-----------| TizenFactorySQLiteDatabase |
++-----------------------------+            +----------------------------+
+
+
+*/
+class FactorySQLiteDatabase
+{
+private:
+  // a Instance of implemented plattform specific factory
+  // which has to be set in plattform specific code
+  static FactorySQLiteDatabase* instance;
+public:
+  // has to be called in plattform specific code
+  static void SetInstance(FactorySQLiteDatabase* plattformSpecific) { FactorySQLiteDatabase::instance = plattformSpecific; }
+  static FactorySQLiteDatabase* GetInstance()
+  {
+    if (FactorySQLiteDatabase::instance == nullptr)
+      throw;
+    return FactorySQLiteDatabase::instance;
+  }
+  // interface
+  virtual OsIndependentSQLiteDatabase* CreateNewDatabase() = 0;
+};
