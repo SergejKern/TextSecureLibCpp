@@ -7,6 +7,6 @@
 
 dirs:
 [x] dependencies
-[ ] persistence
+[x] persistence
 [x] requirements
 [x] util
