@@ -8,7 +8,8 @@
 // TFS ID: 687
 
 #include "..\Factory\Factory.h"
-#include "..\owntemplates\ArrayList.h"
+#include <vector>
+#include <array>
 
 /*
 a abstract class to be overvritten for every platform.
@@ -22,11 +23,11 @@ class OsIndependentString
 private:
 public:
   virtual bool StartsWith(OsIndependentString*) = 0;
-  virtual ArrayList<OsIndependentString*>* Split(OsIndependentString*, int) = 0;
-  virtual ArrayList<OsIndependentString*>* Split(const char*, int) = 0;
+  virtual std::list<OsIndependentString*>* Split(OsIndependentString*, int) = 0;
+  virtual std::list<OsIndependentString*>* Split(const unsigned char*, int) = 0;
   virtual OsIndependentString* Trim() = 0;
   virtual bool IsEmpty() = 0;
-  virtual ArrayList<char>* GetBytes() = 0;
+  virtual std::vector<unsigned char>* GetBytes() = 0;
   virtual OsIndependentString* Append(OsIndependentString*) = 0;
 };
 
@@ -77,4 +78,5 @@ public:
   virtual OsIndependentString* CreateNewString(unsigned char*) = 0;
   virtual OsIndependentString* CreateNewString(char*) = 0;
   virtual OsIndependentString* CreateNewString(long) = 0;
+  virtual OsIndependentString* CreateNewString(std::vector<unsigned char>* bytes, unsigned char* charsetName) = 0;
 };
