@@ -25,3 +25,11 @@ public:
     return this->detailMessage;
   }
 };
+
+class Error : public Throwable
+{
+};
+
+class AssertionError : public Error
+{
+};
