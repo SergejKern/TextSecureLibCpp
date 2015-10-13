@@ -3,14 +3,14 @@
 Port of class JobQueue from jobmanager-android
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 770
 
 #include "Job.h"
 
 #include "..\..\Factory\Factory.h"
 
-#include "..\..\owntemplates\List.h"
+#include <list>
 //import java.util.ListIterator;
 #include "..\..\owntemplates\Set.h"
 
@@ -18,14 +18,14 @@ class JobQueue
 {
 private:
   Set<OsIndependentString*>* activeGroupIds = new HashSet<OsIndependentString*>();
-  LinkedList<Job*>* jobQueue = new LinkedList<Job*>();
+  std::list<Job*>* jobQueue = new std::list<Job*>();
 public:
   /*synchronized*/
   void OnRequirementStatusChanged();
   /*synchronized*/
   void Add(Job* job);
   /*synchronized*/
-  void AddAll(List<Job*>* jobs);
+  void AddAll(std::list<Job*>* jobs);
   /*synchronized*/
   void Push(Job* job);
   /*synchronized*/
@@ -35,4 +35,8 @@ public:
   Job* GetNextAvailableJob();
   bool IsGroupIdAvailable(OsIndependentString* groupId);
   void SetGroupIdUnavailable(OsIndependentString* groupId);
+  // stolen from java.lang.Object
+  virtual void Wait() = 0;
+  // stolen from java.lang.Object
+  virtual void NotifyAll() = 0;
 };
