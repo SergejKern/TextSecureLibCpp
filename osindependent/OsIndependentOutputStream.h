@@ -7,9 +7,9 @@
 // [x] done
 // TFS ID: 681
 
+#include <vector>
 #include "..\Factory\Factory.h"
 #include "..\javastuff\Closeable.h"
-#include "..\owntemplates\ArrayList.h"
 
 /*
 public abstract class OutputStream implements Closeable, Flushable {
@@ -21,9 +21,9 @@ public:
   // public abstract void  [More ...] write(int b) throws IOException;
   virtual void Write(int b) = 0;
   // public void[More ...] write(byte b[]) throws IOException{
-  virtual void Write(ArrayList<char>* b) = 0;
+  virtual void Write(std::vector<unsigned char>* b) = 0;
   // public void  [More ...] write(byte b[], int off, int len) throws IOException {
-  virtual void Write(ArrayList<char>* b, int off, int len) = 0;
+  virtual void Write(std::vector<unsigned char>* b, int off, int len) = 0;
   // public void  [More ...] flush() throws IOException {
   virtual void Flush() = 0;
   // public void  [More ...] close() throws IOException {
