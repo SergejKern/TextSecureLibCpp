@@ -3,4 +3,4 @@
 [x] JobConsumer
 [ ] JobManager
 [x] JobParameters
-[ ] JobQueue
+[x] JobQueue
