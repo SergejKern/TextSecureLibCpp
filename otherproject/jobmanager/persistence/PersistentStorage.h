@@ -16,7 +16,7 @@ Port of class PersistentStorage from jobmanager-android
 #include "..\dependencies\AggregateDependencyInjector.h"
 //
 #include "..\..\..\javastuff\IOException.h"
-#include "..\..\..\owntemplates\List.h"
+#include <list>
 
 class PersistentStorage
 {
@@ -52,9 +52,9 @@ public:
     JobSerializer* serializer,
     AggregateDependencyInjector* dependencyInjector);
   void Store(Job* job) /*throws IOException*/;
-  List<Job*>* GetAllUnencrypted();
-  List<Job*>* GetAllEncrypted(EncryptionKeys* keys);
-  List<Job*>* GetJobs(EncryptionKeys* keys, OsIndependentString* where);
+  std::list<Job*>* GetAllUnencrypted();
+  std::list<Job*>* GetAllEncrypted(EncryptionKeys* keys);
+  std::list<Job*>* GetJobs(EncryptionKeys* keys, OsIndependentString* where);
   void Remove(long id);
 };
 
