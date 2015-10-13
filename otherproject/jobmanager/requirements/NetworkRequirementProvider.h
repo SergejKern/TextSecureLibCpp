@@ -7,8 +7,7 @@ Port of class NetworkRequirementProvider from jobmanager-android
 // TFS ID: 776
 
 //import android.content.BroadcastReceiver;
-//import android.content.Context;
-//import android.content.Intent;
+#include "..\..\..\Factory\Factory.h"
 //import android.content.IntentFilter;
 //import android.net.ConnectivityManager;
 
@@ -21,11 +20,13 @@ private:
   RequirementListener* listener;
   NetworkRequirement* requirement;
 public:
-  NetworkRequirementProvider(OsIndependentContext* context)
+  NetworkRequirementProvider(OsIndependentContext* context, OsIndependentBroadcastReceiver* broadcastReceiver, FactoryIntentFilter* intentFilterFactory)
   {
     this->requirement = new NetworkRequirement(context);
     // TODO -> deanonymize anonyme function
-    //context->GetApplicationContext()->RegisterReceiver(new BroadcastReceiver()
+    // they instantiate a abstract class BroadcastReceiver and override it anonymously!!!!
+    // pass instance of overriden BroadcastReceiver from outside
+    context->GetApplicationContext()->RegisterReceiver(broadcastReceiver
     //{
     //  //@Override
     //  public void onReceive(Context context, Intent intent) {
@@ -37,7 +38,8 @@ public:
     //      listener.onRequirementStatusChanged();
     //    }
     //  }
-    //}, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+    //}
+    , intentFilterFactory->CreateNewIntentFilter((OsIndependentString*)OsIndependentConnectivityManager::CONNECTIVITY_ACTION));
   }
 
   //@Override
