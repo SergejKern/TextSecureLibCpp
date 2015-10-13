@@ -1,108 +1,111 @@
 #include "TextSecurePreferences.h"
+#include "TextSecurePreferences.h"
+#include "Util.h"
+#include "..\R.h"
 
-const unsigned char* TextSecurePreferences::TAG = "TextSecurePreferences";
+const OsIndependentString* TextSecurePreferences::TAG = FactoryString::GetInstance()->CreateNewString("TextSecurePreferences");
 
-const unsigned char* TextSecurePreferences::IDENTITY_PREF = "pref_choose_identity";
-const unsigned char* TextSecurePreferences::CHANGE_PASSPHRASE_PREF = "pref_change_passphrase";
-const unsigned char* TextSecurePreferences::DISABLE_PASSPHRASE_PREF = "pref_disable_passphrase";
-const unsigned char* TextSecurePreferences::THEME_PREF = "pref_theme";
-const unsigned char* TextSecurePreferences::LANGUAGE_PREF = "pref_language";
-const unsigned char* TextSecurePreferences::MMSC_CUSTOM_HOST_PREF = "pref_apn_mmsc_custom_host";
-const unsigned char* TextSecurePreferences::MMSC_HOST_PREF = "pref_apn_mmsc_host";
-const unsigned char* TextSecurePreferences::MMSC_CUSTOM_PROXY_PREF = "pref_apn_mms_custom_proxy";
-const unsigned char* TextSecurePreferences::MMSC_PROXY_HOST_PREF = "pref_apn_mms_proxy";
-const unsigned char* TextSecurePreferences::MMSC_CUSTOM_PROXY_PORT_PREF = "pref_apn_mms_custom_proxy_port";
-const unsigned char* TextSecurePreferences::MMSC_PROXY_PORT_PREF = "pref_apn_mms_proxy_port";
-const unsigned char* TextSecurePreferences::MMSC_CUSTOM_USERNAME_PREF = "pref_apn_mmsc_custom_username";
-const unsigned char* TextSecurePreferences::MMSC_USERNAME_PREF = "pref_apn_mmsc_username";
-const unsigned char* TextSecurePreferences::MMSC_CUSTOM_PASSWORD_PREF = "pref_apn_mmsc_custom_password";
-const unsigned char* TextSecurePreferences::MMSC_PASSWORD_PREF = "pref_apn_mmsc_password";
-const unsigned char* TextSecurePreferences::THREAD_TRIM_LENGTH = "pref_trim_length";
-const unsigned char* TextSecurePreferences::THREAD_TRIM_NOW = "pref_trim_now";
-const unsigned char* TextSecurePreferences::ENABLE_MANUAL_MMS_PREF = "pref_enable_manual_mms";
+const OsIndependentString* TextSecurePreferences::IDENTITY_PREF = FactoryString::GetInstance()->CreateNewString("pref_choose_identity");
+const OsIndependentString* TextSecurePreferences::CHANGE_PASSPHRASE_PREF = FactoryString::GetInstance()->CreateNewString("pref_change_passphrase");
+const OsIndependentString* TextSecurePreferences::DISABLE_PASSPHRASE_PREF = FactoryString::GetInstance()->CreateNewString("pref_disable_passphrase");
+const OsIndependentString* TextSecurePreferences::THEME_PREF = FactoryString::GetInstance()->CreateNewString("pref_theme");
+const OsIndependentString* TextSecurePreferences::LANGUAGE_PREF = FactoryString::GetInstance()->CreateNewString("pref_language");
+const OsIndependentString* TextSecurePreferences::MMSC_CUSTOM_HOST_PREF = FactoryString::GetInstance()->CreateNewString("pref_apn_mmsc_custom_host");
+const OsIndependentString* TextSecurePreferences::MMSC_HOST_PREF = FactoryString::GetInstance()->CreateNewString("pref_apn_mmsc_host");
+const OsIndependentString* TextSecurePreferences::MMSC_CUSTOM_PROXY_PREF = FactoryString::GetInstance()->CreateNewString("pref_apn_mms_custom_proxy");
+const OsIndependentString* TextSecurePreferences::MMSC_PROXY_HOST_PREF = FactoryString::GetInstance()->CreateNewString("pref_apn_mms_proxy");
+const OsIndependentString* TextSecurePreferences::MMSC_CUSTOM_PROXY_PORT_PREF = FactoryString::GetInstance()->CreateNewString("pref_apn_mms_custom_proxy_port");
+const OsIndependentString* TextSecurePreferences::MMSC_PROXY_PORT_PREF = FactoryString::GetInstance()->CreateNewString("pref_apn_mms_proxy_port");
+const OsIndependentString* TextSecurePreferences::MMSC_CUSTOM_USERNAME_PREF = FactoryString::GetInstance()->CreateNewString("pref_apn_mmsc_custom_username");
+const OsIndependentString* TextSecurePreferences::MMSC_USERNAME_PREF = FactoryString::GetInstance()->CreateNewString("pref_apn_mmsc_username");
+const OsIndependentString* TextSecurePreferences::MMSC_CUSTOM_PASSWORD_PREF = FactoryString::GetInstance()->CreateNewString("pref_apn_mmsc_custom_password");
+const OsIndependentString* TextSecurePreferences::MMSC_PASSWORD_PREF = FactoryString::GetInstance()->CreateNewString("pref_apn_mmsc_password");
+const OsIndependentString* TextSecurePreferences::THREAD_TRIM_LENGTH = FactoryString::GetInstance()->CreateNewString("pref_trim_length");
+const OsIndependentString* TextSecurePreferences::THREAD_TRIM_NOW = FactoryString::GetInstance()->CreateNewString("pref_trim_now");
+const OsIndependentString* TextSecurePreferences::ENABLE_MANUAL_MMS_PREF = FactoryString::GetInstance()->CreateNewString("pref_enable_manual_mms");
 
-const unsigned char* TextSecurePreferences::LAST_VERSION_CODE_PREF = "last_version_code";
-const unsigned char* TextSecurePreferences::RINGTONE_PREF = "pref_key_ringtone";
-const unsigned char* TextSecurePreferences::VIBRATE_PREF = "pref_key_vibrate";
-const unsigned char* TextSecurePreferences::NOTIFICATION_PREF = "pref_key_enable_notifications";
-const unsigned char* TextSecurePreferences::LED_COLOR_PREF = "pref_led_color";
-const unsigned char* TextSecurePreferences::LED_BLINK_PREF = "pref_led_blink";
-const unsigned char* TextSecurePreferences::LED_BLINK_PREF_CUSTOM = "pref_led_blink_custom";
-const unsigned char* TextSecurePreferences::ALL_MMS_PREF = "pref_all_mms";
-const unsigned char* TextSecurePreferences::ALL_SMS_PREF = "pref_all_sms";
-const unsigned char* TextSecurePreferences::PASSPHRASE_TIMEOUT_INTERVAL_PREF = "pref_timeout_interval";
-const unsigned char* TextSecurePreferences::PASSPHRASE_TIMEOUT_PREF = "pref_timeout_passphrase";
-const unsigned char* TextSecurePreferences::SCREEN_SECURITY_PREF = "pref_screen_security";
-const unsigned char* TextSecurePreferences::ENTER_SENDS_PREF = "pref_enter_sends";
-const unsigned char* TextSecurePreferences::ENTER_PRESENT_PREF = "pref_enter_key";
-const unsigned char* TextSecurePreferences::SMS_DELIVERY_REPORT_PREF = "pref_delivery_report_sms";
-const unsigned char* TextSecurePreferences::MMS_USER_AGENT = "pref_mms_user_agent";
-const unsigned char* TextSecurePreferences::MMS_CUSTOM_USER_AGENT = "pref_custom_mms_user_agent";
-const unsigned char* TextSecurePreferences::THREAD_TRIM_ENABLED = "pref_trim_threads";
-const unsigned char* TextSecurePreferences::LOCAL_NUMBER_PREF = "pref_local_number";
-const unsigned char* TextSecurePreferences::VERIFYING_STATE_PREF = "pref_verifying";
-const unsigned char* TextSecurePreferences::REGISTERED_GCM_PREF = "pref_gcm_registered";
-const unsigned char* TextSecurePreferences::GCM_PASSWORD_PREF = "pref_gcm_password";
-const unsigned char* TextSecurePreferences::PROMPTED_PUSH_REGISTRATION_PREF = "pref_prompted_push_registration";
-const unsigned char* TextSecurePreferences::PROMPTED_DEFAULT_SMS_PREF = "pref_prompted_default_sms";
-const unsigned char* TextSecurePreferences::SIGNALING_KEY_PREF = "pref_signaling_key";
-const unsigned char* TextSecurePreferences::DIRECTORY_FRESH_TIME_PREF = "pref_directory_refresh_time";
-const unsigned char* TextSecurePreferences::IN_THREAD_NOTIFICATION_PREF = "pref_key_inthread_notifications";
+const OsIndependentString* TextSecurePreferences::LAST_VERSION_CODE_PREF = FactoryString::GetInstance()->CreateNewString("last_version_code");
+const OsIndependentString* TextSecurePreferences::RINGTONE_PREF = FactoryString::GetInstance()->CreateNewString("pref_key_ringtone");
+const OsIndependentString* TextSecurePreferences::VIBRATE_PREF = FactoryString::GetInstance()->CreateNewString("pref_key_vibrate");
+const OsIndependentString* TextSecurePreferences::NOTIFICATION_PREF = FactoryString::GetInstance()->CreateNewString("pref_key_enable_notifications");
+const OsIndependentString* TextSecurePreferences::LED_COLOR_PREF = FactoryString::GetInstance()->CreateNewString("pref_led_color");
+const OsIndependentString* TextSecurePreferences::LED_BLINK_PREF = FactoryString::GetInstance()->CreateNewString("pref_led_blink");
+const OsIndependentString* TextSecurePreferences::LED_BLINK_PREF_CUSTOM = FactoryString::GetInstance()->CreateNewString("pref_led_blink_custom");
+const OsIndependentString* TextSecurePreferences::ALL_MMS_PREF = FactoryString::GetInstance()->CreateNewString("pref_all_mms");
+const OsIndependentString* TextSecurePreferences::ALL_SMS_PREF = FactoryString::GetInstance()->CreateNewString("pref_all_sms");
+const OsIndependentString* TextSecurePreferences::PASSPHRASE_TIMEOUT_INTERVAL_PREF = FactoryString::GetInstance()->CreateNewString("pref_timeout_interval");
+const OsIndependentString* TextSecurePreferences::PASSPHRASE_TIMEOUT_PREF = FactoryString::GetInstance()->CreateNewString("pref_timeout_passphrase");
+const OsIndependentString* TextSecurePreferences::SCREEN_SECURITY_PREF = FactoryString::GetInstance()->CreateNewString("pref_screen_security");
+const OsIndependentString* TextSecurePreferences::ENTER_SENDS_PREF = FactoryString::GetInstance()->CreateNewString("pref_enter_sends");
+const OsIndependentString* TextSecurePreferences::ENTER_PRESENT_PREF = FactoryString::GetInstance()->CreateNewString("pref_enter_key");
+const OsIndependentString* TextSecurePreferences::SMS_DELIVERY_REPORT_PREF = FactoryString::GetInstance()->CreateNewString("pref_delivery_report_sms");
+const OsIndependentString* TextSecurePreferences::MMS_USER_AGENT = FactoryString::GetInstance()->CreateNewString("pref_mms_user_agent");
+const OsIndependentString* TextSecurePreferences::MMS_CUSTOM_USER_AGENT = FactoryString::GetInstance()->CreateNewString("pref_custom_mms_user_agent");
+const OsIndependentString* TextSecurePreferences::THREAD_TRIM_ENABLED = FactoryString::GetInstance()->CreateNewString("pref_trim_threads");
+const OsIndependentString* TextSecurePreferences::LOCAL_NUMBER_PREF = FactoryString::GetInstance()->CreateNewString("pref_local_number");
+const OsIndependentString* TextSecurePreferences::VERIFYING_STATE_PREF = FactoryString::GetInstance()->CreateNewString("pref_verifying");
+const OsIndependentString* TextSecurePreferences::REGISTERED_GCM_PREF = FactoryString::GetInstance()->CreateNewString("pref_gcm_registered");
+const OsIndependentString* TextSecurePreferences::GCM_PASSWORD_PREF = FactoryString::GetInstance()->CreateNewString("pref_gcm_password");
+const OsIndependentString* TextSecurePreferences::PROMPTED_PUSH_REGISTRATION_PREF = FactoryString::GetInstance()->CreateNewString("pref_prompted_push_registration");
+const OsIndependentString* TextSecurePreferences::PROMPTED_DEFAULT_SMS_PREF = FactoryString::GetInstance()->CreateNewString("pref_prompted_default_sms");
+const OsIndependentString* TextSecurePreferences::SIGNALING_KEY_PREF = FactoryString::GetInstance()->CreateNewString("pref_signaling_key");
+const OsIndependentString* TextSecurePreferences::DIRECTORY_FRESH_TIME_PREF = FactoryString::GetInstance()->CreateNewString("pref_directory_refresh_time");
+const OsIndependentString* TextSecurePreferences::IN_THREAD_NOTIFICATION_PREF = FactoryString::GetInstance()->CreateNewString("pref_key_inthread_notifications");
 
-const unsigned char* TextSecurePreferences::LOCAL_REGISTRATION_ID_PREF = "pref_local_registration_id";
-const unsigned char* TextSecurePreferences::SIGNED_PREKEY_REGISTERED_PREF = "pref_signed_prekey_registered";
-const unsigned char* TextSecurePreferences::WIFI_SMS_PREF = "pref_wifi_sms";
+const OsIndependentString* TextSecurePreferences::LOCAL_REGISTRATION_ID_PREF = FactoryString::GetInstance()->CreateNewString("pref_local_registration_id");
+const OsIndependentString* TextSecurePreferences::SIGNED_PREKEY_REGISTERED_PREF = FactoryString::GetInstance()->CreateNewString("pref_signed_prekey_registered");
+const OsIndependentString* TextSecurePreferences::WIFI_SMS_PREF = FactoryString::GetInstance()->CreateNewString("pref_wifi_sms");
 
-const unsigned char* TextSecurePreferences::GCM_REGISTRATION_ID_PREF = "pref_gcm_registration_id";
-const unsigned char* TextSecurePreferences::GCM_REGISTRATION_ID_VERSION_PREF = "pref_gcm_registration_id_version";
-const unsigned char* TextSecurePreferences::WEBSOCKET_REGISTERED_PREF = "pref_websocket_registered";
-const unsigned char* TextSecurePreferences::RATING_LATER_PREF = "pref_rating_later";
-const unsigned char* TextSecurePreferences::RATING_ENABLED_PREF = "pref_rating_enabled";
+const OsIndependentString* TextSecurePreferences::GCM_REGISTRATION_ID_PREF = FactoryString::GetInstance()->CreateNewString("pref_gcm_registration_id");
+const OsIndependentString* TextSecurePreferences::GCM_REGISTRATION_ID_VERSION_PREF = FactoryString::GetInstance()->CreateNewString("pref_gcm_registration_id_version");
+const OsIndependentString* TextSecurePreferences::WEBSOCKET_REGISTERED_PREF = FactoryString::GetInstance()->CreateNewString("pref_websocket_registered");
+const OsIndependentString* TextSecurePreferences::RATING_LATER_PREF = FactoryString::GetInstance()->CreateNewString("pref_rating_later");
+const OsIndependentString* TextSecurePreferences::RATING_ENABLED_PREF = FactoryString::GetInstance()->CreateNewString("pref_rating_enabled");
 
-const unsigned char* TextSecurePreferences::REPEAT_ALERTS_PREF = "pref_repeat_alerts";
-const unsigned char* TextSecurePreferences::NOTIFICATION_PRIVACY_PREF = "pref_notification_privacy";
+const OsIndependentString* TextSecurePreferences::REPEAT_ALERTS_PREF = FactoryString::GetInstance()->CreateNewString("pref_repeat_alerts");
+const OsIndependentString* TextSecurePreferences::NOTIFICATION_PRIVACY_PREF = FactoryString::GetInstance()->CreateNewString("pref_notification_privacy");
 
-const unsigned char* TextSecurePreferences::MEDIA_DOWNLOAD_MOBILE_PREF = "pref_media_download_mobile";
-const unsigned char* TextSecurePreferences::MEDIA_DOWNLOAD_WIFI_PREF = "pref_media_download_wifi";
-const unsigned char* TextSecurePreferences::MEDIA_DOWNLOAD_ROAMING_PREF = "pref_media_download_roaming";
+const OsIndependentString* TextSecurePreferences::MEDIA_DOWNLOAD_MOBILE_PREF = FactoryString::GetInstance()->CreateNewString("pref_media_download_mobile");
+const OsIndependentString* TextSecurePreferences::MEDIA_DOWNLOAD_WIFI_PREF = FactoryString::GetInstance()->CreateNewString("pref_media_download_wifi");
+const OsIndependentString* TextSecurePreferences::MEDIA_DOWNLOAD_ROAMING_PREF = FactoryString::GetInstance()->CreateNewString("pref_media_download_roaming");
 
 NotificationPrivacyPreference* TextSecurePreferences::GetNotificationPrivacy(OsIndependentContext* context)
 {
-  return new NotificationPrivacyPreference(GetStringPreference(context, (unsigned char*)NOTIFICATION_PRIVACY_PREF, (unsigned char*)"all"));
+  return new NotificationPrivacyPreference(GetStringPreference(context, (OsIndependentString*)NOTIFICATION_PRIVACY_PREF, (OsIndependentString*)"all"));
 }
 long TextSecurePreferences::GetRatingLaterTimestamp(OsIndependentContext* context)
 {
-  return GetLongPreference(context, (unsigned char*)RATING_LATER_PREF, 0);
+  return GetLongPreference(context, (OsIndependentString*)RATING_LATER_PREF, 0);
 }
 void TextSecurePreferences::SetRatingLaterTimestamp(OsIndependentContext* context, long timestamp)
 {
-  SetLongPreference(context, (unsigned char*)RATING_LATER_PREF, timestamp);
+  SetLongPreference(context, (OsIndependentString*)RATING_LATER_PREF, timestamp);
 }
 bool TextSecurePreferences::IsRatingEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)RATING_ENABLED_PREF, true);
+  return GetBooleanPreference(context, (OsIndependentString*)RATING_ENABLED_PREF, true);
 }
 void TextSecurePreferences::SetRatingEnabled(OsIndependentContext* context, bool enabled)
 {
-  SetBooleanPreference(context, (unsigned char*)RATING_ENABLED_PREF, enabled);
+  SetBooleanPreference(context, (OsIndependentString*)RATING_ENABLED_PREF, enabled);
 }
 bool TextSecurePreferences::IsWebsocketRegistered(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)WEBSOCKET_REGISTERED_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)WEBSOCKET_REGISTERED_PREF, false);
 }
 void TextSecurePreferences::SetWebsocketRegistered(OsIndependentContext* context, bool registered)
 {
-  SetBooleanPreference(context, (unsigned char*)WEBSOCKET_REGISTERED_PREF, registered);
+  SetBooleanPreference(context, (OsIndependentString*)WEBSOCKET_REGISTERED_PREF, registered);
 }
 bool TextSecurePreferences::IsWifiSmsEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)WIFI_SMS_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)WIFI_SMS_PREF, false);
 }
 int TextSecurePreferences::GetRepeatAlertsCount(OsIndependentContext* context)
 {
   //try
   //{
-  return Integer.parseInt(GetStringPreference(context, (unsigned char*)REPEAT_ALERTS_PREF, (unsigned char*)"0"));
+  return GetStringPreference(context, (OsIndependentString*)REPEAT_ALERTS_PREF, (OsIndependentString*)"0")->ConvertToInt();
   //}
   //catch (NumberFormatException e) {
   //  Log.w(TAG, e);
@@ -111,388 +114,408 @@ int TextSecurePreferences::GetRepeatAlertsCount(OsIndependentContext* context)
 }
 void TextSecurePreferences::SetRepeatAlertsCount(OsIndependentContext* context, int count)
 {
-  SetStringPreference(context, (unsigned char*)REPEAT_ALERTS_PREF, unsigned char*.valueOf(count));
+  SetStringPreference(context, (OsIndependentString*)REPEAT_ALERTS_PREF, FactoryString::GetInstance()->CreateNewString(count));
 }
 bool TextSecurePreferences::IsSignedPreKeyRegistered(OsIndependentContext* context)
 {
-  return SetBooleanPreference(context, (unsigned char*)SIGNED_PREKEY_REGISTERED_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)SIGNED_PREKEY_REGISTERED_PREF, false);
 }
 void TextSecurePreferences::SetSignedPreKeyRegistered(OsIndependentContext* context, bool value)
 {
-  SetBooleanPreference(context, (unsigned char*)SIGNED_PREKEY_REGISTERED_PREF, value);
+  SetBooleanPreference(context, (OsIndependentString*)SIGNED_PREKEY_REGISTERED_PREF, value);
 }
-void TextSecurePreferences::SetGcmRegistrationId(OsIndependentContext* context, unsigned char* registrationId)
+void TextSecurePreferences::SetGcmRegistrationId(OsIndependentContext* context, OsIndependentString* registrationId)
 {
-  SetStringPreference(context, (unsigned char*)GCM_REGISTRATION_ID_PREF, registrationId);
-  SetIntegerPrefrence(context, (unsigned char*)GCM_REGISTRATION_ID_VERSION_PREF, Util::getCurrentApkReleaseVersion(context));
+  SetStringPreference(context, (OsIndependentString*)GCM_REGISTRATION_ID_PREF, registrationId);
+  SetIntegerPrefrence(context, (OsIndependentString*)GCM_REGISTRATION_ID_VERSION_PREF, Util::GetCurrentApkReleaseVersion(context));
 }
-unsigned char* TextSecurePreferences::GetGcmRegistrationId(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetGcmRegistrationId(OsIndependentContext* context)
 {
-  int storedRegistrationIdVersion = GetIntegerPreference(context, (unsigned char*)GCM_REGISTRATION_ID_VERSION_PREF, 0);
-  if (storedRegistrationIdVersion != Util::getCurrentApkReleaseVersion(context))
+  int storedRegistrationIdVersion = GetIntegerPreference(context, (OsIndependentString*)GCM_REGISTRATION_ID_VERSION_PREF, 0);
+  if (storedRegistrationIdVersion != Util::GetCurrentApkReleaseVersion(context))
   {
     return nullptr;
   }
   else {
-    return GetStringPreference(context, (unsigned char*)GCM_REGISTRATION_ID_PREF, nullptr);
+    return GetStringPreference(context, (OsIndependentString*)GCM_REGISTRATION_ID_PREF, nullptr);
   }
 }
 bool TextSecurePreferences::IsSmsEnabled(OsIndependentContext* context)
 {
-  if (Build::VERSION.SDK_INT >= Build::VERSION_CODES.KITKAT) {
+  //if (Build::VERSION::SDK_INT >= Build::VERSION_CODES::KITKAT)
+  if (Util::CanAskForDefaultSmsProvider())
+  {
     return Util::IsDefaultSmsProvider(context);
   }
-  else {
+  else
+  {
     return IsInterceptAllSmsEnabled(context);
   }
 }
 int TextSecurePreferences::GetLocalRegistrationId(OsIndependentContext* context)
 {
-  return GetIntegerPreference(context, (unsigned char*)LOCAL_REGISTRATION_ID_PREF, 0);
+  return GetIntegerPreference(context, (OsIndependentString*)LOCAL_REGISTRATION_ID_PREF, 0);
 }
 void TextSecurePreferences::SetLocalRegistrationId(OsIndependentContext* context, int registrationId)
 {
-  SetIntegerPrefrence(context, (unsigned char*)LOCAL_REGISTRATION_ID_PREF, registrationId);
+  SetIntegerPrefrence(context, (OsIndependentString*)LOCAL_REGISTRATION_ID_PREF, registrationId);
 }
 bool TextSecurePreferences::IsInThreadNotifications(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)IN_THREAD_NOTIFICATION_PREF, true);
+  return GetBooleanPreference(context, (OsIndependentString*)IN_THREAD_NOTIFICATION_PREF, true);
 }
 long TextSecurePreferences::GetDirectoryRefreshTime(OsIndependentContext* context)
 {
-  return GetLongPreference(context, (unsigned char*)DIRECTORY_FRESH_TIME_PREF, 0L);
+  return GetLongPreference(context, (OsIndependentString*)DIRECTORY_FRESH_TIME_PREF, 0L);
 }
 void TextSecurePreferences::SetDirectoryRefreshTime(OsIndependentContext* context, long value)
 {
-  SetLongPreference(context, (unsigned char*)DIRECTORY_FRESH_TIME_PREF, value);
+  SetLongPreference(context, (OsIndependentString*)DIRECTORY_FRESH_TIME_PREF, value);
 }
-unsigned char* TextSecurePreferences::GetLocalNumber(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetLocalNumber(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)LOCAL_NUMBER_PREF, (unsigned char*)"No Stored Number");
+  return GetStringPreference(context, (OsIndependentString*)LOCAL_NUMBER_PREF, (OsIndependentString*)"No Stored Number");
 }
-void TextSecurePreferences::SetLocalNumber(OsIndependentContext* context, unsigned char* localNumber)
+void TextSecurePreferences::SetLocalNumber(OsIndependentContext* context, OsIndependentString* localNumber)
 {
-  SetStringPreference(context, (unsigned char*)LOCAL_NUMBER_PREF, localNumber);
+  SetStringPreference(context, (OsIndependentString*)LOCAL_NUMBER_PREF, localNumber);
 }
-unsigned char* TextSecurePreferences::GetPushServerPassword(OsIndependentContext* context) {
-  return GetStringPreference(context, (unsigned char*)GCM_PASSWORD_PREF, nullptr);
+OsIndependentString* TextSecurePreferences::GetPushServerPassword(OsIndependentContext* context) {
+  return GetStringPreference(context, (OsIndependentString*)GCM_PASSWORD_PREF, nullptr);
 }
-void TextSecurePreferences::SetPushServerPassword(OsIndependentContext* context, unsigned char* password)
+void TextSecurePreferences::SetPushServerPassword(OsIndependentContext* context, OsIndependentString* password)
 {
-  SetStringPreference(context, (unsigned char*)GCM_PASSWORD_PREF, password);
+  SetStringPreference(context, (OsIndependentString*)GCM_PASSWORD_PREF, password);
 }
-void TextSecurePreferences::SetSignalingKey(OsIndependentContext* context, unsigned char* signalingKey)
+void TextSecurePreferences::SetSignalingKey(OsIndependentContext* context, OsIndependentString* signalingKey)
 {
-  SetStringPreference(context, (unsigned char*)SIGNALING_KEY_PREF, signalingKey);
+  SetStringPreference(context, (OsIndependentString*)SIGNALING_KEY_PREF, signalingKey);
 }
-unsigned char* TextSecurePreferences::GetSignalingKey(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetSignalingKey(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)SIGNALING_KEY_PREF, nullptr);
+  return GetStringPreference(context, (OsIndependentString*)SIGNALING_KEY_PREF, nullptr);
 }
 bool TextSecurePreferences::IsEnterImeKeyEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)ENTER_PRESENT_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)ENTER_PRESENT_PREF, false);
 }
 bool TextSecurePreferences::IsEnterSendsEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)ENTER_SENDS_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)ENTER_SENDS_PREF, false);
 }
 bool TextSecurePreferences::IsPasswordDisabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)DISABLE_PASSPHRASE_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)DISABLE_PASSPHRASE_PREF, false);
 }
 void TextSecurePreferences::SetPasswordDisabled(OsIndependentContext* context, bool disabled)
 {
-  SetBooleanPreference(context, (unsigned char*)DISABLE_PASSPHRASE_PREF, disabled);
+  SetBooleanPreference(context, (OsIndependentString*)DISABLE_PASSPHRASE_PREF, disabled);
 }
 bool TextSecurePreferences::GetUseCustomMmsc(OsIndependentContext* context)
 {
   bool legacy = TextSecurePreferences::IsLegacyUseLocalApnsEnabled(context);
-  return GetBooleanPreference(context, (unsigned char*)MMSC_CUSTOM_HOST_PREF, legacy);
+  return GetBooleanPreference(context, (OsIndependentString*)MMSC_CUSTOM_HOST_PREF, legacy);
 }
 void TextSecurePreferences::SetUseCustomMmsc(OsIndependentContext* context, bool value)
 {
-  SetBooleanPreference(context, (unsigned char*)MMSC_CUSTOM_HOST_PREF, value);
+  SetBooleanPreference(context, (OsIndependentString*)MMSC_CUSTOM_HOST_PREF, value);
 }
-unsigned char* TextSecurePreferences::GetMmscUrl(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetMmscUrl(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)MMSC_HOST_PREF, "");
+  return GetStringPreference(context, (OsIndependentString*)MMSC_HOST_PREF, FactoryString::GetInstance()->CreateNewString(""));
 }
-void TextSecurePreferences::SetMmscUrl(OsIndependentContext* context, unsigned char* mmsc)
+void TextSecurePreferences::SetMmscUrl(OsIndependentContext* context, OsIndependentString* mmsc)
 {
-  SetStringPreference(context, (unsigned char*)MMSC_HOST_PREF, mmsc);
+  SetStringPreference(context, (OsIndependentString*)MMSC_HOST_PREF, mmsc);
 }
 bool TextSecurePreferences::GetUseCustomMmscProxy(OsIndependentContext* context)
 {
   bool legacy = TextSecurePreferences::IsLegacyUseLocalApnsEnabled(context);
-  return GetBooleanPreference(context, (unsigned char*)MMSC_CUSTOM_PROXY_PREF, legacy);
+  return GetBooleanPreference(context, (OsIndependentString*)MMSC_CUSTOM_PROXY_PREF, legacy);
 }
 void TextSecurePreferences::SetUseCustomMmscProxy(OsIndependentContext* context, bool value)
 {
-  SetBooleanPreference(context, (unsigned char*)MMSC_CUSTOM_PROXY_PREF, value);
+  SetBooleanPreference(context, (OsIndependentString*)MMSC_CUSTOM_PROXY_PREF, value);
 }
-unsigned char* TextSecurePreferences::GetMmscProxy(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetMmscProxy(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)MMSC_PROXY_HOST_PREF, "");
+  return GetStringPreference(context, (OsIndependentString*)MMSC_PROXY_HOST_PREF, FactoryString::GetInstance()->CreateNewString(""));
 }
-void TextSecurePreferences::SetMmscProxy(OsIndependentContext* context, unsigned char* value)
+void TextSecurePreferences::SetMmscProxy(OsIndependentContext* context, OsIndependentString* value)
 {
-  SetStringPreference(context, (unsigned char*)MMSC_PROXY_HOST_PREF, value);
+  SetStringPreference(context, (OsIndependentString*)MMSC_PROXY_HOST_PREF, value);
 }
 bool TextSecurePreferences::GetUseCustomMmscProxyPort(OsIndependentContext* context)
 {
   bool legacy = TextSecurePreferences::IsLegacyUseLocalApnsEnabled(context);
-  return GetBooleanPreference(context, (unsigned char*)MMSC_CUSTOM_PROXY_PORT_PREF, legacy);
+  return GetBooleanPreference(context, (OsIndependentString*)MMSC_CUSTOM_PROXY_PORT_PREF, legacy);
 }
 void TextSecurePreferences::SetUseCustomMmscProxyPort(OsIndependentContext* context, bool value)
 {
-  SetBooleanPreference(context, (unsigned char*)MMSC_CUSTOM_PROXY_PORT_PREF, value);
+  SetBooleanPreference(context, (OsIndependentString*)MMSC_CUSTOM_PROXY_PORT_PREF, value);
 }
-unsigned char* TextSecurePreferences::GetMmscProxyPort(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetMmscProxyPort(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)MMSC_PROXY_PORT_PREF, (unsigned char*)"");
+  return GetStringPreference(context, (OsIndependentString*)MMSC_PROXY_PORT_PREF, FactoryString::GetInstance()->CreateNewString(""));
 }
-void TextSecurePreferences::SetMmscProxyPort(OsIndependentContext* context, unsigned char* value)
+void TextSecurePreferences::SetMmscProxyPort(OsIndependentContext* context, OsIndependentString* value)
 {
-  SetStringPreference(context, (unsigned char*)MMSC_PROXY_PORT_PREF, value);
+  SetStringPreference(context, (OsIndependentString*)MMSC_PROXY_PORT_PREF, value);
 }
 bool TextSecurePreferences::GetUseCustomMmscUsername(OsIndependentContext* context)
 {
   bool legacy = TextSecurePreferences::IsLegacyUseLocalApnsEnabled(context);
-  return GetBooleanPreference(context, (unsigned char*)MMSC_CUSTOM_USERNAME_PREF, legacy);
+  return GetBooleanPreference(context, (OsIndependentString*)MMSC_CUSTOM_USERNAME_PREF, legacy);
 }
 void TextSecurePreferences::SetUseCustomMmscUsername(OsIndependentContext* context, bool value)
 {
-  SetBooleanPreference(context, (unsigned char*)MMSC_CUSTOM_USERNAME_PREF, value);
+  SetBooleanPreference(context, (OsIndependentString*)MMSC_CUSTOM_USERNAME_PREF, value);
 }
-unsigned char* TextSecurePreferences::GetMmscUsername(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetMmscUsername(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)MMSC_USERNAME_PREF, (unsigned char*)"");
+  return GetStringPreference(context, (OsIndependentString*)MMSC_USERNAME_PREF, FactoryString::GetInstance()->CreateNewString(""));
 }
-void TextSecurePreferences::SetMmscUsername(OsIndependentContext* context, unsigned char* value)
+void TextSecurePreferences::SetMmscUsername(OsIndependentContext* context, OsIndependentString* value)
 {
-  SetStringPreference(context, (unsigned char*)MMSC_USERNAME_PREF, value);
+  SetStringPreference(context, (OsIndependentString*)MMSC_USERNAME_PREF, value);
 }
 bool TextSecurePreferences::GetUseCustomMmscPassword(OsIndependentContext* context)
 {
   bool legacy = TextSecurePreferences::IsLegacyUseLocalApnsEnabled(context);
-  return GetBooleanPreference(context, (unsigned char*)MMSC_CUSTOM_PASSWORD_PREF, legacy);
+  return GetBooleanPreference(context, (OsIndependentString*)MMSC_CUSTOM_PASSWORD_PREF, legacy);
 }
 void TextSecurePreferences::SetUseCustomMmscPassword(OsIndependentContext* context, bool value)
 {
-  SetBooleanPreference(context, (unsigned char*)MMSC_CUSTOM_PASSWORD_PREF, value);
+  SetBooleanPreference(context, (OsIndependentString*)MMSC_CUSTOM_PASSWORD_PREF, value);
 }
-unsigned char* TextSecurePreferences::GetMmscPassword(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetMmscPassword(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)MMSC_PASSWORD_PREF, "");
+  return GetStringPreference(context, (OsIndependentString*)MMSC_PASSWORD_PREF, FactoryString::GetInstance()->CreateNewString(""));
 }
-void TextSecurePreferences::SetMmscPassword(OsIndependentContext* context, unsigned char* value)
+void TextSecurePreferences::SetMmscPassword(OsIndependentContext* context, OsIndependentString* value)
 {
-  SetStringPreference(context, (unsigned char*)MMSC_PASSWORD_PREF, value);
+  SetStringPreference(context, (OsIndependentString*)MMSC_PASSWORD_PREF, value);
 }
-unsigned char* TextSecurePreferences::GetMmsUserAgent(OsIndependentContext* context, unsigned char* defaultUserAgent)
+OsIndependentString* TextSecurePreferences::GetMmsUserAgent(OsIndependentContext* context, OsIndependentString* defaultUserAgent)
 {
-  bool useCustom = GetBooleanPreference(context, (unsigned char*)MMS_CUSTOM_USER_AGENT, false);
+  bool useCustom = GetBooleanPreference(context, (OsIndependentString*)MMS_CUSTOM_USER_AGENT, false);
   if (useCustom)
-    return GetStringPreference(context, (unsigned char*)MMS_USER_AGENT, defaultUserAgent);
+    return GetStringPreference(context, (OsIndependentString*)MMS_USER_AGENT, defaultUserAgent);
   else
     return defaultUserAgent;
 }
-unsigned char* TextSecurePreferences::GetIdentityContactUri(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetIdentityContactUri(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)IDENTITY_PREF, nullptr);
+  return GetStringPreference(context, (OsIndependentString*)IDENTITY_PREF, nullptr);
 }
-void TextSecurePreferences::SetIdentityContactUri(OsIndependentContext* context, unsigned char* identityUri)
+void TextSecurePreferences::SetIdentityContactUri(OsIndependentContext* context, OsIndependentString* identityUri)
 {
-  SetStringPreference(context, (unsigned char*)IDENTITY_PREF, identityUri);
+  SetStringPreference(context, (OsIndependentString*)IDENTITY_PREF, identityUri);
 }
 bool TextSecurePreferences::IsScreenSecurityEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)SCREEN_SECURITY_PREF, true);
+  return GetBooleanPreference(context, (OsIndependentString*)SCREEN_SECURITY_PREF, true);
 }
 bool TextSecurePreferences::IsLegacyUseLocalApnsEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)ENABLE_MANUAL_MMS_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)ENABLE_MANUAL_MMS_PREF, false);
 }
 int TextSecurePreferences::GetLastVersionCode(OsIndependentContext* context)
 {
-  return GetIntegerPreference(context, (unsigned char*)LAST_VERSION_CODE_PREF, 0);
+  return GetIntegerPreference(context, (OsIndependentString*)LAST_VERSION_CODE_PREF, 0);
 }
 void TextSecurePreferences::SetLastVersionCode(OsIndependentContext* context, int versionCode) /*throws IOException*/
 {
-  if (!SetIntegerPrefrenceBlocking(context, (unsigned char*)LAST_VERSION_CODE_PREF, versionCode))
+  if (!SetIntegerPrefrenceBlocking(context, (OsIndependentString*)LAST_VERSION_CODE_PREF, versionCode))
   {
     /* TODO throw new IOException("couldn't write version code to sharedpreferences");*/
   }
 }
-unsigned char* TextSecurePreferences::GetTheme(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetTheme(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)THEME_PREF, (unsigned char*)"light");
+  return GetStringPreference(context, (OsIndependentString*)THEME_PREF, FactoryString::GetInstance()->CreateNewString("light"));
 }
 bool TextSecurePreferences::IsVerifying(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)VERIFYING_STATE_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)VERIFYING_STATE_PREF, false);
 }
 void TextSecurePreferences::SetVerifying(OsIndependentContext* context, bool verifying)
 {
-  SetBooleanPreference(context, (unsigned char*)VERIFYING_STATE_PREF, verifying);
+  SetBooleanPreference(context, (OsIndependentString*)VERIFYING_STATE_PREF, verifying);
 }
 bool TextSecurePreferences::IsPushRegistered(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)REGISTERED_GCM_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)REGISTERED_GCM_PREF, false);
 }
 void TextSecurePreferences::SetPushRegistered(OsIndependentContext* context, bool registered)
 {
   //  Log.w("TextSecurePreferences", "Setting push registered: " + registered);
-  SetBooleanPreference(context, (unsigned char*)REGISTERED_GCM_PREF, registered);
+  SetBooleanPreference(context, (OsIndependentString*)REGISTERED_GCM_PREF, registered);
 }
 bool TextSecurePreferences::IsPassphraseTimeoutEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)PASSPHRASE_TIMEOUT_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)PASSPHRASE_TIMEOUT_PREF, false);
 }
 int TextSecurePreferences::GetPassphraseTimeoutInterval(OsIndependentContext* context)
 {
-  return GetIntegerPreference(context, (unsigned char*)PASSPHRASE_TIMEOUT_INTERVAL_PREF, 5 * 60);
+  return GetIntegerPreference(context, (OsIndependentString*)PASSPHRASE_TIMEOUT_INTERVAL_PREF, 5 * 60);
 }
 void TextSecurePreferences::SetPassphraseTimeoutInterval(OsIndependentContext* context, int interval)
 {
-  SetIntegerPrefrence(context, (unsigned char*)PASSPHRASE_TIMEOUT_INTERVAL_PREF, interval);
+  SetIntegerPrefrence(context, (OsIndependentString*)PASSPHRASE_TIMEOUT_INTERVAL_PREF, interval);
 }
-unsigned char* TextSecurePreferences::GetLanguage(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetLanguage(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)LANGUAGE_PREF, "zz");
+  return GetStringPreference(context, (OsIndependentString*)LANGUAGE_PREF, FactoryString::GetInstance()->CreateNewString("zz"));
 }
-void TextSecurePreferences::SetLanguage(OsIndependentContext* context, unsigned char* language)
+void TextSecurePreferences::SetLanguage(OsIndependentContext* context, OsIndependentString* language)
 {
-  SetStringPreference(context, (unsigned char*)LANGUAGE_PREF, language);
+  SetStringPreference(context, (OsIndependentString*)LANGUAGE_PREF, language);
 }
 bool TextSecurePreferences::IsSmsDeliveryReportsEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)SMS_DELIVERY_REPORT_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)SMS_DELIVERY_REPORT_PREF, false);
 }
 bool TextSecurePreferences::HasPromptedPushRegistration(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)PROMPTED_PUSH_REGISTRATION_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)PROMPTED_PUSH_REGISTRATION_PREF, false);
 }
 void TextSecurePreferences::SetPromptedPushRegistration(OsIndependentContext* context, bool value)
 {
-  SetBooleanPreference(context, (unsigned char*)PROMPTED_PUSH_REGISTRATION_PREF, value);
+  SetBooleanPreference(context, (OsIndependentString*)PROMPTED_PUSH_REGISTRATION_PREF, value);
 }
 bool TextSecurePreferences::HasPromptedDefaultSmsProvider(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)PROMPTED_DEFAULT_SMS_PREF, false);
+  return GetBooleanPreference(context, (OsIndependentString*)PROMPTED_DEFAULT_SMS_PREF, false);
 }
 void TextSecurePreferences::SetPromptedDefaultSmsProvider(OsIndependentContext* context, bool value)
 {
-  SetBooleanPreference(context, (unsigned char*)PROMPTED_DEFAULT_SMS_PREF, value);
+  SetBooleanPreference(context, (OsIndependentString*)PROMPTED_DEFAULT_SMS_PREF, value);
 }
 bool TextSecurePreferences::IsInterceptAllMmsEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)ALL_MMS_PREF, true);
+  return GetBooleanPreference(context, (OsIndependentString*)ALL_MMS_PREF, true);
 }
 bool TextSecurePreferences::IsInterceptAllSmsEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)ALL_SMS_PREF, true);
+  return GetBooleanPreference(context, (OsIndependentString*)ALL_SMS_PREF, true);
 }
 bool TextSecurePreferences::IsNotificationsEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)NOTIFICATION_PREF, true);
+  return GetBooleanPreference(context, (OsIndependentString*)NOTIFICATION_PREF, true);
 }
-unsigned char* TextSecurePreferences::GetNotificationRingtone(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetNotificationRingtone(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)RINGTONE_PREF, Settings::System::DEFAULT_NOTIFICATION_URI.toString());
+  // public static final Uri DEFAULT_NOTIFICATION_URI = getUriFor(NOTIFICATION_SOUND)
+  // public static final String NOTIFICATION_SOUND = "notification_sound";
+  return GetStringPreference(context, (OsIndependentString*)RINGTONE_PREF, FactoryString::GetInstance()->CreateNewString("notification_sound"));
 }
 bool TextSecurePreferences::IsNotificationVibrateEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)VIBRATE_PREF, true);
+  return GetBooleanPreference(context, (OsIndependentString*)VIBRATE_PREF, true);
 }
-unsigned char* TextSecurePreferences::GetNotificationLedColor(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetNotificationLedColor(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)LED_COLOR_PREF, (unsigned char*)"blue");
+  return GetStringPreference(context, (OsIndependentString*)LED_COLOR_PREF, FactoryString::GetInstance()->CreateNewString("blue"));
 }
-unsigned char* TextSecurePreferences::GetNotificationLedPattern(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetNotificationLedPattern(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)LED_BLINK_PREF, (unsigned char*)"500,2000");
+  return GetStringPreference(context, (OsIndependentString*)LED_BLINK_PREF, FactoryString::GetInstance()->CreateNewString("500,2000"));
 }
-unsigned char* TextSecurePreferences::GetNotificationLedPatternCustom(OsIndependentContext* context)
+OsIndependentString* TextSecurePreferences::GetNotificationLedPatternCustom(OsIndependentContext* context)
 {
-  return GetStringPreference(context, (unsigned char*)LED_BLINK_PREF_CUSTOM, (unsigned char*)"500,2000");
+  return GetStringPreference(context, (OsIndependentString*)LED_BLINK_PREF_CUSTOM, FactoryString::GetInstance()->CreateNewString("500,2000"));
 }
-void TextSecurePreferences::SetNotificationLedPatternCustom(OsIndependentContext* context, unsigned char* pattern)
+void TextSecurePreferences::SetNotificationLedPatternCustom(OsIndependentContext* context, OsIndependentString* pattern)
 {
-  SetStringPreference(context, (unsigned char*)LED_BLINK_PREF_CUSTOM, pattern);
+  SetStringPreference(context, (OsIndependentString*)LED_BLINK_PREF_CUSTOM, pattern);
 }
 bool TextSecurePreferences::IsThreadLengthTrimmingEnabled(OsIndependentContext* context)
 {
-  return GetBooleanPreference(context, (unsigned char*)THREAD_TRIM_ENABLED, false);
+  return GetBooleanPreference(context, (OsIndependentString*)THREAD_TRIM_ENABLED, false);
 }
 int TextSecurePreferences::GetThreadTrimLength(OsIndependentContext* context)
 {
-  return Integer.parseInt(GetStringPreference(context, (unsigned char*)THREAD_TRIM_LENGTH, (unsigned char*)"500"));
+  return GetStringPreference(context, (OsIndependentString*)THREAD_TRIM_LENGTH, FactoryString::GetInstance()->CreateNewString("500"))->ConvertToInt();
 }
-Set<unsigned char*> TextSecurePreferences::GetMobileMediaDownloadAllowed(OsIndependentContext* context)
+std::set<OsIndependentString*>* TextSecurePreferences::GetMobileMediaDownloadAllowed(OsIndependentContext* context)
 {
-  return GetMediaDownloadAllowed(context, (unsigned char*)MEDIA_DOWNLOAD_MOBILE_PREF, R.array.pref_media_download_mobile_data_default);
+  return GetMediaDownloadAllowed(context, (OsIndependentString*)MEDIA_DOWNLOAD_MOBILE_PREF, R::Array::pref_media_download_mobile_data_default);
 }
-Set<unsigned char*> TextSecurePreferences::GetWifiMediaDownloadAllowed(OsIndependentContext* context)
+std::set<OsIndependentString*>* TextSecurePreferences::GetWifiMediaDownloadAllowed(OsIndependentContext* context)
 {
-  return GetMediaDownloadAllowed(context, (unsigned char*)MEDIA_DOWNLOAD_WIFI_PREF, R.array.pref_media_download_wifi_default);
+  return GetMediaDownloadAllowed(context, (OsIndependentString*)MEDIA_DOWNLOAD_WIFI_PREF, R::Array::pref_media_download_wifi_default);
 }
-Set<unsigned char*> TextSecurePreferences::GetRoamingMediaDownloadAllowed(OsIndependentContext* context)
+std::set<OsIndependentString*>* TextSecurePreferences::GetRoamingMediaDownloadAllowed(OsIndependentContext* context)
 {
-  return GetMediaDownloadAllowed(context, (unsigned char*)MEDIA_DOWNLOAD_ROAMING_PREF, R.array.pref_media_download_roaming_default);
+  return GetMediaDownloadAllowed(context, (OsIndependentString*)MEDIA_DOWNLOAD_ROAMING_PREF, R::Array::pref_media_download_roaming_default);
 }
-Set<unsigned char*> TextSecurePreferences::GetMediaDownloadAllowed(OsIndependentContext* context, unsigned char* key, int defaultValuesRes)
+std::set<OsIndependentString*>* TextSecurePreferences::GetMediaDownloadAllowed(OsIndependentContext* context, OsIndependentString* key, int defaultValuesRes)
 {
-  return GetStringSetPreference(context,
-    key,
-    new HashSet<>(Arrays.asList(context.getResources().getStringArray(defaultValuesRes))));
-}
-void TextSecurePreferences::SetBooleanPreference(OsIndependentContext* context, unsigned char* key, bool value)
-{
-  PreferenceManager::GetDefaultSharedPreferences(context).edit().putBoolean(key, value).apply();
-}
-bool TextSecurePreferences::GetBooleanPreference(OsIndependentContext* context, unsigned char* key, bool defaultValue)
-{
-  return PreferenceManager::GetDefaultSharedPreferences(context).getBoolean(key, defaultValue);
-}
-void TextSecurePreferences::SetStringPreference(OsIndependentContext* context, unsigned char* key, unsigned char* value)
-{
-  PreferenceManager::getDefaultSharedPreferences(context).edit().putString(key, value).apply();
-}
-unsigned char* TextSecurePreferences::GetStringPreference(OsIndependentContext* context, unsigned char* key, unsigned char* defaultValue)
-{
-  return PreferenceManager::getDefaultSharedPreferences(context).getString(key, defaultValue);
-}
-int TextSecurePreferences::GetIntegerPreference(OsIndependentContext* context, unsigned char* key, int defaultValue)
-{
-  return PreferenceManager::getDefaultSharedPreferences(context).getInt(key, defaultValue);
-}
-void TextSecurePreferences::SetIntegerPrefrence(OsIndependentContext* context, unsigned char* key, int value)
-{
-  PreferenceManager::getDefaultSharedPreferences(context).edit().putInt(key, value).apply();
-}
-bool TextSecurePreferences::SetIntegerPrefrenceBlocking(OsIndependentContext* context, unsigned char* key, int value)
-{
-  return PreferenceManager::GetDefaultSharedPreferences(context).edit().putInt(key, value).commit();
-}
-long TextSecurePreferences::GetLongPreference(OsIndependentContext* context, unsigned char* key, long defaultValue)
-{
-  return PreferenceManager::GetDefaultSharedPreferences(context).getLong(key, defaultValue);
-}
-void TextSecurePreferences::SetLongPreference(OsIndependentContext* context, unsigned char* key, long value) {
-  PreferenceManager::GetDefaultSharedPreferences(context).edit().putLong(key, value).apply();
-}
-Set<unsigned char*> TextSecurePreferences::GetStringSetPreference(OsIndependentContext* context, unsigned char* key, Set<unsigned char*> defaultValues)
-{
-  final SharedPreferences prefs = PreferenceManager::GetDefaultSharedPreferences(context);
-  if (prefs.contains(key))
+  std::set<OsIndependentString*>* set = new std::set<OsIndependentString*>();
+  auto list = context->GetResources()->GetStringArray(defaultValuesRes);
+  for (std::list<OsIndependentString*>::iterator it = list->begin(); it != list->end(); ++it)
   {
-    return SharedPreferenceCompat::GetStringSet(PreferenceManager::GetDefaultSharedPreferences(context),
-      key,
-      Collections.<unsigned char*>emptySet());
+    set->insert(*it);
   }
-  else {
+  return GetStringSetPreference(context, key, set);
+}
+void TextSecurePreferences::SetBooleanPreference(OsIndependentContext* context, OsIndependentString* key, bool value)
+{
+  FactoryPreferenceManager::GetInstance()->CreateNewPreferenceManager()->
+    GetDefaultSharedPreferences(context)->Edit()->PutBoolean(key, value)->Apply();
+}
+bool TextSecurePreferences::GetBooleanPreference(OsIndependentContext* context, OsIndependentString* key, bool defaultValue)
+{
+  return FactoryPreferenceManager::GetInstance()->CreateNewPreferenceManager()->
+    GetDefaultSharedPreferences(context)->GetBoolean(key, defaultValue);
+}
+void TextSecurePreferences::SetStringPreference(OsIndependentContext* context, OsIndependentString* key, OsIndependentString* value)
+{
+  FactoryPreferenceManager::GetInstance()->CreateNewPreferenceManager()->
+    GetDefaultSharedPreferences(context)->Edit()->PutString(key, value)->Apply();
+}
+OsIndependentString* TextSecurePreferences::GetStringPreference(OsIndependentContext* context, OsIndependentString* key, OsIndependentString* defaultValue)
+{
+  return FactoryPreferenceManager::GetInstance()->CreateNewPreferenceManager()->
+    GetDefaultSharedPreferences(context)->GetString(key, defaultValue);
+}
+int TextSecurePreferences::GetIntegerPreference(OsIndependentContext* context, OsIndependentString* key, int defaultValue)
+{
+  return FactoryPreferenceManager::GetInstance()->CreateNewPreferenceManager()->
+    GetDefaultSharedPreferences(context)->GetInt(key, defaultValue);
+}
+void TextSecurePreferences::SetIntegerPrefrence(OsIndependentContext* context, OsIndependentString* key, int value)
+{
+  FactoryPreferenceManager::GetInstance()->CreateNewPreferenceManager()->
+    GetDefaultSharedPreferences(context)->Edit()->PutInt(key, value)->Apply();
+}
+bool TextSecurePreferences::SetIntegerPrefrenceBlocking(OsIndependentContext* context, OsIndependentString* key, int value)
+{
+  return FactoryPreferenceManager::GetInstance()->CreateNewPreferenceManager()->
+    GetDefaultSharedPreferences(context)->Edit()->PutInt(key, value)->Commit();
+}
+long TextSecurePreferences::GetLongPreference(OsIndependentContext* context, OsIndependentString* key, long defaultValue)
+{
+  return FactoryPreferenceManager::GetInstance()->CreateNewPreferenceManager()->
+    GetDefaultSharedPreferences(context)->GetLong(key, defaultValue);
+}
+void TextSecurePreferences::SetLongPreference(OsIndependentContext* context, OsIndependentString* key, long value)
+{
+  FactoryPreferenceManager::GetInstance()->CreateNewPreferenceManager()->
+    GetDefaultSharedPreferences(context)->Edit()->PutLong(key, value)->Apply();
+}
+std::set<OsIndependentString*>* TextSecurePreferences::GetStringSetPreference(OsIndependentContext* context, OsIndependentString* key, std::set<OsIndependentString*>* defaultValues)
+{
+  auto prefs = FactoryPreferenceManager::GetInstance()->CreateNewPreferenceManager()->
+    GetDefaultSharedPreferences(context);
+
+  if (prefs->Contains(key))
+  {
+    return prefs->GetStringSet(key, nullptr);
+  }
+  else
+  {
     return defaultValues;
   }
 }
