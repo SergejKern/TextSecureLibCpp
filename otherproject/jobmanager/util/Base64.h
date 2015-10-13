@@ -23,8 +23,9 @@ Port of class Base64 from jobmanager-android
  */
 
 #include "..\..\..\osindependent\OsIndependentString.h"
-#include "..\..\..\owntemplates\ArrayList.h"
 #include "..\..\..\javastuff\UnsupportedEncodingException.h"
+
+#include <array>
 
 /**
  * Utilities for encoding and decoding the Base64 representation of
@@ -75,7 +76,7 @@ public:
   static class Coder
   {
   public:
-    ArrayList<char>* output;
+    std::vector<unsigned char>* output;
     int op;
     /**
      * Encode/decode another block of input data.  this->output is
@@ -90,7 +91,7 @@ public:
      * @return true if the input so far is good; false if some
      *         error has been detected in the input stream..
      */
-    virtual bool Process(ArrayList<char>* input, int offset, int len, bool finish) = 0;
+    virtual bool Process(std::vector<unsigned char>* input, int offset, int len, bool finish) = 0;
     /**
      * @return the maximum number of bytes a call to process()
      * could produce for the given number of input bytes.  This may
@@ -127,10 +128,10 @@ public:
     int state;   // state number (0 to 6)
     int value;
 
-    int alphabet[];
+    std::array<int, 256> alphabet;
 
   public:
-    Decoder(int flags, ArrayList<char>* output);
+    Decoder(int flags, std::vector<unsigned char>* output);
     /**
     * @return an overestimate for the number of bytes {@code
     * len} bytes could decode to.
@@ -142,10 +143,10 @@ public:
     * @return true if the state machine is still healthy.  false if
     *         bad base-64 data has been detected in the input stream.
     */
-    bool Process(ArrayList<char>* input, int offset, int len, bool finish);
+    bool Process(std::vector<unsigned char>* input, int offset, int len, bool finish);
   };
   /* package */
-  static class Encoder : Coder
+  static class Encoder : public Coder
   {
   public:
     /**
@@ -166,24 +167,24 @@ public:
     */
     static const char ENCODE_WEBSAFE[];
 
-    const ArrayList<char>* tail;
+    std::vector<unsigned char>* tail;
     /* package */ int tailLen;
     int count;
   public:
-    const bool do_padding;
-    const bool do_newline;
-    const bool do_cr;
+    bool do_padding;
+    bool do_newline;
+    bool do_cr;
   private:
-    const ArrayList<char>* alphabet;
+    std::array<int, 64> alphabet;
 
   public:
-    Encoder(int flags, ArrayList<char>* output);
+    Encoder(int flags, std::vector<unsigned char>* output);
     /**
     * @return an overestimate for the number of bytes {@code
     * len} bytes could encode to.
     */
     int MaxOutputSize(int len);
-    bool Process(ArrayList<char>* input, int offset, int len, bool finish);
+    bool Process(std::vector<unsigned char>* input, int offset, int len, bool finish);
   };
   //  --------------------------------------------------------
   //  decoding
@@ -204,7 +205,7 @@ public:
    * @throws IllegalArgumentException if the input contains
    * incorrect padding
    */
-  ArrayList<char>* Decode(OsIndependentString* str, int flags);
+  std::vector<unsigned char>* Decode(OsIndependentString* str, int flags);
   /**
    * Decode the Base64-encoded data in input and return the data in
    * a new byte array.
@@ -219,7 +220,7 @@ public:
    * @throws IllegalArgumentException if the input contains
    * incorrect padding
    */
-  static ArrayList<char>* Decode(ArrayList<char>* input, int flags);
+  static std::vector<unsigned char>* Decode(std::vector<unsigned char>* input, int flags);
   /**
    * Decode the Base64-encoded data in input and return the data in
    * a new byte array.
@@ -236,7 +237,7 @@ public:
    * @throws IllegalArgumentException if the input contains
    * incorrect padding
    */
-  static ArrayList<char>* Decode(ArrayList<char>* input, int offset, int len, int flags);
+  static std::vector<unsigned char>* Decode(std::vector<unsigned char>* input, int offset, int len, int flags);
 
   //  --------------------------------------------------------
   //  encoding
@@ -250,7 +251,7 @@ public:
    *               Passing {@code DEFAULT} results in output that
    *               adheres to RFC 2045.
    */
-  static OsIndependentString* EncodeToString(ArrayList<char>* input, int flags);
+  static OsIndependentString* EncodeToString(std::vector<unsigned char>* input, int flags);
   /**
    * Base64-encode the given data and return a newly allocated
    * String with the result.
@@ -263,7 +264,7 @@ public:
    *               Passing {@code DEFAULT} results in output that
    *               adheres to RFC 2045.
    */
-  static OsIndependentString* EncodeToString(ArrayList<char>* input, int offset, int len, int flags);
+  static OsIndependentString* EncodeToString(std::vector<unsigned char>* input, int offset, int len, int flags);
   /**
    * Base64-encode the given data and return a newly allocated
    * byte[] with the result.
@@ -273,7 +274,7 @@ public:
    *               Passing {@code DEFAULT} results in output that
    *               adheres to RFC 2045.
    */
-  static ArrayList<char>* Encode(ArrayList<char>* input, int flags);
+  static std::vector<unsigned char>* Encode(std::vector<unsigned char>* input, int flags);
   /**
    * Base64-encode the given data and return a newly allocated
    * byte[] with the result.
@@ -286,7 +287,7 @@ public:
    *               Passing {@code DEFAULT} results in output that
    *               adheres to RFC 2045.
    */
-  static ArrayList<char>* Encode(ArrayList<char>* input, int offset, int len, int flags);
+  static std::vector<unsigned char>* Encode(std::vector<unsigned char>* input, int offset, int len, int flags);
 private:
   Base64() { }   // don't instantiate
 };
