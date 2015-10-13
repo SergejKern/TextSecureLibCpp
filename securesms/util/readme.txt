@@ -34,7 +34,7 @@
 [ ] SpanUtil
 [ ] TaggedFutureTask
 [ ] TelephonyUtil
-[ ] TextSecurePreferences
+[x] TextSecurePreferences
 [ ] Trimmer
 [ ] Util
 [ ] VersionTracker
