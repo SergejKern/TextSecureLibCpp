@@ -11,10 +11,13 @@
 
 class OsIndependentConnectivityManager
 {
-private:
+public:
+  static const OsIndependentString* CONNECTIVITY_ACTION;
 public:
   virtual OsIndependentNetworkInfo* GetActiveNetworkInfo() = 0;
 };
+
+const OsIndependentString* OsIndependentConnectivityManager::CONNECTIVITY_ACTION = FactoryString::GetInstance()->CreateNewString("android.net.conn.CONNECTIVITY_CHANGE");
 /*
 Plattform independend Factory abstract class.
 This class must be implemented for specific plattforms, to create plattform specific String-classes
