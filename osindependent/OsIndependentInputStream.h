@@ -7,8 +7,8 @@
 // [x] done
 // TFS ID: 680
 
+#include <vector>
 #include "..\Factory\Factory.h"
-#include "..\owntemplates\ArrayList.h"
 
 /*
 public abstract class InputStream implements Closeable {
@@ -24,11 +24,11 @@ public:
   virtual void Mark(int readlimit) = 0;
   virtual bool MarkSupported() = 0;
   // public int  [More ...] read(byte b[]) throws IOException {
-  virtual int Read(ArrayList<char>* b) = 0;
+  virtual int Read(std::vector<unsigned char>* b) = 0;
   // public abstract int  [More ...] read() throws IOException;
   virtual int Read() = 0;
   // public int  [More ...] read(byte b[], int off, int len) throws IOException {
-  virtual int Read(ArrayList<char>* b, int off, int len) = 0;
+  virtual int Read(std::vector<unsigned char>* b, int off, int len) = 0;
   // public synchronized void  [More ...] reset() throws IOException {
   virtual void Reset() = 0;
   //long[More ...] skip(long n) throws IOException
