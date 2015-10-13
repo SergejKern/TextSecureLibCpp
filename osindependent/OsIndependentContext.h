@@ -32,9 +32,12 @@ public:
   // public abstract ContentResolver getContentResolver();
   virtual OsIndependentContentResolver* GetContentResolver() = 0;
   virtual void SendBroadcast(OsIndependentIntent* intent, OsIndependentString* receiverPermission) = 0;
-  OsIndependentString* GetString(int resId);
+  virtual OsIndependentString* GetString(int resId) = 0;
   //public final String[More ...] getString(int resId, Object... formatArgs) {
-  OsIndependentString* GetString(int resId, OsIndependentString*);
+  virtual OsIndependentString* GetString(int resId, OsIndependentString*) = 0;
+  // public abstract Intent  [More ...] registerReceiver(@Nullable BroadcastReceiver receiver, IntentFilter filter);
+  virtual OsIndependentIntent* RegisterReceiver(OsIndependentBroadcastReceiver*, OsIndependentIntentFilter*) = 0;
+
 };
 
 const OsIndependentString* OsIndependentContext::INPUT_METHOD_SERVICE = FactoryString::GetInstance()->CreateNewString("input_method");
