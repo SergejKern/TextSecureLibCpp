@@ -2,6 +2,7 @@
 
 PersistentStorage::DatabaseHelper::DatabaseHelper(OsIndependentContext* context, OsIndependentString* name)
 {
+  // SQLiteOpenHelper is abstract!!!
   helper = FactorySQLiteOpenHelper::GetInstance()
     ->CreateNewHelper(context, name, nullptr, DATABASE_VERSION);
 }
@@ -44,17 +45,17 @@ void PersistentStorage::Store(Job* job) /*throws IOException*/
   long id = databaseHelper->GetWritableDatabase()->Insert((OsIndependentString*)TABLE_NAME, nullptr, contentValues);
   job->SetPersistentId(id);
 }
-List<Job*>* PersistentStorage::GetAllUnencrypted()
+std::list<Job*>* PersistentStorage::GetAllUnencrypted()
 {
   return PersistentStorage::GetJobs(nullptr, ENCRYPTED->Append(FactoryString::GetInstance()->CreateNewString(" = 0")));
 }
-List<Job*>* PersistentStorage::GetAllEncrypted(EncryptionKeys* keys)
+std::list<Job*>* PersistentStorage::GetAllEncrypted(EncryptionKeys* keys)
 {
   return GetJobs(keys, ENCRYPTED->Append(FactoryString::GetInstance()->CreateNewString(" = 1")));
 }
-List<Job*>* PersistentStorage::GetJobs(EncryptionKeys* keys, OsIndependentString* where)
+std::list<Job*>* PersistentStorage::GetJobs(EncryptionKeys* keys, OsIndependentString* where)
 {
-  List<Job*>* results = new LinkedList<Job*>();
+  std::list<Job*>* results = new std::list<Job*>();
   OsIndependentSQLiteDatabase* database = databaseHelper->GetReadableDatabase();
   OsIndependentCursor* cursor = nullptr;
   try
@@ -71,7 +72,7 @@ List<Job*>* PersistentStorage::GetJobs(EncryptionKeys* keys, OsIndependentString
         job->SetPersistentId(id);
         job->SetEncryptionKeys(keys);
         dependencyInjector->InjectDependencies(context, job);
-        results->Add(job);
+        results->push_back(job);
       }
       catch (IOException e)
       {
