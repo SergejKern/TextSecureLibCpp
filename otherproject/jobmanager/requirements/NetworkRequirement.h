@@ -6,12 +6,7 @@ Port of class NetworkRequirement from jobmanager-android
 // [x] done
 // TFS ID: 767
 
-#include "..\..\..\osindependent\OsIndependentContext.h"
-#include "..\..\..\osindependent\OsIndependentConnectivityManager.h"
-#include "..\..\..\osindependent\OsIndependentNetworkInfo.h"
-//
-//import org.whispersystems.jobqueue.dependencies.ContextDependent;
-
+#include "..\..\..\Factory\Factory.h"
 #include "Requirement.h"
 #include "..\dependencies\ContextDependent.h"
 
@@ -32,7 +27,7 @@ public:
   //@Override Requirement
   virtual bool IsPresent() override
   {
-    OsIndependentConnectivityManager* cm = (OsIndependentConnectivityManager*)context->GetSystemService(OsIndependentContext::CONNECTIVITY_SERVICE);
+    OsIndependentConnectivityManager* cm = (OsIndependentConnectivityManager*)context->GetSystemService((OsIndependentString*)OsIndependentContext::CONNECTIVITY_SERVICE);
     OsIndependentNetworkInfo* netInfo = cm->GetActiveNetworkInfo();
     return netInfo != nullptr && netInfo->IsConnected();
   }
