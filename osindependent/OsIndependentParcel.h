@@ -7,8 +7,6 @@
 // [ ] done
 // TFS ID: 329
 
-#include "..\Factory\Factory.h"
-
 class OsIndependentParcel
 {
 private:
