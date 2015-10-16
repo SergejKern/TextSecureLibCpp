@@ -8,7 +8,7 @@
 // TFS ID: 680
 
 #include <vector>
-#include "..\Factory\Factory.h"
+#include "..\javastuff\Closeable.h"
 
 /*
 public abstract class InputStream implements Closeable {
