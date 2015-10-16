@@ -33,6 +33,7 @@ public:
 //  java.lang.RuntimeException
 class RuntimeException : public Exception
 {
+public:
   RuntimeException()
     : Exception()
   { }
@@ -47,5 +48,26 @@ class RuntimeException : public Exception
   { }
   RuntimeException(OsIndependentString* message, Throwable cause, bool enableSuppression, bool writableStackTrace)
     : Exception(message, cause, enableSuppression, writableStackTrace)
+  { }
+};
+
+// java.lang.IllegalArgumentException
+class IllegalArgumentException : public RuntimeException
+{
+public:
+  IllegalArgumentException()
+    : RuntimeException()
+  { }
+  IllegalArgumentException(OsIndependentString* message)
+    : RuntimeException(message)
+  { }
+  IllegalArgumentException(OsIndependentString* message, Throwable* cause)
+    : RuntimeException(message, cause)
+  { }
+  IllegalArgumentException(Throwable* cause)
+    : RuntimeException(cause)
+  { }
+  IllegalArgumentException(OsIndependentString* message, Throwable cause, bool enableSuppression, bool writableStackTrace)
+    : RuntimeException(message, cause, enableSuppression, writableStackTrace)
   { }
 };
