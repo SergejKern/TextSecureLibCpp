@@ -8,7 +8,6 @@
 // TFS ID: 681
 
 #include <vector>
-#include "..\Factory\Factory.h"
 #include "..\javastuff\Closeable.h"
 
 /*
