@@ -8,8 +8,6 @@
 // [ ] done
 // TFS ID: 786
 
-#include "..\Factory\Factory.h"
-
 // public abstract class  [More ...] ClassLoader {
 class OsIndependentClassLoader
 {
