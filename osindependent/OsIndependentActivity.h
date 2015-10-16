@@ -7,7 +7,10 @@
 // [ ] done
 // TFS ID: 664
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentString.h"
+#include "OsIndependentIntent.h"
+#include "OsIndependentBundle.h"
+#include "OsIndependentKeyEvent.h"
 
 /*
 public class Activity extends ContextThemeWrapper
