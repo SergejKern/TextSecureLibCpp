@@ -7,7 +7,10 @@
 // [ ] done
 // TFS ID: 662
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentString.h"
+#include "OsIndependentContext.h"
+#include "OsIndependentSQLiteDatabase.h"
+
 // public abstract class  [More ...] SQLiteOpenHelper {
 class OsIndependentSQLiteOpenHelper
 {
