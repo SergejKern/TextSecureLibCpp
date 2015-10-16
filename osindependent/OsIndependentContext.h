@@ -7,7 +7,13 @@
 // [ ] done
 // TFS ID: 658
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentString.h"
+#include "OsIndependentPackageManager.h"
+#include "OsIndependentResources.h"
+#include "OsIndependentContentResolver.h"
+#include "OsIndependentIntent.h"
+#include "OsIndependentBroadcastReceiver.h"
+#include "OsIndependentIntentFilter.h"
 
 class OsIndependentContext
 {
