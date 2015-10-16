@@ -7,7 +7,7 @@
 // [ ] done
 // TFS ID: 782
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentSQLiteProgram.h"
 
 // public final class  [More ...] SQLiteQuery extends SQLiteProgram {
 class OsIndependentSQLiteQuery : public OsIndependentSQLiteProgram
