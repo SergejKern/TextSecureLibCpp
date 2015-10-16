@@ -7,8 +7,6 @@
 // [ ] done
 // TFS ID: 678
 
-#include "..\Factory\Factory.h"
-
 /* public abstract class  [More ...] ContentObserver { */
 class OsIndependentContentObserver
 {
