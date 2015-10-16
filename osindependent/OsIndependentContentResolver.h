@@ -7,7 +7,8 @@
 // [ ] done
 // TFS ID: 665
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentUri.h"
+#include "OsIndependentContentObserver.h"
 
 /* public abstract class  [More ...] ContentResolver { */
 class OsIndependentContentResolver
