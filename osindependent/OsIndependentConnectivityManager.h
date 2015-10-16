@@ -7,7 +7,9 @@
 // [ ] done
 // TFS ID: 672
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentString.h"
+#include "OsIndependentNetworkInfo.h"
+#include "OsIndependentConnectivityManager.h"
 
 class OsIndependentConnectivityManager
 {
