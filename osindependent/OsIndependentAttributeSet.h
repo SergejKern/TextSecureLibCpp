@@ -7,7 +7,8 @@ http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/and
 // [x] done
 // TFS ID: 667
 
-#include "..\Factory\Factory.h"
+#include <list>
+#include "OsIndependentString.h"
 
 /* public interface AttributeSet { */
 class OsIndependentAttributeSet
@@ -71,7 +72,7 @@ public:
   Returns :
   Index in to 'options' or defaultValue.
   */
-  int GetAttributeListValue(OsIndependentString* _namespace, OsIndependentString* attribute, ArrayList<OsIndependentString*>* options, int defaultValue);
+  int GetAttributeListValue(OsIndependentString* _namespace, OsIndependentString* attribute, std::list<OsIndependentString*>* options, int defaultValue);
   /*
   Return the boolean value of 'attribute'.
   Parameters:
@@ -132,7 +133,7 @@ public:
   Returns :
   Index in to 'options' or defaultValue.
   */
-  int GetAttributeListValue(int index, ArrayList<OsIndependentString*>* options, int defaultValue);
+  int GetAttributeListValue(int index, std::list<OsIndependentString*>* options, int defaultValue);
   /*
   Return the boolean value of attribute at 'index'.
   Parameters:
