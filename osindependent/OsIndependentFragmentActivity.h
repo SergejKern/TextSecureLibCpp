@@ -7,7 +7,9 @@
 // [ ] done
 // TFS ID: 756
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentActivity.h"
+#include "OsIndependentKeyEvent.h"
+#include "OsIndependentFragmentManager.h"
 
 /*
 public class  [More ...] FragmentActivity extends Activity {
