@@ -4,17 +4,33 @@
   http://developer.android.com/reference/android/content/SQLiteStatement.html
 */
 
-// [ ] done
+// [x] done
 // TFS ID: 660
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentString.h"
+#include "OsIndependentSQLiteProgram.h"
+#include "OsIndependentParcelFileDescriptor.h"
+#include <list>
 
 // public final class  [More ...] SQLiteStatement extends SQLiteProgram {
 class OsIndependentSQLiteStatement : public OsIndependentSQLiteProgram
 {
 private:
-  OsIndependentSQLiteStatement();
-public:  
+public:
+  //public void[More ...] execute() {
+  virtual void Execute() = 0;
+  //public long[More ...] executeInsert() {
+  virtual long ExecuteInsert() = 0;
+  //public int[More ...] executeUpdateDelete() {
+  virtual int ExecuteUpdateDelete() = 0;
+  //public ParcelFileDescriptor  [More ...] simpleQueryForBlobFileDescriptor() {
+  virtual OsIndependentParcelFileDescriptor* SimpleQueryForBlobFileDescriptor() = 0;
+  //public long[More ...] simpleQueryForLong() {
+  virtual long SimpleQueryForLong() = 0;
+  //public String[More ...] simpleQueryForString() {
+  virtual OsIndependentString* SimpleQueryForString() = 0;
+  //public String  [More ...] toString() {
+  virtual OsIndependentString* ToString() = 0;
 };
 /*
 Plattform independend Factory abstract class.
@@ -50,5 +66,5 @@ public:
     return FactorySQLiteStatement::instance;
   }
   // interface
-  virtual OsIndependentSQLiteStatement* CreateNewStatement() = 0;
+  virtual OsIndependentSQLiteStatement* CreateNewStatement(OsIndependentSQLiteDatabase* db, OsIndependentString* sql, std::list<void*>* bindArgs) = 0;
 };
