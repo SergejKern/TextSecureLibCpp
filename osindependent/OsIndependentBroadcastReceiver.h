@@ -7,7 +7,8 @@
 // [ ] done
 // TFS ID: 797
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentContext.h"
+#include "OsIndependentIntent.h"
 
 /*
 public abstract class  [More ...] BroadcastReceiver {
