@@ -8,15 +8,13 @@
 // [ ] done
 // TFS ID: 784
 
-#include "..\Factory\Factory.h"
 #include "..\javastuff\Runnable.h"
 
 // class  [More ...] Thread implements Runnable {
-class OsIndependentThread : Runnable
+class OsIndependentThread : public Runnable
 {
 private:
 public:
-
 };
 /*
 Plattform independend Factory abstract class.
