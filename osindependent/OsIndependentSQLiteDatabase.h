@@ -7,7 +7,13 @@
 // [ ] done
 // TFS ID: 659
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentString.h"
+#include "OsIndependentSQLiteClosable.h"
+#include "OsIndependentCursor.h"
+#include "OsIndependentSQLiteDatabase.h"
+#include "OsIndependentSQLiteCursorDriver.h"
+#include "OsIndependentSQLiteQuery.h"
+#include <list>
 /*
 public final class  [More ...] SQLiteDatabase extends SQLiteClosable {
 */
@@ -37,9 +43,9 @@ public:
     OsIndependentContentValues* values) = 0;
   virtual OsIndependentCursor* Query(
     OsIndependentString* table, 
-    List<OsIndependentString*>* columns,
+    std::list<OsIndependentString*>* columns,
     OsIndependentString* selection,
-    List<OsIndependentString*>* selectionArgs,
+    std::list<OsIndependentString*>* selectionArgs,
     OsIndependentString* groupBy, 
     OsIndependentString* having,
     OsIndependentString* orderBy, 
@@ -47,7 +53,7 @@ public:
   virtual int Delete(
     OsIndependentString* table, 
     OsIndependentString* whereClause, 
-    List<OsIndependentString*>* whereArgs) = 0;
+    std::list<OsIndependentString*>* whereArgs) = 0;
 };
 /*
 Plattform independend Factory abstract class.
