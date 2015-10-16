@@ -7,7 +7,6 @@
 // [x] done
 // TFS ID: 782
 
-#include "..\Factory\Factory.h"
 #include "..\javastuff\Closeable.h"
 
 // public abstract class  [More ...] SQLiteClosable implements Closeable {
