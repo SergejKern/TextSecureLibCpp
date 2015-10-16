@@ -7,8 +7,6 @@
 // [ ] done
 // TFS ID: 671
 
-#include "..\Factory\Factory.h"
-
 // public final class  [More ...] InputMethodManager {
 class OsIndependentInputMethodManager
 {
