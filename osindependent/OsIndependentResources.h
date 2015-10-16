@@ -7,7 +7,10 @@
 // [ ] done
 // TFS ID: 675
 
-#include "..\Factory\Factory.h"
+#include <list>
+#include "OsIndependentString.h"
+#include "OsIndependentDrawable.h"
+#include "OsIndependentInputStream.h"
 
 /*
 public class Resources {
@@ -28,6 +31,8 @@ public:
   //public Drawable[More ...] getDrawable(int id, @Nullable Theme theme) throws NotFoundException{
   virtual OsIndependentDrawable* GetDrawable(int id, Theme* theme) = 0;
   virtual OsIndependentInputStream* OpenRawResource(int id) = 0;
+  //public String[][More ...] getStringArray(int id) throws NotFoundException{
+  std::list<OsIndependentString*>* GetStringArray(int id);
 };
 /*
 Plattform independend Factory abstract class.
