@@ -7,8 +7,6 @@
 // [ ] done
 // TFS ID: 758
 
-#include "..\Factory\Factory.h"
-
 //public abstract class  [More ...] FragmentManager {
 class OsIndependentFragmentManager
 {
