@@ -7,7 +7,7 @@ http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/
 // [x] done
 // TFS ID: 800
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentOutputStream.h"
 
 /*
 class  [More ...] ByteArrayOutputStream extends InputStream {
@@ -42,13 +42,13 @@ This class must be implemented for specific plattforms, to create plattform spec
 +------------------------------------+  creates   +-----------------------------------+
 | OsIndependentByteArrayOutputStream |<-----------|    FactoryByteArrayOutputStream   |
 +------------------------------------+            +-----------------------------------+
-                  ^                                                 ^                Plattform independent code
-                 /|\                                               /|\
-                  |                                                 |
+^                                                 ^                Plattform independent code
+/|\                                               /|\
+|                                                 |
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                  |                                                 |
-                  |                                                 |                Plattform specific code
-                  |                                                 |
+|                                                 |
+|                                                 |                Plattform specific code
+|                                                 |
 +------------------------------------+  creates   +-----------------------------------+
 |     Tizen-ByteArrayOutputStream    |<-----------| TizenFactoryByteArrayOutputStream |
 +------------------------------------+            +-----------------------------------+
