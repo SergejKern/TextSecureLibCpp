@@ -7,8 +7,6 @@
 // [ ] done
 // TFS ID: 685
 
-#include "..\Factory\Factory.h"
-
 // public class ContentProviderClient {
 class OsIndependentContentProviderClient
 {
