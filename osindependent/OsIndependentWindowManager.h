@@ -7,8 +7,6 @@
 // [ ] done
 // TFS ID: 673
 
-#include "..\Factory\Factory.h"
-
 // done [ ]
 // public interface  [More ...] ViewManager
 // public abstract class  [More ...] ViewGroup extends View implements ViewParent, ViewManager {
