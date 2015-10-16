@@ -8,7 +8,7 @@
 // [ ] done
 // TFS ID: 327
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentParcelable.h"
 
 // public abstract class  [More ...] Uri implements Parcelable, Comparable<Uri> {
 class OsIndependentUri : OsIndependentParcelable
