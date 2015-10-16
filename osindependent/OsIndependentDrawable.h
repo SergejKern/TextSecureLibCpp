@@ -7,8 +7,6 @@
 // [ ] done
 // TFS ID: 674
 
-#include "..\Factory\Factory.h"
-
 /*
 public abstract class Drawable {
 */
