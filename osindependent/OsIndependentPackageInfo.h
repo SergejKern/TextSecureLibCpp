@@ -7,7 +7,7 @@
 // [ ] done
 // TFS ID: 670
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentParcelable.h"
 
 /* public class  [More ...] PackageInfo implements Parcelable { */
 class OsIndependentPackageInfo : OsIndependentParcelable
