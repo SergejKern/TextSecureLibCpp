@@ -7,7 +7,10 @@
 // [x] done
 // TFS ID: 781
 
-#include "..\Factory\Factory.h"
+#include <list>
+#include "OsIndependentCursor.h"
+#include "OsIndependentString.h"
+#include "OsIndependentSQLiteDatabase.h"
 
 // public interface  [More ...] SQLiteCursorDriver {
 class OsIndependentSQLiteCursorDriver
@@ -20,7 +23,7 @@ public:
   Returns:
   a Cursor over the result set
   */
-  virtual OsIndependentCursor* Query(OsIndependentSQLiteDatabase::CursorFactory* factory, List<OsIndependentString*>* bindArgs) = 0;
+  virtual OsIndependentCursor* Query(OsIndependentSQLiteDatabase::CursorFactory* factory, std::list<OsIndependentString*>* bindArgs) = 0;
   /* Called by a SQLiteCursor when it is released. */
   virtual void CursorDeactivated() = 0;
   /* Called by a SQLiteCursor when it is requeried. */
@@ -32,7 +35,7 @@ public:
   Parameters:
   bindArgs -> the new arguments
   */
-  virtual void SetBindArguments(List<OsIndependentString*>* bindArgs) = 0;
+  virtual void SetBindArguments(std::list<OsIndependentString*>* bindArgs) = 0;
 };
 /*
 needs no Factory, because is an interface
