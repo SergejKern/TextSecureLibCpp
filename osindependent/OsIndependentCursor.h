@@ -8,7 +8,9 @@
 // [ ] done
 // TFS ID: 657
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentString.h"
+#include "OsIndependentContentResolver.h"
+#include "OsIndependentUri.h"
 #include "..\javastuff\Closeable.h"
 
 // public interface Cursor extends Closeable {
