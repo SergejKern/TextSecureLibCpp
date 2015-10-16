@@ -7,7 +7,8 @@
 // [ ] done
 // TFS ID: 669
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentString.h"
+#include "OsIndependentPackageInfo.h"
 
 class OsIndependentPackageManager
 {
@@ -15,7 +16,7 @@ private:
 public:
   /*
   */
-  virtual OsIndependentPackageInfo* GetPackageInfo(unsigned char* packageName, int flags) = 0;
+  virtual OsIndependentPackageInfo* GetPackageInfo(OsIndependentString* packageName, int flags) = 0;
 };
 /*
 Plattform independend Factory abstract class.
