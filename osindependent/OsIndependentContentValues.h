@@ -7,7 +7,8 @@
 // [ ] done
 // TFS ID: 780
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentString.h"
+#include "OsIndependentParcelable.h"
 
 // public final class  [More ...] ContentValues implements Parcelable {
 class OsIndependentContentValues : OsIndependentParcelable
