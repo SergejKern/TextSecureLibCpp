@@ -41,13 +41,13 @@ public:
 public:
   bool Contains(OsIndependentString* key);
   Editor* Edit();
-  std::map<OsIndependentString*, void*> GetAll();
+  std::map<OsIndependentString*, void*>* GetAll();
   bool GetBoolean(OsIndependentString* key, bool defValue);
   float GetFloat(OsIndependentString* key, float defValue);
   int GetInt(OsIndependentString* key, int defValue);
   long GetLong(OsIndependentString* key, long defValue);
   OsIndependentString* GetString(OsIndependentString* key, OsIndependentString* defValue);
-  std::set<OsIndependentString*> GetStringSet(OsIndependentString* key, Set<OsIndependentString*>* defValues);
+  std::set<OsIndependentString*>* GetStringSet(OsIndependentString* key, Set<OsIndependentString*>* defValues);
   void RegisterOnSharedPreferenceChangeListener(OnSharedPreferenceChangeListener* listener);
   void UnregisterOnSharedPreferenceChangeListener(OnSharedPreferenceChangeListener* listener);
 };
