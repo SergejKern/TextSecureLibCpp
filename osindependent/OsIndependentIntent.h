@@ -7,7 +7,8 @@
 // [ ] done
 // TFS ID: 665
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentString.h"
+#include "OsIndependentParcelable.h"
 
 /* public class  Intent implements Parcelable, Cloneable { */
 class OsIndependentIntent : OsIndependentParcelable
