@@ -7,7 +7,9 @@
 // [x] done
 // TFS ID: 663
 
-#include "..\Factory\Factory.h"
+#include <vector>
+#include "OsIndependentParcel.h"
+#include "OsIndependentClassLoader.h"
 
 // public interface  [More ...] Parcelable {
 class OsIndependentParcelable
@@ -39,7 +41,7 @@ public:
   /*
   Interface that must be implemented and provided as a public CREATOR field that generates instances of your Parcelable class from a Parcel.
   */
-  template <typename T> class Creator<T>
+  template <typename T> class Creator
   {
   public:
     /*
@@ -57,11 +59,11 @@ public:
     Returns:
     Returns an array of the Parcelable class, with every entry initialized to null.
     */
-    virtual T[] NewArray(int size) = 0;
+    virtual std::vector<T>* NewArray(int size) = 0;
   };
   /*
   */
-  template <typename T> class ClassLoaderCreator<T> : public Creator<T>
+  template <typename T> class ClassLoaderCreator : public Creator<T>
   {
   public:
     /*
