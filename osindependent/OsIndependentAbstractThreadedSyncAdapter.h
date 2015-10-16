@@ -7,7 +7,11 @@
 // [ ] done
 // TFS ID: 682
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentContext.h"
+#include "OsIndependentAccount.h"
+#include "OsIndependentBundle.h"
+#include "OsIndependentContentProviderClient.h"
+#include "OsIndependentSyncResult.h"
 
 /*
   public abstract class AbstractThreadedSyncAdapter
