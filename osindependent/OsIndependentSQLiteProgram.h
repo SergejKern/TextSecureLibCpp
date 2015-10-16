@@ -7,7 +7,7 @@
 // [ ] done
 // TFS ID: 783
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentSQLiteClosable.h"
 
 // public abstract class  [More ...] SQLiteProgram extends SQLiteClosable {
 class OsIndependentSQLiteProgram : public OsIndependentSQLiteClosable
