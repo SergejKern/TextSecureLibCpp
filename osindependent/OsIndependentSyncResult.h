@@ -7,7 +7,7 @@
 // [ ] done
 // TFS ID: 686
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentParcelable.h"
 
 // public class Account implements Parcelable {
 class OsIndependentSyncResult : OsIndependentParcelable
