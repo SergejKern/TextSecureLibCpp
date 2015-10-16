@@ -7,7 +7,7 @@
 // [ ] done
 // TFS ID: 688
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentString.h"
 
 /*
 a abstract class to be overvritten for every platform.
