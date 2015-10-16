@@ -7,8 +7,6 @@
 // [ ] done
 // TFS ID: 668
 
-#include "..\Factory\Factory.h"
-
 /* public class RingtonePreference extends Preference implements
 PreferenceManager.OnActivityResultListener */
 class OsIndependentRingtonePreference
