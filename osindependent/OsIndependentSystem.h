@@ -1,13 +1,11 @@
 #pragma once
 /*
-  abstract class OsIndependentIntent to replace android.content.Intent
-  http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/5.1.1_r1/android/content/Intent.java#Intent
+  abstract class OsIndependentIntent to replace java.lang.System
+  http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/lang/System.java#System
 */
 
 // [ ] done
 // TFS ID: 676
-
-#include "..\Factory\Factory.h"
 
 class OsIndependentSystem
 {
