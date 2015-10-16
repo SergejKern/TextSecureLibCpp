@@ -7,7 +7,7 @@
 // [ ] done
 // TFS ID: 765
 
-#include "..\Factory\Factory.h"
+#include "OsIndependentString.h"
 
 /*
 public final class  PowerManager {
