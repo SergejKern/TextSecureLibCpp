@@ -7,9 +7,8 @@
 // [ ] done
 // TFS ID: 687
 
-#include "..\Factory\Factory.h"
 #include <vector>
-#include <array>
+#include <list>
 
 /*
 a abstract class to be overvritten for every platform.
@@ -29,6 +28,8 @@ public:
   virtual bool IsEmpty() = 0;
   virtual std::vector<unsigned char>* GetBytes() = 0;
   virtual OsIndependentString* Append(OsIndependentString*) = 0;
+  virtual bool operator==(unsigned char*) = 0;
+  virtual int ConvertToInt() = 0;
 };
 
 /*
