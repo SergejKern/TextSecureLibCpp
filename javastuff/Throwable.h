@@ -28,8 +28,16 @@ public:
 
 class Error : public Throwable
 {
+public:
+  Error(Throwable* cause)
+    : Throwable(cause)
+  { }
 };
 
 class AssertionError : public Error
 {
+public:
+  AssertionError(Throwable* cause)
+    : Error(cause)
+  { }
 };
