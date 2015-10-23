@@ -1,23 +1,25 @@
 #pragma once
 /*
-Port of class DeviceContact from TextSecure-android
+Port of class DeviceGroup from TextSecure-android
 */
 
 // [x] done
 // TFS ID: 277
 
 #include "..\TextSecureAttachmentStream.h"
-#include "..\..\..\..\owntemplates\List.h"
+#include <list>
+#include <vector>
+#include "..\..\..\..\osindependent\OsIndependentString.h"
 
 class DeviceGroup
 {
 private:
-  const char* id;
-  const unsigned char* name;
-  List<unsigned char*> members;
+  std::vector<unsigned char>* id;
+  OsIndependentString* name;
+  std::list<unsigned char*>* members;
   TextSecureAttachmentStream* avatar;
 public:
-  DeviceGroup(char* id, unsigned char* name, List<unsigned char*> members, TextSecureAttachmentStream* avatar)
+  DeviceGroup(std::vector<unsigned char>* id, OsIndependentString* name, std::list<unsigned char*>* members, TextSecureAttachmentStream* avatar)
   {
     this->id = id;
     this->name = name;
@@ -25,7 +27,7 @@ public:
     this->avatar = avatar;
   }
   TextSecureAttachmentStream* GetAvatar() { return this->avatar; }
-  unsigned char* GetName() { return (unsigned char*)this->name; }
-  char* GetId() { return (char*)this->id; }
-  List<unsigned char*> GetMembers() { return this->members; }
+  OsIndependentString* GetName() { return this->name; }
+  std::vector<unsigned char>* GetId() { return this->id; }
+  std::list<unsigned char*>* GetMembers() { return this->members; }
 };
