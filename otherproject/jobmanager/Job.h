@@ -82,4 +82,6 @@ public:
    * the job's configured retry count.
    */
   virtual void OnCanceled() = 0;
+
+  virtual OsIndependentString* ToString() = 0;
 };
