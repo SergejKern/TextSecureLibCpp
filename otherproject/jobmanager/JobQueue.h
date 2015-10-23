@@ -36,7 +36,13 @@ public:
   bool IsGroupIdAvailable(OsIndependentString* groupId);
   void SetGroupIdUnavailable(OsIndependentString* groupId);
   // stolen from java.lang.Object
-  virtual void Wait() = 0;
+  virtual void Wait()
+  {
+    throw new NotImplementedException();
+  };
   // stolen from java.lang.Object
-  virtual void NotifyAll() = 0;
+  virtual void NotifyAll()
+  {
+    throw new NotImplementedException();
+  };
 };
