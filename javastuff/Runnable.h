@@ -12,9 +12,19 @@
 //}
 class Runnable
 {
+public:
   /* 
   When an object implementing interface Runnable is used to create a thread, starting the thread causes the object's run method to be called in that separately executing thread.
   The general contract of the method run is that it may take any action whatsoever.
   */
   virtual void Run() = 0;
+};
+
+//public interface[More ...] Executor{
+class Executor
+{
+public:
+  /*
+  */
+  virtual void Execute(Runnable* command);
 };
