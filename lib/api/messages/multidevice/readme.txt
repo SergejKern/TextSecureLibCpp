@@ -5,7 +5,7 @@
 [x] DeviceContactsOutputStream
 [x] DeviceGroup
 [ ] DeviceGroupsInputStream
-[ ] DeviceGroupsOutputStream
+[x] DeviceGroupsOutputStream
 [x] DeviceInfo
 [x] RequestMessage
 [x] SentTranscriptMessage
