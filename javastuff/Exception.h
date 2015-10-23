@@ -71,3 +71,14 @@ public:
     : RuntimeException(message, cause, enableSuppression, writableStackTrace)
   { }
 };
+
+class NotImplementedException : public RuntimeException
+{
+public:
+  NotImplementedException()
+    : RuntimeException()
+  { }
+  NotImplementedException(OsIndependentString* message)
+    : RuntimeException(message)
+  { }
+};
