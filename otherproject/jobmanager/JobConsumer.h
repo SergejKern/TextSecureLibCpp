@@ -6,13 +6,13 @@ Port of class JobConsumer from jobmanager-android
 // [ ] done
 // TFS ID: 769
 
-#include "..\..\Factory\Factory.h"
+#include "..\..\osindependent\OsIndependentThread.h"
 
 //import android.util.Log;
 #include "persistence\PersistentStorage.h"
 #include "JobQueue.h"
 
-class JobConsumer /*: public Thread*/
+class JobConsumer /*: public OsIndependentThread*/
 {
 private:
   OsIndependentThread* thread;
@@ -29,6 +29,8 @@ public:
   JobConsumer(OsIndependentString* name, JobQueue* jobQueue, PersistentStorage* persistentStorage);
   //@Override
   void Run();
+  // override method of Thread
+  void Start();
 private:
   JobResult RunJob(Job* job);
 };
