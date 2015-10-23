@@ -14,4 +14,32 @@
 //}
 
 class Serializable
-{};
+{
+};
+
+/*
+   java.util.concurrent.atomic.AtomicBoolean
+   http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/concurrent/atomic/AtomicBoolean.java#AtomicBoolean
+*/
+// public class  [More ...] AtomicBoolean implements java.io.Serializable {
+
+class AtomicBoolean : public Serializable
+{
+private:
+  volatile int value;
+  static const long valueOffset;
+public:
+  AtomicBoolean(bool initialValue)
+  {
+    value = initialValue ? 1 : 0;
+  }
+  bool CompareAndSet(bool expect, bool update)
+  {
+    if (this->value == expect)
+    {
+      this->value = update;
+      return true;
+    }
+    return false;
+  }
+};
