@@ -80,4 +80,6 @@ public:
   virtual OsIndependentString* CreateNewString(char*) = 0;
   virtual OsIndependentString* CreateNewString(long) = 0;
   virtual OsIndependentString* CreateNewString(std::vector<unsigned char>* bytes, unsigned char* charsetName) = 0;
+  // create new string and append b to a -> return a + b
+  virtual OsIndependentString* CreateNewString(unsigned char* a, int b) = 0;
 };
