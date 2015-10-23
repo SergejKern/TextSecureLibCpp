@@ -6,6 +6,10 @@
 Port of class RequestMessage from TextSecure-android
 */
 
+#include <list>
+#include <vector>
+#include "..\..\..\osindependent\OsIndependentString.h"
+
 // [ ] done
 // TFS ID: 358
 
@@ -51,13 +55,46 @@ public:
     {
     public:
       void SetNumber(unsigned char* number);
-      void SetName(unsigned char* name);
+      void SetName(OsIndependentString* name);
       void SetAvatar(Avatar::Builder* avatar);
       ContactDetails* Build();
     };
   public:
     static Builder* NewBuilder();
   public:
-    char* ToByteArray();
+    std::vector<unsigned char>* ToByteArray();
+  };
+  class GroupContext
+  {
+  public:
+    static GroupContext* ParseFrom(std::vector<unsigned char>*);
+    std::list<OsIndependentString*>* GetMembersList();
+    OsIndependentString* GetName();
+  };
+  class GroupDetails
+  {
+  public:
+    class Avatar
+    {
+    public:
+      class Builder
+      {
+      public:
+        void SetContentType(unsigned char*);
+        void SetLength(int);
+      };
+      static Builder* NewBuilder();
+    };
+    class Builder
+    {
+    public:
+      void SetId(std::vector<unsigned char>*);
+      void SetName(OsIndependentString*);
+      void SetAvatar(Avatar::Builder*);
+      void AddAllMembers(std::list<unsigned char*>*);
+      GroupDetails* Build();
+    };
+    static Builder* NewBuilder();
+    std::vector<unsigned char>* ToByteArray();
   };
 };
