@@ -2,11 +2,15 @@
 
 JobConsumer::JobConsumer(OsIndependentString* name, JobQueue* jobQueue, PersistentStorage* persistentStorage)
 {
-  FactoryThread::GetInstance()->CreateNewThread(name);
+  this->thread = FactoryThread::GetInstance()->CreateNewThread(name);
   this->jobQueue = jobQueue;
   this->persistentStorage = persistentStorage;
 }
-
+//@Override
+void JobConsumer::Start()
+{
+  this->thread->Start();
+}
 //@Override
 void JobConsumer::Run()
 {
